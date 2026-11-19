@@ -142,6 +142,16 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #475569;
         }
+        header [data-paid-export][disabled] {
+            background: #1e293b !important;
+            color: #cbd5e1 !important;
+            border: 1px solid #475569 !important;
+            box-shadow: none !important;
+            opacity: 1;
+            cursor: not-allowed;
+        }
+        .paid-lock-label { font-size: 0.75rem; font-weight: 700; }
+        [data-paid-export]:not([disabled]) .paid-lock-label { display: none; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-amber-500 selection:text-slate-950">
@@ -174,17 +184,17 @@
                 <button id="navCopyHashBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 text-xs font-medium flex items-center gap-2 transition" title="Copy Live SHA-256 Document Hash">
                     <i id="navCopyHashBtnLockIcon" class="fa-solid fa-lock" aria-hidden="true"></i>
                     <span class="hidden md:inline">Copy SHA-256</span>
-                </button>
+                <span class="paid-lock-label">Locked</span></button>
 
                 <button id="navDownloadAll50Btn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3 py-2 rounded-lg bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/40 text-xs font-semibold flex items-center gap-2 transition" title="Download Complete 50-State + Omnibus Bundle (.TXT)">
-                    <i class="fa-solid fa-layer-group"></i>
+                    <i id="navDownloadAll50BtnLockIcon" class="fa-solid fa-lock" aria-hidden="true"></i>
                     <span class="hidden sm:inline">All 50 States Packet (.TXT)</span>
-                </button>
+                <span class="paid-lock-label">Locked</span></button>
 
                 <button id="navPrintBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3.5 py-2 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-amber-500/10 transition">
-                    <i class="fa-solid fa-file-pdf"></i>
+                    <i id="navPrintBtnLockIcon" class="fa-solid fa-lock" aria-hidden="true"></i>
                     <span>Print / Save PDF</span>
-                </button>
+                <span class="paid-lock-label">Locked</span></button>
             </div>
         </div>
         <p class="text-center text-xs text-amber-300 px-4 pb-2">Payment verification is required to unlock printing and document downloads.</p>

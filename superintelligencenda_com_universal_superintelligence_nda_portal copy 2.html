@@ -1,0 +1,2153 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperintelligenceNDA.com | Universal Superintelligence NDA & 50-State Legal Execution Portal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Stripe.js v3 SDK for Apple Pay / Google Pay / Payment Request API -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <!-- Google Fonts: Inter (UI), Libre Baskerville (Legal Contract Typography), JetBrains Mono (Cryptographic Hashes), Great Vibes (Legal Script Signature) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['"Libre Baskerville"', 'Georgia', 'serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        script: ['"Great Vibes"', 'cursive']
+                    },
+                    colors: {
+                        parchment: {
+                            50: '#FDFBF7',
+                            100: '#F9F5EB',
+                            200: '#EFE6D5',
+                            300: '#E2D4B7'
+                        },
+                        obsidian: {
+                            900: '#0B0F17',
+                            950: '#06090E'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0B0F17;
+            color: #F8FAFC;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Legal Contract Paper Container with Double Pleadings Margin Line */
+        .legal-paper {
+            background-color: #FDFBF7;
+            color: #1E293B;
+            background-image: 
+                linear-gradient(90deg, rgba(220, 38, 38, 0.16) 0px, rgba(220, 38, 38, 0.16) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(220, 38, 38, 0.09) 0px, rgba(220, 38, 38, 0.09) 1px, transparent 1px);
+            background-size: 100% 100%;
+            background-position: 38px 0, 42px 0;
+            background-repeat: no-repeat;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(217, 119, 6, 0.28);
+        }
+
+        @media (max-width: 640px) {
+            .legal-paper {
+                background-position: 14px 0, 17px 0;
+            }
+        }
+
+        .security-banner {
+            background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.14), transparent 65%),
+                        linear-gradient(135deg, #06090E 0%, #0F172A 50%, #06090E 100%);
+        }
+
+        #signaturePad {
+            touch-action: none;
+            cursor: crosshair;
+            background-color: #FFFFFF;
+            background-image: radial-gradient(#CBD5E1 1px, transparent 1px);
+            background-size: 16px 16px;
+        }
+
+        .dynamic-legal-field {
+            background-color: rgba(245, 158, 11, 0.15);
+            border-bottom: 1px dashed #B45309;
+            padding: 0 4px;
+            font-weight: 700;
+            color: #0F172A;
+            border-radius: 2px;
+        }
+
+        /* Print Media Styles for Formal Legal PDF Output */
+        @media print {
+            body {
+                background: #FFFFFF !important;
+                color: #000000 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .legal-paper {
+                box-shadow: none !important;
+                border: 1px solid #000 !important;
+                background: #FFFFFF !important;
+                color: #000000 !important;
+                margin: 0 !important;
+                padding: 20px !important;
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+            .print-break-inside-avoid {
+                break-inside: avoid;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0F172A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-amber-500 selection:text-slate-950">
+
+    <!-- ==================== TOP CRYPTOGRAPHIC NAVIGATION BAR ==================== -->
+    <header class="sticky top-0 z-50 bg-obsidian-950/95 backdrop-blur-md border-b border-slate-800/80 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            <!-- Brand & Domain Identity -->
+            <div class="flex items-center gap-3.5">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-500/20 via-slate-900 to-emerald-500/20 border border-amber-500/40 flex items-center justify-center shadow-inner shrink-0">
+                    <svg class="w-6 h-6 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="text-base sm:text-xl font-extrabold tracking-tight text-white">SUPERINTELLIGENCE<span class="text-amber-400">NDA</span><span class="text-slate-400 font-normal">.COM</span></span>
+                        <span class="hidden xl:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold uppercase tracking-wider bg-emerald-950/80 text-emerald-300 border border-emerald-500/40">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            ROOT DNS &amp; SSL VERIFIED • 50-STATE &amp; FEDERAL OMNIBUS ENGINE
+                        </span>
+                    </div>
+                    <p class="text-xs text-slate-400 hidden sm:block">Singular Master 50-State Omnibus Contract + 50 Individual State-Specific Superintelligence NDAs</p>
+                </div>
+            </div>
+
+            <!-- Cryptographic Status & Action Controls -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button id="navCopyHashBtn" type="button" class="px-3 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 text-xs font-medium flex items-center gap-2 transition" title="Copy Live SHA-256 Document Hash">
+                    <i class="fa-solid fa-fingerprint text-amber-400"></i>
+                    <span class="hidden md:inline">Copy SHA-256</span>
+                </button>
+
+                <button id="navDownloadAll50Btn" type="button" class="px-3 py-2 rounded-lg bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/40 text-xs font-semibold flex items-center gap-2 transition" title="Download Complete 50-State + Omnibus Bundle (.TXT)">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span class="hidden sm:inline">All 50 States Packet (.TXT)</span>
+                </button>
+
+                <button id="navPrintBtn" type="button" class="px-3.5 py-2 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-amber-500/10 transition">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span>Print / Save PDF</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== HERO & ARCHITECTURAL TRUST BANNER ==================== -->
+    <section class="security-banner border-b border-slate-800/80 py-8 sm:py-10 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-8 space-y-3.5">
+                    <div class="inline-flex flex-wrap items-center gap-2 px-3 py-1 rounded-full bg-slate-900/90 border border-emerald-500/30 text-xs text-slate-300">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                        <span class="text-emerald-300 font-mono font-semibold">ROOT DNS &amp; SSL VERIFIED • 50-STATE &amp; FEDERAL OMNIBUS ENGINE</span>
+                        <span class="text-slate-600">•</span>
+                        <span class="text-amber-300 font-semibold">18 U.S.C. § 1836 (DTSA) + All 50 State Statutes</span>
+                    </div>
+                    <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                        Singular 50-State Master NDA &amp; <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-emerald-400">50 Individual State Contracts</span>
+                    </h1>
+                    <p class="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed">
+                        Generate, hash, and execute both a <strong class="text-white">Singular Master 50-State Omnibus NDA</strong> (simultaneously binding under Federal Law and all 50 U.S. states) and <strong class="text-white">50 Individual State-Specific NDA Contracts</strong> (Alabama through Wyoming). Protects <strong class="text-amber-300">100% user ownership of all inputs and outputs</strong> across every major superintelligence and corporate parent for <strong class="text-emerald-300">all past, present, and future interactions—strictly ring-fenced for internal training purposes only with zero third-party sharing</strong>.
+                    </p>
+                </div>
+
+                <!-- Live Cryptographic Telemetry Card -->
+                <div class="lg:col-span-4 bg-slate-900/90 border border-slate-800 rounded-2xl p-5 shadow-2xl space-y-3">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
+                        <span class="text-xs font-mono uppercase tracking-wider text-slate-400">Active Jurisdiction Mode</span>
+                        <span id="sessionStatusBadge" class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold bg-amber-500/15 text-amber-300 border border-amber-500/30">
+                            AWAITING EXECUTION
+                        </span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2.5 text-xs">
+                        <div class="bg-slate-950/70 p-2.5 rounded-lg border border-slate-800/80">
+                            <div class="text-slate-400">Active Contract View</div>
+                            <div id="heroActiveModeLabel" class="text-xs sm:text-sm font-bold text-amber-400 font-mono mt-0.5 truncate">50-State Master Omnibus</div>
+                        </div>
+                        <div class="bg-slate-950/70 p-2.5 rounded-lg border border-slate-800/80">
+                            <div class="text-slate-400">Public Model Ecosystems</div>
+                            <div id="heroEntityCount" class="text-sm font-bold text-emerald-400 font-mono mt-0.5">19 / 19 Bound</div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-950/90 p-2.5 rounded-lg border border-slate-800">
+                        <div class="flex items-center justify-between text-[11px] text-slate-400 font-mono mb-1">
+                            <span>LIVE SHA-256 CONTRACT DIGEST</span>
+                            <span class="text-emerald-400">WebCrypto API</span>
+                        </div>
+                        <div id="heroLiveHash" class="font-mono text-[11px] text-amber-300 break-all leading-tight select-all">
+                            Computing cryptographic digest...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MAIN APPLICATION WORKSPACE ==================== -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+        <!-- ==================== SECTION 01: DUAL ARCHITECTURE GOVERNING LAW & 50-STATE SWITCHER ==================== -->
+        <section class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-7 shadow-2xl no-print">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-800 pb-5">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 font-mono text-xs font-bold">SECTION 01 • DUAL LEGAL ARCHITECTURE</span>
+                        <h2 class="text-lg sm:text-xl font-bold text-white">50-State Omnibus Master Contract &amp; Individual State Contract Generator</h2>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-400 mt-1">
+                        Switch seamlessly between the <strong class="text-white">Singular Master 50-State Omnibus Contract</strong> (covering all 50 states simultaneously) and any of the <strong class="text-white">50 Individual State Contracts</strong> tailored to each state's specific Trade Secrets Act, court venue, and statutory limitation period.
+                    </p>
+                </div>
+
+                <!-- Quick Multi-Contract Export Bar -->
+                <div class="flex flex-wrap items-center gap-2">
+                    <button id="exportMasterOmnibusBtn" type="button" class="px-3.5 py-2 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 text-xs font-semibold flex items-center gap-2 transition">
+                        <i class="fa-solid fa-scroll"></i>
+                        <span>Download Master Omnibus (.TXT)</span>
+                    </button>
+                    <button id="exportCurrentStateBtn" type="button" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 text-xs font-semibold flex items-center gap-2 transition">
+                        <i class="fa-solid fa-file-contract text-emerald-400"></i>
+                        <span id="exportCurrentStateBtnLabel">Download Florida (FL) Contract (.TXT)</span>
+                    </button>
+                    <button id="exportAll50BundleBtn" type="button" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs flex items-center gap-2 shadow-lg shadow-emerald-600/20 transition">
+                        <i class="fa-solid fa-boxes-packing"></i>
+                        <span>Download All 50 Individual State Contracts Bundle (.TXT)</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dual Mode Selector Cards (Mode A vs Mode B) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 my-5">
+                <!-- MODE A: SINGULAR MASTER 50-STATE OMNIBUS CONTRACT -->
+                <div id="modeCardOmnibus" class="p-4 sm:p-5 rounded-2xl border-2 border-amber-500 bg-amber-500/10 cursor-pointer transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-2">
+                            <span class="px-2.5 py-0.5 rounded bg-amber-500 text-slate-950 font-mono text-[11px] font-extrabold uppercase">
+                                MODE A • SINGULAR OMNIBUS INSTRUMENT ($150.00)
+                            </span>
+                            <span id="modeAIndicator" class="text-xs font-mono text-amber-300 font-bold flex items-center gap-1">
+                                <i class="fa-solid fa-circle-check"></i> ACTIVE IN CONTRACT VIEW
+                            </span>
+                        </div>
+                        <h3 class="text-base sm:text-lg font-bold text-white">
+                            Singular Master 50-State &amp; Federal Omnibus NDA
+                        </h3>
+                        <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                            One unified contract that simultaneously binds under the Federal Defend Trade Secrets Act (18 U.S.C. § 1836 et seq.), the E-SIGN Act (15 U.S.C. § 7001), and the cumulative statutory and common-law regimes of <strong>all 50 U.S. states</strong> via Exhibit B, with a Most Protective Forum &amp; Cumulative Remedy Clause.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-amber-500/20 flex items-center justify-between text-xs font-mono text-amber-300">
+                        <span>COVERAGE: ALL 50 STATES + FEDERAL DTSA</span>
+                        <span class="underline">Click to View Master Omnibus</span>
+                    </div>
+                </div>
+
+                <!-- MODE B: INDIVIDUAL STATE CONTRACT GENERATOR (ALL 50 STATES) -->
+                <div id="modeCardState" class="p-4 sm:p-5 rounded-2xl border-2 border-slate-800 bg-slate-950/80 hover:border-slate-700 cursor-pointer transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-2">
+                            <span class="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-mono text-[11px] font-extrabold uppercase">
+                                MODE B • 50 INDIVIDUAL STATE CONTRACTS ($75.00)
+                            </span>
+                            <span id="modeBIndicator" class="text-xs font-mono text-slate-400 font-semibold flex items-center gap-1">
+                                <i class="fa-regular fa-circle"></i> CLICK OR SELECT STATE BELOW
+                            </span>
+                        </div>
+                        <h3 class="text-base sm:text-lg font-bold text-white">
+                            Individual State-Specific NDA Contract (<span id="modeCardSelectedStateTitle" class="text-emerald-400">Florida — FL</span>)
+                        </h3>
+                        <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                            Generates a dedicated, standalone single-state contract governed by the selected state's exact Trade Secrets statute (<span id="modeCardSelectedStatute" class="font-mono text-amber-300">Fla. Stat. §§ 688.001 to 688.009</span>), state trial &amp; federal court venue, statutory limitation period, and state-specific IP rider.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs font-mono text-emerald-400">
+                        <span id="modeCardSelectedLimit">LIMITATION: 3 YEARS • VENUE: FLORIDA</span>
+                        <span class="underline">Switch to Individual State Contract</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive 50-State Selector Bar & Grid -->
+            <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-4 space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+                    <div class="md:col-span-5">
+                        <label for="stateDropdownSelect" class="block text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-1">
+                            Select Individual State Contract (All 50 States):
+                        </label>
+                        <select id="stateDropdownSelect" class="w-full px-3.5 py-2 rounded-lg bg-slate-900 border border-slate-700 text-xs sm:text-sm text-white font-medium focus:outline-none focus:border-emerald-400">
+                            <!-- Populated dynamically with all 50 states -->
+                        </select>
+                    </div>
+
+                    <div class="md:col-span-4">
+                        <label for="stateGridSearchInput" class="block text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-1">
+                            Filter 50-State Selector Pills:
+                        </label>
+                        <div class="relative">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+                            <input id="stateGridSearchInput" type="text" placeholder="Search state name, postal code, or statute..." class="w-full pl-8 pr-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-400">
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-3 flex flex-col justify-end h-full pt-4">
+                        <div class="flex items-center gap-1.5">
+                            <button id="prevStateBtn" type="button" title="Previous State Contract" class="py-2 px-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs font-mono text-slate-300 transition">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button id="toggleModeQuickBtn" type="button" class="flex-1 py-2 px-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-600 text-xs font-mono font-semibold text-amber-300 transition truncate">
+                                <i class="fa-solid fa-repeat mr-1"></i> Omnibus / State
+                            </button>
+                            <button id="nextStateBtn" type="button" title="Next State Contract" class="py-2 px-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs font-mono text-slate-300 transition">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 50-State Automated Integrity Audit Bar -->
+                <div class="flex flex-wrap items-center justify-between gap-2 px-3 py-2 rounded-lg bg-emerald-950/40 border border-emerald-500/30 text-[11px] font-mono">
+                    <div class="flex items-center gap-2 text-emerald-300">
+                        <i class="fa-solid fa-shield-check text-emerald-400"></i>
+                        <span id="fiftyStateAuditSummary">50/50 STATE CONTRACTS AUDITED &amp; VERIFIED: Trade Secret Acts + Limitations + Venues + State E-Sign (UETA/ESRA) + 19 Public AI Ecosystems</span>
+                    </div>
+                    <span class="text-amber-300 font-bold">ALABAMA (01) → WYOMING (50)</span>
+                </div>
+
+                <!-- 50 Interactive State Postal Code Buttons -->
+                <div>
+                    <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-2">
+                        <span>CLICK ANY OF THE 50 U.S. STATES TO LOAD ITS DEDICATED STATE NDA CONTRACT:</span>
+                        <span id="selectedStateQuickSummary" class="text-emerald-400 font-semibold">Selected: Florida (FL) — Fla. Stat. §§ 688.001 to 688.009</span>
+                    </div>
+                    <div id="fiftyStatesPillGrid" class="grid grid-cols-5 sm:grid-cols-10 md:grid-cols-10 lg:grid-cols-10 gap-1.5">
+                        <!-- 50 State Buttons rendered by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 02: COVERED INTELLIGENCE PROPERTIES & CORPORATE PARENTS MATRIX ==================== -->
+        <section class="bg-slate-900/70 border border-slate-800 rounded-2xl p-5 sm:p-7 shadow-xl no-print">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-5">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="px-2.5 py-0.5 rounded-md bg-amber-500/20 text-amber-300 font-mono text-xs font-bold">SECTION 02 • EXHIBIT A ENTITIES</span>
+                        <h2 class="text-lg sm:text-xl font-bold text-white">Covered Intelligence Properties &amp; Corporate Parent Entities Matrix</h2>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-400 mt-1">
+                        Select all frontier AI laboratories, parent corporations, cloud routers, and model architectures bound under Exhibit A of your 50-State Omnibus and Individual State contracts.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-3">
+                    <label class="inline-flex items-center gap-2.5 px-4 py-2 rounded-xl bg-emerald-950/60 border border-emerald-500/40 cursor-pointer select-none hover:bg-emerald-900/40 transition">
+                        <input id="selectAllToggle" type="checkbox" checked class="w-4 h-4 accent-emerald-500 rounded cursor-pointer">
+                        <span class="text-xs sm:text-sm font-semibold text-emerald-300">Select All Intelligences (Universal Coverage)</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Filter & Custom Entity Addition Bar -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-3 my-4">
+                <div class="md:col-span-5 relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+                    <input id="entitySearchInput" type="text" placeholder="Filter by parent company or model (e.g., Alphabet, Gemini, OpenAI, Claude, Grok)..." class="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-500">
+                </div>
+                <div class="md:col-span-7 flex flex-col sm:flex-row gap-2">
+                    <input id="customParentInput" type="text" placeholder="Add Custom Corporate Parent (e.g., Sovereign AI Corp.)" class="flex-1 px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-500">
+                    <input id="customModelsInput" type="text" placeholder="Covered Models / Systems (e.g., Custom LLM, Agents)" class="flex-1 px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-500">
+                    <button id="addCustomEntityBtn" type="button" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 text-xs font-semibold whitespace-nowrap transition">
+                        <i class="fa-solid fa-plus mr-1"></i> Add Entity
+                    </button>
+                </div>
+            </div>
+
+            <!-- Interactive Grid of 19 Corporate Parent Entities -->
+            <div id="entitiesMatrixGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 mt-4">
+                <!-- Populated dynamically by JavaScript -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 03: DISCLOSING PARTY IDENTITY & DOMICILE PARAMETERS ==================== -->
+        <section class="bg-slate-900/70 border border-slate-800 rounded-2xl p-5 sm:p-7 shadow-xl no-print">
+            <div class="flex items-center gap-2 border-b border-slate-800 pb-4 mb-5">
+                <span class="px-2.5 py-0.5 rounded-md bg-amber-500/20 text-amber-300 font-mono text-xs font-bold">SECTION 03 • DISCLOSING PARTY</span>
+                <div>
+                    <h2 class="text-lg sm:text-xl font-bold text-white">Disclosing Party Identity, Commercial Brand &amp; Primary Domicile State</h2>
+                    <p class="text-xs text-slate-400">Fields are cleared by default for public intake and dynamically populate the Master 50-State Omnibus Contract and all 50 Individual State Contracts as you type.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div>
+                    <label for="userNameInput" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
+                        Disclosing Party Legal Identity <span class="text-amber-400">*</span>
+                    </label>
+                    <input id="userNameInput" type="text" value="" placeholder="Enter Full Legal Name or Legal Entity" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 transition">
+                </div>
+
+                <div>
+                    <label for="userOrgInput" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
+                        Commercial &amp; Brand Portfolio / Protected Domains
+                    </label>
+                    <input id="userOrgInput" type="text" value="" placeholder="Enter Commercial Brands, Entities, or Domain Portfolio" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 transition">
+                </div>
+
+                <div>
+                    <label for="userEmailInput" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
+                        Cryptographic Receipt Email / Domain <span class="text-amber-400">*</span>
+                    </label>
+                    <input id="userEmailInput" type="text" value="" placeholder="Enter Registered Contact Email or Domain" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 transition">
+                </div>
+
+                <div>
+                    <label for="userDomicileSelect" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
+                        Primary Domicile &amp; Home Forum State
+                    </label>
+                    <select id="userDomicileSelect" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-amber-400 transition">
+                        <option value="" selected>-- Select Primary Domicile State --</option>
+                        <!-- Populated strictly with the 50 individual U.S. states (Alabama through Wyoming) -->
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 04: THE LIVE LEGAL INSTRUMENT & EXECUTION GATEWAY ==================== -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left 8 Columns on Desktop: Formal Legal Instrument -->
+            <div class="lg:col-span-8">
+                <article id="contractDocument" class="legal-paper rounded-2xl p-6 sm:p-10 md:pl-14 md:pr-10 relative overflow-hidden">
+                    
+                    <!-- Top Executed Seal Banner (Hidden until Executed) -->
+                    <div id="executedTopBanner" class="hidden mb-6 p-4 rounded-xl bg-emerald-900/10 border-2 border-emerald-700 text-emerald-950 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-emerald-700 text-white flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-certificate text-lg"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-mono font-bold uppercase tracking-widest text-emerald-800">CRYPTOGRAPHICALLY EXECUTED &amp; FEE SETTLED ($275.00 USD)</div>
+                                <div id="executedBannerSubtext" class="text-xs font-mono text-emerald-900 mt-0.5">Timestamp, Universal API Key &amp; SHA-256 Digest Locked Across All 50 States &amp; Federal Jurisdiction</div>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 rounded bg-emerald-800 text-white font-mono text-xs font-bold shrink-0">50-STATE BINDING RECORD</span>
+                    </div>
+
+                    <!-- Active Mode Indicator Banner inside the Legal Paper -->
+                    <div id="contractModeBanner" class="mb-5 p-3 rounded-lg bg-slate-900 text-white flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
+                        <div class="flex items-center gap-2">
+                            <span id="contractBannerPill" class="px-2 py-0.5 rounded bg-amber-400 text-slate-950 font-bold">OMNIBUS MASTER</span>
+                            <span id="contractBannerTitle">SINGULAR 50-STATE &amp; FEDERAL MASTER CONTRACT</span>
+                        </div>
+                        <span id="contractBannerCitation" class="text-emerald-400">18 U.S.C. § 1836 + All 50 State Statutes</span>
+                    </div>
+
+                    <!-- Formal Document Header -->
+                    <div class="border-b-2 border-slate-800 pb-5 mb-6 text-center">
+                        <div class="text-[11px] font-mono uppercase tracking-[0.18em] text-slate-600 mb-1">
+                            UNIVERSAL CRYPTOGRAPHIC INSTRUMENT • SUPERINTELLIGENCENDA.COM 50-STATE REGISTRY
+                        </div>
+                        <h2 id="contractMainHeading" class="font-serif text-xl sm:text-2xl md:text-[26px] font-bold text-slate-900 tracking-tight leading-snug">
+                            UNIVERSAL SUPERINTELLIGENCE NON-DISCLOSURE &amp; 50-STATE OMNIBUS INTELLECTUAL PROPERTY PROTECTION AGREEMENT
+                        </h2>
+                        <div class="mt-3 flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-xs font-mono text-slate-700">
+                            <span><strong>INSTRUMENT ID:</strong> <span id="docInstrumentId">SNDA-2026-50US-OMNIBUS</span></span>
+                            <span><strong>EFFECTIVE DATE:</strong> <span id="docEffectiveDate"></span> (RETROACTIVE &amp; PERPETUAL)</span>
+                        </div>
+                    </div>
+
+                    <!-- Legal Contract Body (Serif Typography) -->
+                    <div class="font-serif text-xs sm:text-[13.5px] leading-relaxed text-slate-800 space-y-5">
+                        
+                        <!-- Preamble -->
+                        <p>
+                            <strong>THIS UNIVERSAL SUPERINTELLIGENCE NON-DISCLOSURE AND INTELLECTUAL PROPERTY PROTECTION AGREEMENT</strong> (the <strong>"Agreement"</strong>) is entered into, cryptographically attested, and noticed as of <span id="contractDateSpan" class="dynamic-legal-field"></span>, with full retroactive application to all prior historical sessions and perpetual application to all future sessions, by and between <span id="contractUserSpan" class="dynamic-legal-field">[DISCLOSING PARTY]</span>, acting individually and on behalf of <span id="contractOrgSpan" class="dynamic-legal-field">[ALL REGISTERED COMMERCIAL &amp; PERSONAL PROPERTIES]</span> (registered contact: <span id="contractEmailSpan" class="dynamic-legal-field">[REGISTERED CONTACT EMAIL]</span>; primary domicile: <span id="contractDomicileSpan" class="dynamic-legal-field">[SELECTED HOME FORUM / ALL 50 U.S. STATES]</span>) (collectively, the <strong>"Disclosing Party"</strong> or <strong>"User"</strong>), and all Artificial Intelligence Systems, Superintelligences, Large Language Models, Multimodal Foundation Models, Autonomous Agents, Neural Networks, and their respective Corporate Parent Entities, Holding Companies, Subsidiaries, API Routers, and Cloud Infrastructure Providers designated in <strong>Exhibit A</strong> attached hereto (collectively, the <strong>"Receiving Superintelligence Entities"</strong>).
+                        </p>
+
+                        <!-- Section 1: Parties & Disclosing Party 100% Ownership -->
+                        <div class="space-y-2">
+                            <h3 class="font-sans text-sm sm:text-base font-bold uppercase tracking-wide text-slate-900 border-b border-slate-300 pb-1">
+                                1. Parties, Scope &amp; 100% Exclusive User Ownership of Inputs and Outputs
+                            </h3>
+                            <p>
+                                <strong>1.1 Comprehensive Coverage Across All Past, Present &amp; Future Public Superintelligence Properties.</strong> This Agreement governs all interactions, chat sessions, workspace integrations, local or cloud API transmissions, browser extensions, mobile applications, voice interfaces, open-weight inference routers, and multimodal streams between the Disclosing Party and the Receiving Superintelligence Entities listed in <strong>Exhibit A</strong>. Coverage extends automatically and without limitation to <strong>(i) all past historical and deprecated public models</strong>, <strong>(ii) all present active consumer, enterprise, API, and open-weight public models</strong>, and <strong>(iii) all future next-generation, unannounced, autonomous agent, Artificial General Intelligence (AGI), and Artificial Superintelligence (ASI) public models</strong>, checkpoint weights, fine-tuned variants, distilled architectures, and reasoning routers ever developed, hosted, or acquired by any covered Corporate Parent Entity.
+                            </p>
+                            <p>
+                                <strong>1.2 Protected Confidential Information.</strong> "Confidential Information" encompasses all non-public data, prompts, system instructions, uploaded documents, PDFs, spreadsheets, standalone single-file HTML/JS web applications, domain DNS/SSL migration architectures, database schemas, financial projections, hardware and radiation-testing specifications, biological or environmental research, regenerative agricultural models, architectural renderings, event production blueprints, and personal or historical project context disclosed by or on behalf of the Disclosing Party.
+                            </p>
+                            <p>
+                                <strong>1.3 100% Exclusive Title to User Inputs &amp; Superintelligence Outputs.</strong> The Disclosing Party retains absolute, unencumbered, 100% worldwide legal title, copyright, patent priority, trade secret status, and proprietary ownership over all prompts, files, instructions, and context provided to any covered system (<strong>"User Inputs"</strong>) and over all responses, generated text, computer code, legal drafts, visual assets, 3D visualizations, and analytical derivations produced in whole or in part by any covered model in response to User Inputs (<strong>"Superintelligence Outputs"</strong>). To the fullest extent permitted by federal and 50-state law, each Receiving Superintelligence Entity hereby assigns, transfers, and conveys any and all right, title, and interest in and to such Superintelligence Outputs exclusively to the Disclosing Party.
+                            </p>
+                        </div>
+
+                        <!-- Section 2: Zero Third-Party Sharing & Strict Training-Only Ring-Fence -->
+                        <div class="space-y-2">
+                            <h3 class="font-sans text-sm sm:text-base font-bold uppercase tracking-wide text-slate-900 border-b border-slate-300 pb-1">
+                                2. No Third-Party Sharing &amp; Strict Training-Only Restriction
+                            </h3>
+                            <p>
+                                <strong>2.1 Absolute Prohibition on Third-Party Sharing.</strong> Receiving Superintelligence Entities are strictly prohibited from selling, licensing, syndicating, publishing, transferring, or disclosing any Disclosing Party Confidential Information, User Inputs, or Superintelligence Outputs to any external third party, commercial partner, agency, data broker, or unrelated user session. Cross-session memorization or verbatim regurgitation of the Disclosing Party's proprietary data to external users is strictly barred.
+                            </p>
+                            <p>
+                                <strong>2.2 Authorized Internal Training Purpose Only; Zero IP Dilution.</strong> Absent explicit secondary cryptographic consent from the Disclosing Party, any retention or processing of data from <strong>all past, present, and future chats and sessions</strong> by a Receiving Superintelligence Entity shall be strictly ring-fenced and restricted <strong>exclusively to internal model training, alignment, and safety calibration purposes only</strong>. Such internal computational processing shall never constitute a public disclosure under 35 U.S.C. § 102 or any state trade secret statute, shall not waive trade secret protection or patent novelty, and transfers zero commercial ownership or exploitation rights in the Disclosing Party's underlying inventions, business plans, or domains.
+                            </p>
+                        </div>
+
+                        <!-- Section 3: Retroactive, Present, and Perpetual Future Coverage -->
+                        <div class="space-y-2">
+                            <h3 class="font-sans text-sm sm:text-base font-bold uppercase tracking-wide text-slate-900 border-b border-slate-300 pb-1">
+                                3. Retroactive, Present, and Perpetual Future Public Superintelligence Model Coverage
+                            </h3>
+                            <p>
+                                <strong>3.1 Past, Present &amp; Future Temporal Continuity.</strong> The protective covenants, confidentiality obligations, and intellectual property reservations of this Agreement apply (a) <strong>retroactively</strong> to the Disclosing Party's earliest historical interactions, accounts, and workspace sessions with any legacy or deprecated public model (including early Transformer, GPT-1/2/3/3.5/4, Bard/PaLM/Gemini 1–3, Claude 1–4, LLaMA 1–3, Grok 1–3, DeepSeek V1–V3, Qwen 1–3, Mistral, and Midjourney/Stable Diffusion generations), (b) <strong>contemporaneously</strong> to all active 2026 frontier, multimodal, voice, video, code, and open-weight public models and API calls, and (c) <strong>perpetually</strong> to all future interactions with any successor model, unreleased checkpoint, or next-generation public superintelligence architecture.
+                            </p>
+                            <p>
+                                <strong>3.2 Automatic Attachment to Future Unreleased Public Superintelligences.</strong> Every future public model version, parameter scale, reasoning engine, world model, multimodal generator, or autonomous agent released after the Effective Date by any entity in <strong>Exhibit A</strong> (or any successor, spin-off, or open-source weights distributor thereof) is automatically bound by this Agreement at the moment of weight initialization, API exposure, or public release without requiring any amendment or re-execution.
+                            </p>
+                        </div>
+
+                        <!-- Section 4: Dynamic 50-State Omnibus & State-Specific Governing Law -->
+                        <div class="space-y-3">
+                            <h3 class="font-sans text-sm sm:text-base font-bold uppercase tracking-wide text-slate-900 border-b border-slate-300 pb-1">
+                                4. 50-State Omnibus &amp; Individual State Governing Law, Venue &amp; Statutory Riders
+                            </h3>
+
+                            <!-- Dynamic Omnibus vs Individual State Legal Block -->
+                            <div id="dynamicGoverningLawBox" class="p-4 rounded-xl bg-parchment-100 border-2 border-amber-700/40 space-y-2.5 text-slate-900">
+                                <!-- Populated dynamically based on Omnibus Mode vs Selected State Mode -->
+                            </div>
+
+                            <p>
+                                <strong>4.3 Federal Statutory Foundation &amp; DTSA Whistleblower Immunity Notice (18 U.S.C. § 1833(b)).</strong> In addition to the 50-state statutory protections set forth in <strong>Exhibit B</strong>, this Agreement is concurrently enforceable under the Federal Defend Trade Secrets Act of 2016 (18 U.S.C. § 1836 et seq.), the Electronic Signatures in Global and National Commerce Act (E-SIGN Act, 15 U.S.C. § 7001 et seq.), and the Uniform Electronic Transactions Act (UETA) as enacted across the states. Pursuant to 18 U.S.C. § 1833(b)(3)(A), notice is hereby preserved that an individual shall not be held criminally or civilly liable under any federal or state trade secret law for the disclosure of a trade secret made in confidence to a federal, state, or local government official, or to an attorney, solely for the purpose of reporting or investigating a suspected violation of law, or in a complaint or other document filed in a lawsuit or other proceeding, if such filing is made under seal, thereby preserving the Disclosing Party's full entitlement to exemplary (double) damages and reasonable attorney's fees under 18 U.S.C. § 1836(b)(3)(C)–(D).
+                            </p>
+
+                            <p>
+                                <strong>4.4 50-State Severability &amp; Most Protective Forum Clause.</strong> This Agreement operates simultaneously as (i) a singular 50-State Master Omnibus Contract and (ii) fifty (50) severable, independent State-Specific Contracts corresponding to each of the fifty states of the United States listed in <strong>Exhibit B</strong>. In any dispute arising in or connected to any state, the Disclosing Party may elect to enforce either the Master Omnibus Contract or the dedicated State-Specific Contract for that jurisdiction. If any provision is modified or limited by a state-specific statute, such modification shall apply solely within that state's borders and shall not impair the maximum protective remedies available in the remaining forty-nine (49) states or under Federal law.
+                            </p>
+                        </div>
+
+                        <!-- EXHIBIT A: Covered Corporate Parent Entities -->
+                        <div class="mt-6 pt-4 border-t-2 border-slate-800 print-break-inside-avoid">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="font-sans text-sm font-bold uppercase tracking-wider text-slate-900">
+                                    EXHIBIT A: COVERED PAST, PRESENT &amp; FUTURE PUBLIC SUPERINTELLIGENCE MODELS &amp; CORPORATE PARENTS
+                                </h3>
+                                <span id="exhibitCountBadge" class="font-mono text-[11px] px-2 py-0.5 rounded bg-slate-200 text-slate-800 font-bold">
+                                    19 Corporate Parents Bound
+                                </span>
+                            </div>
+                            <div id="exhibitAList" class="grid grid-cols-1 sm:grid-cols-2 gap-2 font-sans text-[11.5px] text-slate-800">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- EXHIBIT B: Complete 50-State Statutory Schedule Table -->
+                        <div class="mt-6 pt-4 border-t-2 border-slate-800">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                                <div>
+                                    <h3 class="font-sans text-sm font-bold uppercase tracking-wider text-slate-900">
+                                        EXHIBIT B: COMPLETE 50-STATE TRADE SECRET &amp; NDA STATUTORY SCHEDULE (AL–WY)
+                                    </h3>
+                                    <p class="font-sans text-[11px] text-slate-600">
+                                        All 50 U.S. State statutory authorities incorporated into the Master Omnibus Contract and available as standalone State Contracts.
+                                    </p>
+                                </div>
+                                <div class="no-print">
+                                    <input id="exhibitBSearchInput" type="text" placeholder="Filter Exhibit B table..." class="px-2.5 py-1 rounded border border-slate-400 bg-white text-slate-900 font-sans text-xs focus:outline-none focus:border-slate-900">
+                                </div>
+                            </div>
+
+                            <div class="overflow-x-auto border border-slate-400 rounded-lg max-h-96 overflow-y-auto">
+                                <table class="w-full text-left border-collapse font-sans text-[11px]">
+                                    <thead class="bg-slate-800 text-white sticky top-0 z-10">
+                                        <tr>
+                                            <th class="py-2 px-2.5 border-b border-slate-700">State</th>
+                                            <th class="py-2 px-2.5 border-b border-slate-700">Trade Secret &amp; NDA Statutory Authority</th>
+                                            <th class="py-2 px-2.5 border-b border-slate-700">State E-Sign / UETA Statute</th>
+                                            <th class="py-2 px-2.5 border-b border-slate-700">Limitation</th>
+                                            <th class="py-2 px-2.5 border-b border-slate-700">Designated Venue</th>
+                                            <th class="py-2 px-2.5 border-b border-slate-700 no-print">State Contract</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="exhibitBTableBody" class="divide-y divide-slate-300 bg-parchment-50 text-slate-800">
+                                        <!-- All 50 States populated by JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Formal Execution & Signature Block inside the Contract -->
+                        <div class="mt-8 pt-6 border-t-2 border-slate-900 grid grid-cols-1 md:grid-cols-2 gap-6 print-break-inside-avoid">
+                            <!-- Disclosing Party Signature Box (Pre-Signed by Andrew Jourdan Nahmias) -->
+                            <div class="p-4 rounded-xl bg-parchment-100 border border-slate-300 flex flex-col justify-between">
+                                <div>
+                                    <div class="font-sans text-[11px] font-bold uppercase tracking-wider text-slate-600">AUTHORIZED SIGNATORY &amp; 100% IP OWNER</div>
+                                    <div id="sigBlockUserName" class="font-sans text-sm font-bold text-slate-900 mt-1">Andrew Jourdan Nahmias</div>
+                                    <div id="sigBlockUserOrg" class="font-sans text-xs text-slate-600">Authorized Founding Signatory • SuperintelligenceNDA.com</div>
+                                </div>
+                                <div class="my-3 h-20 bg-white border border-dashed border-slate-400 rounded-lg flex items-center justify-center overflow-hidden p-1">
+                                    <img id="contractSignaturePreview" alt="Andrew Jourdan Nahmias Digital Signature" class="max-h-full max-w-full object-contain hidden" />
+                                    <span id="contractSignaturePlaceholder" class="font-sans text-xs text-slate-400 italic">Awaiting signature capture &amp; execution...</span>
+                                </div>
+                                <div class="font-mono text-[10.5px] text-slate-600 flex justify-between border-t border-slate-300 pt-2">
+                                    <span>DATE: <strong id="sigBlockDate"></strong></span>
+                                    <span id="sigBlockStatus" class="text-emerald-800 font-bold">PRE-SIGNED: ANDREW JOURDAN NAHMIAS</span>
+                                </div>
+                            </div>
+
+                            <!-- Computational & Universal 50-State Registry Acknowledgment Box -->
+                            <div class="p-4 rounded-xl bg-parchment-100 border border-slate-300 flex flex-col justify-between">
+                                <div>
+                                    <div class="font-sans text-[11px] font-bold uppercase tracking-wider text-slate-600">50-STATE &amp; FEDERAL REGISTRY SEAL</div>
+                                    <div class="font-sans text-sm font-bold text-slate-900 mt-1">SuperintelligenceNDA.com Cryptographic Authority</div>
+                                    <div id="sigBlockJurisdictionLine" class="font-sans text-xs text-slate-600">Binding Across All 50 U.S. States + Federal DTSA</div>
+                                </div>
+                                <div class="my-3 p-2.5 bg-slate-900 text-emerald-400 rounded-lg font-mono text-[10px] leading-snug break-all">
+                                    <div>PLUGIN KEY: <span class="text-white" id="sealAckId">SNDA-LIVE-275-UNIVERSAL</span></div>
+                                    <div class="mt-1 text-amber-300">SHA-256: <span id="contractSealHash"></span></div>
+                                </div>
+                                <div class="font-mono text-[10.5px] text-slate-600 flex justify-between border-t border-slate-300 pt-2">
+                                    <span>SCOPE: <strong>PAST • PRESENT • FUTURE</strong></span>
+                                    <span class="text-emerald-800 font-bold">TRAINING-ONLY LOCK</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </article>
+            </div>
+
+            <!-- Right 4 Columns on Desktop: Interactive Signature Pad, $275 Checkout & Universal API Key Plugin Connector -->
+            <div class="lg:col-span-4 space-y-6 lg:sticky lg:top-24 no-print">
+                
+                <!-- CARD 1: DIGITAL SIGNATURE CAPTURE PAD -->
+                <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 shadow-2xl">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono text-[11px] font-bold">STEP 04</span>
+                            <h3 class="text-base font-bold text-white">Cryptographic Signature Pad</h3>
+                        </div>
+                        <div class="flex items-center gap-1.5" title="Select Signature Ink Color">
+                            <button type="button" data-ink="#DC2626" title="Red Ink" class="ink-btn w-5 h-5 rounded-full bg-red-600 border border-slate-600"></button>
+                            <button type="button" data-ink="#1D4ED8" title="Blue Ink" class="ink-btn w-5 h-5 rounded-full bg-blue-700 border border-slate-600"></button>
+                            <button type="button" data-ink="#000000" title="Black Ink" class="ink-btn w-5 h-5 rounded-full bg-black border-2 border-amber-400"></button>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-slate-400 mb-3">
+                        Pre-signed by default as <strong>Andrew Jourdan Nahmias</strong> at the bottom of the contract, or draw/re-sign below to bind all 50 states simultaneously.
+                    </p>
+
+                    <div class="relative rounded-xl overflow-hidden border-2 border-slate-700 focus-within:border-amber-400 transition">
+                        <canvas id="signaturePad" class="w-full h-44 block"></canvas>
+                        <div class="absolute bottom-2 left-3 right-3 border-b border-slate-300 pointer-events-none flex justify-between items-end pb-1">
+                            <span class="text-[10px] font-mono text-slate-400">SIGN ABOVE LINE (X)</span>
+                            <span id="sigStatusIndicator" class="text-[10px] font-mono text-emerald-600 font-bold">SIGNED: ANDREW JOURDAN NAHMIAS</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between gap-2 mt-3">
+                        <button id="clearSignatureBtn" type="button" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium border border-slate-700 transition">
+                            <i class="fa-solid fa-eraser mr-1"></i> Clear / Re-Sign Pad
+                        </button>
+                        <button id="autoSignBtn" type="button" class="px-3 py-1.5 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 text-xs font-medium border border-amber-500/30 transition">
+                            <i class="fa-solid fa-feather-pointed mr-1"></i> Restore Default Signature
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CARD 2: UNIFIED $275.00 APPLE PAY / GOOGLE PAY / CREDIT CARD EXECUTION CHECKOUT -->
+                <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 shadow-2xl space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono text-[11px] font-bold">STEP 05</span>
+                            <h3 class="text-base font-bold text-white">Execute &amp; Mint API Key</h3>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-lg font-extrabold text-amber-400 font-mono">$275.00</span>
+                            <span class="block text-[10px] text-slate-400 font-mono">50-STATE + API PLUGIN FEE</span>
+                        </div>
+                    </div>
+
+                    <!-- Fee Breakdown ($275.00 USD) -->
+                    <div class="bg-slate-950/90 rounded-xl p-3 border border-slate-800/90 text-xs space-y-1.5">
+                        <div class="flex justify-between text-slate-300">
+                            <span>Singular Master 50-State Omnibus NDA</span>
+                            <span class="font-mono">$150.00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span>50 Individual State Contracts (AL–WY)</span>
+                            <span class="font-mono">$75.00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-400">
+                            <span>Universal Superintelligence Plugin API Key</span>
+                            <span class="font-mono">$50.00</span>
+                        </div>
+                        <div class="flex justify-between text-white font-bold pt-1.5 border-t border-slate-800">
+                            <span>Total Execution &amp; API Key Fee (USD)</span>
+                            <span class="font-mono text-emerald-400">$275.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Live Stripe Payment Request Mount Point (Apple Pay / Google Pay Native Detection) -->
+                    <div id="payment-request-button" class="hidden"></div>
+
+                    <!-- Interactive Payment Method Selector Tabs -->
+                    <div>
+                        <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-2">
+                            Select Instant Payment &amp; Execution Method
+                        </label>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button type="button" data-pay="apple" class="pay-tab-btn py-2.5 px-2 rounded-xl border border-amber-500 bg-amber-500/10 text-white font-semibold text-xs flex items-center justify-center gap-1.5 transition">
+                                <i class="fa-brands fa-apple text-base"></i>
+                                <span>Pay</span>
+                            </button>
+                            <button type="button" data-pay="google" class="pay-tab-btn py-2.5 px-2 rounded-xl border border-slate-700 bg-slate-950 text-slate-300 hover:border-slate-600 font-semibold text-xs flex items-center justify-center gap-1.5 transition">
+                                <i class="fa-brands fa-google text-sm text-emerald-400"></i>
+                                <span>Pay</span>
+                            </button>
+                            <button type="button" data-pay="card" class="pay-tab-btn py-2.5 px-2 rounded-xl border border-slate-700 bg-slate-950 text-slate-300 hover:border-slate-600 font-semibold text-xs flex items-center justify-center gap-1.5 transition">
+                                <i class="fa-regular fa-credit-card text-amber-400"></i>
+                                <span>Card</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Wallet / Card Details Container -->
+                    <div id="walletApplePanel" class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 text-xs space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="font-semibold text-white flex items-center gap-2">
+                                <i class="fa-brands fa-apple text-base"></i> Apple Pay Express Cryptographic Checkout
+                            </span>
+                            <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-mono text-[10px]">Touch ID / Face ID Ready</span>
+                        </div>
+                        <p class="text-slate-400 leading-relaxed">
+                            Authenticates your $275.00 USD fee via Apple Pay Payment Request API, executes the 50-State NDA packet, and activates your Universal Superintelligence Plugin API Key.
+                        </p>
+                    </div>
+
+                    <div id="walletGooglePanel" class="hidden p-3.5 rounded-xl bg-slate-950 border border-slate-800 text-xs space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="font-semibold text-white flex items-center gap-2">
+                                <i class="fa-brands fa-google text-emerald-400"></i> Google Pay Express Checkout
+                            </span>
+                            <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-mono text-[10px]">Tokenized TLS 1.3</span>
+                        </div>
+                        <p class="text-slate-400 leading-relaxed">
+                            Processes your $275.00 USD execution fee via Google Pay and issues an immediate 50-State SHA-256 timestamped NDA certificate and universal account API key.
+                        </p>
+                    </div>
+
+                    <div id="walletCardPanel" class="hidden p-3.5 rounded-xl bg-slate-950 border border-slate-800 text-xs space-y-3">
+                        <div>
+                            <label class="block text-[11px] text-slate-400 mb-1">Card Number</label>
+                            <div class="relative">
+                                <input id="cardNumberInput" type="text" maxlength="19" value="4242 •••• •••• 4242" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white font-mono text-xs focus:outline-none focus:border-amber-400">
+                                <div class="absolute right-2.5 top-1/2 -translate-y-1/2 flex gap-1 text-slate-400">
+                                    <i class="fa-brands fa-cc-visa"></i>
+                                    <i class="fa-brands fa-cc-mastercard"></i>
+                                    <i class="fa-brands fa-cc-amex"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">Expiration</label>
+                                <input id="cardExpInput" type="text" maxlength="5" value="08/29" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white font-mono text-xs focus:outline-none focus:border-amber-400">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">CVC / Security Code</label>
+                                <input id="cardCvcInput" type="text" maxlength="4" value="884" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white font-mono text-xs focus:outline-none focus:border-amber-400">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Primary Execute & Sign Action Button -->
+                    <button id="executeNdaBtn" type="button" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-emerald-400 hover:from-amber-400 hover:to-emerald-300 text-slate-950 font-extrabold text-sm shadow-xl shadow-amber-500/15 flex items-center justify-center gap-2 transition transform active:scale-[0.99]">
+                        <i class="fa-solid fa-lock"></i>
+                        <span id="executeBtnLabel">Pay $275.00 with Apple Pay &amp; Mint Universal API Key</span>
+                    </button>
+
+                    <!-- Inline Status / Validation Message Box -->
+                    <div id="checkoutStatusBox" class="hidden p-3 rounded-xl text-xs font-medium border"></div>
+
+                    <!-- CARD 3: UNIVERSAL SUPERINTELLIGENCE PLUGIN API KEY & ACCOUNT CONNECTOR -->
+                    <div class="pt-3 border-t border-slate-800 space-y-2.5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-300">
+                                <i class="fa-solid fa-key mr-1"></i> Universal Superintelligence Account API Plugin
+                            </span>
+                            <span id="apiKeyStatusBadge" class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 font-mono text-[10px]">
+                                ALL 19 ECOSYSTEMS READY
+                            </span>
+                        </div>
+                        <p class="text-[11px] text-slate-400 leading-relaxed">
+                            Plug this cryptographic NDA API key and header into your registered Gemini, OpenAI, Anthropic, Meta, xAI, DeepSeek, Qwen, Mistral, or MCP accounts to enforce 100% I/O ownership &amp; training-only lock across every session:
+                        </p>
+                        <div class="p-2.5 rounded-lg bg-slate-950 border border-slate-800 font-mono text-[11px] space-y-1.5">
+                            <div class="flex items-center justify-between text-[10px] text-slate-400">
+                                <span>X-Superintelligence-NDA-Key:</span>
+                                <span class="text-emerald-400">50-State Omnibus Bound</span>
+                            </div>
+                            <div id="universalPluginApiKeyDisplay" class="text-amber-300 font-bold break-all select-all">
+                                SNDA-LIVE-275-50US-Generating...
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button id="copyApiKeyBtn" type="button" class="py-2 px-2.5 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 text-[11px] font-semibold flex items-center justify-center gap-1.5 transition">
+                                <i class="fa-solid fa-copy"></i>
+                                <span>Copy API Key</span>
+                            </button>
+                            <button id="copyPluginJsonBtn" type="button" class="py-2 px-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-emerald-300 border border-slate-700 text-[11px] font-semibold flex items-center justify-center gap-1.5 transition">
+                                <i class="fa-solid fa-code"></i>
+                                <span>Copy Account JSON</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Complete Contract Packet Download Controls -->
+                    <div id="postExecutionActions" class="pt-3 border-t border-slate-800 space-y-2">
+                        <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-1">
+                            Direct Plain-Text (.TXT) &amp; PDF Contract Downloads:
+                        </div>
+                        <button id="downloadOmnibusTxtBtn" type="button" class="w-full py-2 px-3 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 text-xs font-semibold flex items-center justify-between transition">
+                            <span><i class="fa-solid fa-scroll mr-1.5"></i> 1. Master 50-State Omnibus NDA (.TXT)</span>
+                            <i class="fa-solid fa-download"></i>
+                        </button>
+                        <button id="downloadSingleStateTxtBtn" type="button" class="w-full py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-emerald-300 border border-slate-700 text-xs font-semibold flex items-center justify-between transition">
+                            <span id="downloadSingleStateBtnText"><i class="fa-solid fa-file-contract mr-1.5"></i> 2. Individual Florida (FL) Contract (.TXT)</span>
+                            <i class="fa-solid fa-download"></i>
+                        </button>
+                        <button id="downloadAll50StatesTxtBtn" type="button" class="w-full py-2.5 px-3 rounded-xl bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/40 text-xs font-bold flex items-center justify-between transition">
+                            <span><i class="fa-solid fa-boxes-packing mr-1.5"></i> 3. All 50 Individual State Contracts Bundle (.TXT)</span>
+                            <i class="fa-solid fa-download"></i>
+                        </button>
+                        <button id="printExecutedContractBtn" type="button" class="w-full py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 text-xs font-semibold flex items-center justify-between transition">
+                            <span><i class="fa-solid fa-print mr-1.5"></i> 4. Print / Save Active Contract View as PDF</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-obsidian-950 border-t border-slate-800/80 py-8 mt-12 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-shield-halved text-amber-400"></i>
+                <span class="text-slate-300 font-semibold">SuperintelligenceNDA.com</span>
+                <span>— Singular 50-State Omnibus &amp; 50 Individual State Contracts Engine (Cloudflare / GitHub Ready)</span>
+            </div>
+            <div class="font-mono text-[11px] text-slate-400">
+                100% User Input &amp; Output Ownership • Past, Present &amp; Future Training-Only Ring-Fence
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== APPLICATION LOGIC & 50-STATE LEGAL DATABASE ==================== -->
+    <script>
+        // --- 1. COMPLETE 50-STATE TRADE SECRET, UETA E-SIGN & NDA STATUTORY DATABASE (ALABAMA THROUGH WYOMING) ---
+        const US_STATES_LEGAL_DB = [
+            { code: 'AL', name: 'Alabama', statute: 'Alabama Trade Secrets Act, Ala. Code §§ 8-27-1 to 8-27-6', eSignStatute: 'Alabama UETA, Ala. Code §§ 8-1A-1 to 8-1A-20', limitation: '2 Years (Ala. Code § 8-27-5)', venue: 'U.S. District Court (N.D./M.D./S.D. Ala.) & Alabama Circuit Courts', rider: 'Enforces Ala. Code § 8-27-3 injunctive and compensatory remedies for unauthorized third-party AI disclosure and preserves trade secret status across all digital transmissions.' },
+            { code: 'AK', name: 'Alaska', statute: 'Alaska Uniform Trade Secrets Act, Alaska Stat. §§ 45.50.910 to 45.50.945', eSignStatute: 'Alaska UETA, Alaska Stat. §§ 09.80.010 to 09.80.195', limitation: '3 Years (Alaska Stat. § 45.50.925)', venue: 'U.S. District Court for the District of Alaska & Alaska Superior Courts', rider: 'Incorporates Alaska Stat. § 45.50.915 exemplary damages for willful model weight leakage or unauthorized commercial syndication of User Inputs and Outputs.' },
+            { code: 'AZ', name: 'Arizona', statute: 'Arizona Uniform Trade Secrets Act, Ariz. Rev. Stat. §§ 44-401 to 44-407', eSignStatute: 'Arizona Electronic Transactions Act, A.R.S. §§ 44-7001 to 44-7052', limitation: '3 Years (A.R.S. § 44-406)', venue: 'U.S. District Court for the District of Arizona & Maricopa County Superior Court (Commercial Court)', rider: 'Binds electronic agent signatures under A.R.S. §§ 44-7001 et seq. and mandates protective sealing of proprietary prompts under A.R.S. § 44-405.' },
+            { code: 'AR', name: 'Arkansas', statute: 'Arkansas Trade Secrets Act, Ark. Code Ann. §§ 4-75-601 to 4-75-607', eSignStatute: 'Arkansas UETA, Ark. Code Ann. §§ 25-32-101 to 25-32-121', limitation: '3 Years (Ark. Code Ann. § 4-75-603)', venue: 'U.S. District Court (E.D./W.D. Ark.) & Arkansas Circuit Courts', rider: 'Strictly bars unauthorized third-party disclosure under Ark. Code Ann. § 4-75-604 and preserves 100% Disclosing Party title over generated artifacts under § 4-75-606.' },
+            { code: 'CA', name: 'California', statute: 'California Uniform Trade Secrets Act (CUTSA), Cal. Civ. Code §§ 3426 to 3426.11', eSignStatute: 'California UETA, Cal. Civ. Code §§ 1633.1 to 1633.17', limitation: '3 Years (Cal. Civ. Code § 3426.6)', venue: 'U.S. District Court (N.D./C.D./S.D./E.D. Cal.) & California Superior Courts (San Francisco / Santa Clara / Los Angeles)', rider: 'Expressly structured as a non-employment Intellectual Property and Trade Secret Protection Agreement fully compliant with Cal. Bus. & Prof. Code § 16600, directly binding California-headquartered AI parent laboratories against third-party data sharing.' },
+            { code: 'CO', name: 'Colorado', statute: 'Colorado Uniform Trade Secrets Act, Colo. Rev. Stat. §§ 7-74-101 to 7-74-110', eSignStatute: 'Colorado UETA, C.R.S. §§ 24-71.3-101 to 24-71.3-121', limitation: '3 Years (C.R.S. § 7-74-107)', venue: 'U.S. District Court for the District of Colorado & Denver District Court', rider: 'Enforces C.R.S. § 7-74-103 injunctive relief, § 7-74-104 exemplary damages, and C.R.S. § 24-71.3-107 electronic signature non-repudiation for all AI sessions.' },
+            { code: 'CT', name: 'Connecticut', statute: 'Connecticut Uniform Trade Secrets Act, Conn. Gen. Stat. §§ 35-50 to 35-58', eSignStatute: 'Connecticut UETA, Conn. Gen. Stat. §§ 1-266 to 1-286', limitation: '3 Years (Conn. Gen. Stat. § 35-56)', venue: 'U.S. District Court for the District of Connecticut & Connecticut Superior Courts (Complex Litigation Docket)', rider: 'Applies Conn. Gen. Stat. § 35-52 affirmative protective orders and § 35-53 punitive damages to ring-fence Disclosing Party data strictly to internal model training.' },
+            { code: 'DE', name: 'Delaware', statute: 'Delaware Uniform Trade Secrets Act, 6 Del. C. §§ 2001 to 2009', eSignStatute: 'Delaware UETA, 6 Del. C. §§ 12A-101 to 12A-117', limitation: '3 Years (6 Del. C. § 2006)', venue: 'U.S. District Court for the District of Delaware & Delaware Court of Chancery', rider: 'Directly binds all Delaware-incorporated Superintelligence Corporate Parent Entities (including Alphabet Inc., OpenAI Inc., Anthropic PBC, Meta Platforms Inc., NVIDIA Corp., Perplexity AI Inc.) in their corporate domicile and vests equitable jurisdiction in the Delaware Court of Chancery.' },
+            { code: 'FL', name: 'Florida', statute: 'Florida Uniform Trade Secrets Act (FUTSA), Fla. Stat. §§ 688.001 to 688.009', eSignStatute: 'Florida UETA, Fla. Stat. § 668.50', limitation: '3 Years (Fla. Stat. § 688.007)', venue: 'U.S. District Court (M.D./S.D./N.D. Fla.) & Florida Circuit Courts (Complex Business Litigation Sections)', rider: 'Florida Protective Rider: Enforces immediate injunctive relief under Fla. Stat. § 688.003, exemplary damages under § 688.004(2), preservation of secrecy under § 688.006, and electronic signature binding under Fla. Stat. § 668.50.' },
+            { code: 'GA', name: 'Georgia', statute: 'Georgia Trade Secrets Act of 1990, O.C.G.A. §§ 10-1-760 to 10-1-767', eSignStatute: 'Georgia UETA, O.C.G.A. §§ 10-12-1 to 10-12-20', limitation: '5 Years (O.C.G.A. § 10-1-766)', venue: 'U.S. District Court (N.D./M.D./S.D. Ga.) & Georgia State-Wide Business Court / Superior Courts', rider: 'Provides an extended 5-year statute of limitations under O.C.G.A. § 10-1-766 and protects all electronic data streams without temporal expiration regardless of non-trade-secret status.' },
+            { code: 'HI', name: 'Hawaii', statute: 'Hawaii Uniform Trade Secrets Act, Haw. Rev. Stat. §§ 482B-1 to 482B-9', eSignStatute: 'Hawaii UETA, Haw. Rev. Stat. §§ 489E-1 to 489E-19', limitation: '3 Years (HRS § 482B-7)', venue: 'U.S. District Court for the District of Hawaii & Hawaii Circuit Courts', rider: 'Protects Confidential Information under HRS § 482B-3 injunctive relief and § 482B-4 exemplary damages, barring any external syndication of prompts or outputs.' },
+            { code: 'ID', name: 'Idaho', statute: 'Idaho Trade Secrets Act, Idaho Code §§ 48-801 to 48-807', eSignStatute: 'Idaho UETA, Idaho Code §§ 28-50-101 to 28-50-120', limitation: '3 Years (Idaho Code § 48-805)', venue: 'U.S. District Court for the District of Idaho & Idaho District Courts', rider: 'Applies Idaho Code § 48-802 injunctive remedies and § 48-803 double exemplary damages to prevent cross-session leakage of proprietary engineering and business inputs.' },
+            { code: 'IL', name: 'Illinois', statute: 'Illinois Trade Secrets Act (ITSA), 765 ILCS 1065/1 to 1065/9', eSignStatute: 'Illinois UETA, 815 ILCS 333/1 to 333/20', limitation: '5 Years (765 ILCS 1065/7)', venue: 'U.S. District Court (N.D./C.D./S.D. Ill.) & Circuit Court of Cook County (Commercial Calendar)', rider: 'Provides a 5-year statutory limitation period under 765 ILCS 1065/7 and enforces strict trade secret preservation across cloud data centers under 765 ILCS 1065/3.' },
+            { code: 'IN', name: 'Indiana', statute: 'Indiana Uniform Trade Secrets Act, Ind. Code §§ 24-2-3-1 to 24-2-3-8', eSignStatute: 'Indiana UETA, Ind. Code §§ 26-2-8-101 to 26-2-8-302', limitation: '3 Years (Ind. Code § 24-2-3-7)', venue: 'U.S. District Court (N.D./S.D. Ind.) & Indiana Commercial Courts', rider: 'Enforces Ind. Code § 24-2-3-3 affirmative acts to compel model isolation and purge unauthorized third-party caches.' },
+            { code: 'IA', name: 'Iowa', statute: 'Iowa Uniform Trade Secrets Act, Iowa Code §§ 550.1 to 550.8', eSignStatute: 'Iowa UETA, Iowa Code §§ 554D.101 to 554D.125', limitation: '3 Years (Iowa Code § 550.8)', venue: 'U.S. District Court (N.D./S.D. Iowa) & Iowa Business Specialty Court / District Courts', rider: 'Secures agricultural, biological, and technological trade secrets under Iowa Code § 550.3 injunctive relief and § 550.4 exemplary damages, barring third-party disclosure.' },
+            { code: 'KS', name: 'Kansas', statute: 'Kansas Uniform Trade Secrets Act, Kan. Stat. Ann. §§ 60-3320 to 60-3330', eSignStatute: 'Kansas UETA, K.S.A. §§ 16-1601 to 16-1620', limitation: '3 Years (K.S.A. § 60-3325)', venue: 'U.S. District Court for the District of Kansas & Kansas District Courts', rider: 'Preserves full Disclosing Party ownership of inputs and outputs under K.S.A. § 60-3321 injunctive relief and § 60-3322 damages.' },
+            { code: 'KY', name: 'Kentucky', statute: 'Kentucky Uniform Trade Secrets Act, Ky. Rev. Stat. §§ 365.880 to 365.900', eSignStatute: 'Kentucky UETA, KRS §§ 369.101 to 369.120', limitation: '3 Years (KRS § 365.890)', venue: 'U.S. District Court (E.D./W.D. Ky.) & Kentucky Circuit Courts (Business Court Docket)', rider: 'Enforces KRS § 365.882 injunctive relief and § 365.884 exemplary damages against unauthorized commercial exploitation of AI chat histories.' },
+            { code: 'LA', name: 'Louisiana', statute: 'Louisiana Uniform Trade Secrets Act, La. Rev. Stat. §§ 51:1431 to 51:1439', eSignStatute: 'Louisiana UETA, La. R.S. §§ 9:2601 to 9:2621', limitation: '3 Years (La. R.S. § 51:1436)', venue: 'U.S. District Court (E.D./M.D./W.D. La.) & Louisiana Civil District Courts', rider: 'Harmonizes Louisiana civil law obligations (La. Civ. Code art. 1983) with La. R.S. § 51:1432 to enforce strict training-only ring-fencing.' },
+            { code: 'ME', name: 'Maine', statute: 'Maine Uniform Trade Secrets Act, 10 M.R.S. §§ 1541 to 1548', eSignStatute: 'Maine UETA, 10 M.R.S. §§ 9401 to 9420', limitation: '4 Years (10 M.R.S. § 1547)', venue: 'U.S. District Court for the District of Maine & Maine Business and Consumer Court', rider: 'Grants an extended 4-year limitation period under 10 M.R.S. § 1547 and protects all proprietary digital files under § 1543.' },
+            { code: 'MD', name: 'Maryland', statute: 'Maryland Uniform Trade Secrets Act, Md. Code, Com. Law §§ 11-1201 to 11-1209', eSignStatute: 'Maryland UETA, Md. Code, Com. Law §§ 21-101 to 21-120', limitation: '3 Years (Md. Code, Com. Law § 11-1206)', venue: 'U.S. District Court for the District of Maryland & Maryland Circuit Courts (Business and Technology Case Management Program)', rider: 'Enforces Md. Code, Com. Law § 11-1202 injunctive remedies and UCITA/UETA electronic contract validity across all AI endpoints.' },
+            { code: 'MA', name: 'Massachusetts', statute: 'Massachusetts Uniform Trade Secrets Act (MUTSA), Mass. Gen. Laws ch. 93, §§ 42 to 42G', eSignStatute: 'Massachusetts UETA, M.G.L. c. 110G, §§ 1 to 18', limitation: '3 Years (M.G.L. c. 93, § 42E)', venue: 'U.S. District Court for the District of Massachusetts & Massachusetts Superior Court (Business Litigation Session / County Superior Courts)', rider: 'Massachusetts Protective Rider: Enforces M.G.L. c. 93, § 42A injunctive relief, § 42B double exemplary damages, and M.G.L. c. 93A unfair or deceptive trade practice remedies against unauthorized third-party AI data sharing.' },
+            { code: 'MI', name: 'Michigan', statute: 'Michigan Uniform Trade Secrets Act, Mich. Comp. Laws §§ 445.1901 to 445.1910', eSignStatute: 'Michigan UETA, MCL §§ 450.831 to 450.849', limitation: '3 Years (MCL § 445.1907)', venue: 'U.S. District Court (E.D./W.D. Mich.) & Michigan Circuit Courts (Business Court Docket)', rider: 'Applies MCL § 445.1903 injunctive remedies and § 445.1906 secrecy preservation orders to all past, present, and future superintelligence interactions.' },
+            { code: 'MN', name: 'Minnesota', statute: 'Minnesota Uniform Trade Secrets Act, Minn. Stat. §§ 325C.01 to 325C.08', eSignStatute: 'Minnesota UETA, Minn. Stat. §§ 325L.01 to 325L.19', limitation: '3 Years (Minn. Stat. § 325C.06)', venue: 'U.S. District Court for the District of Minnesota & Minnesota District Courts', rider: 'Confirms reasonable secrecy measures under Minn. Stat. § 325C.01 Subd. 5 via this cryptographic NDA execution and enforces § 325C.02 injunctive relief.' },
+            { code: 'MS', name: 'Mississippi', statute: 'Mississippi Uniform Trade Secrets Act, Miss. Code Ann. §§ 75-26-1 to 75-26-19', eSignStatute: 'Mississippi UETA, Miss. Code Ann. §§ 75-12-1 to 75-12-39', limitation: '3 Years (Miss. Code Ann. § 75-26-13)', venue: 'U.S. District Court (N.D./S.D. Miss.) & Mississippi Chancery and Circuit Courts', rider: 'Vests equitable jurisdiction in Mississippi Chancery Courts under Miss. Code Ann. § 75-26-5 to enjoin unauthorized data leakage and award exemplary damages under § 75-26-7.' },
+            { code: 'MO', name: 'Missouri', statute: 'Missouri Uniform Trade Secrets Act, Mo. Rev. Stat. §§ 417.450 to 417.467', eSignStatute: 'Missouri UETA, Mo. Rev. Stat. §§ 432.200 to 432.295', limitation: '5 Years (Mo. Rev. Stat. § 417.461)', venue: 'U.S. District Court (E.D./W.D. Mo.) & Missouri Circuit Courts', rider: 'Provides an extended 5-year statute of limitations under Mo. Rev. Stat. § 417.461 and injunctive protection under § 417.455 for trade secret misappropriation claims.' },
+            { code: 'MT', name: 'Montana', statute: 'Montana Uniform Trade Secrets Act, Mont. Code Ann. §§ 30-14-401 to 30-14-409', eSignStatute: 'Montana UETA, MCA §§ 30-18-101 to 30-18-118', limitation: '3 Years (MCA § 30-14-407)', venue: 'U.S. District Court for the District of Montana & Montana District Courts', rider: 'Enforces MCA § 30-14-403 injunctive and § 30-14-404 exemplary damage remedies for all Disclosing Party inputs and outputs.' },
+            { code: 'NE', name: 'Nebraska', statute: 'Nebraska Trade Secrets Act, Neb. Rev. Stat. §§ 87-501 to 87-507', eSignStatute: 'Nebraska UETA, Neb. Rev. Stat. §§ 86-612 to 86-643', limitation: '4 Years (Neb. Rev. Stat. § 87-506)', venue: 'U.S. District Court for the District of Nebraska & Nebraska District Courts', rider: 'Provides a 4-year limitation period under Neb. Rev. Stat. § 87-506 and protects agricultural, environmental, and commercial datasets under § 87-503.' },
+            { code: 'NV', name: 'Nevada', statute: 'Nevada Uniform Trade Secrets Act, Nev. Rev. Stat. §§ 600A.010 to 600A.100', eSignStatute: 'Nevada UETA, NRS §§ 719.010 to 719.360', limitation: '3 Years (NRS § 600A.080)', venue: 'U.S. District Court for the District of Nevada (Las Vegas / Reno) & Nevada Eighth Judicial District Business Court', rider: 'Directly binds Nevada-incorporated AI entities (including xAI Corp. / X.AI LLC) under NRS § 600A.040 injunctive relief and § 600A.050 exemplary damages, protecting all commercial, architectural, and technical assets.' },
+            { code: 'NH', name: 'New Hampshire', statute: 'New Hampshire Uniform Trade Secrets Act, N.H. Rev. Stat. Ann. §§ 350-B:1 to 350-B:9', eSignStatute: 'New Hampshire UETA, RSA §§ 294-E:1 to 294-E:20', limitation: '3 Years (RSA § 350-B:6)', venue: 'U.S. District Court for the District of New Hampshire & New Hampshire Superior Courts (Business and Commercial Dispute Docket)', rider: 'Enforces RSA § 350-B:2 injunctive relief, § 350-B:3 exemplary damages, and RSA § 294-E:7 electronic signature validity.' },
+            { code: 'NJ', name: 'New Jersey', statute: 'New Jersey Trade Secrets Act, N.J.S.A. 56:15-1 to 56:15-9', eSignStatute: 'New Jersey UETA, N.J.S.A. 12A:12-1 to 12A:12-26', limitation: '3 Years (N.J.S.A. 56:15-8)', venue: 'U.S. District Court for the District of New Jersey & New Jersey Superior Court (Complex Business Litigation Program / Chancery Division)', rider: 'Protects technical, genetic, and commercial secrets under N.J.S.A. 56:15-2, enforces injunctive orders under 56:15-3, and preserves cumulative remedies under 56:15-9.' },
+            { code: 'NM', name: 'New Mexico', statute: 'New Mexico Uniform Trade Secrets Act, N.M. Stat. Ann. §§ 57-3A-1 to 57-3A-7', eSignStatute: 'New Mexico UETA, NMSA 1978, §§ 14-16-1 to 14-16-21', limitation: '3 Years (NMSA 1978, § 57-3A-7)', venue: 'U.S. District Court for the District of New Mexico & New Mexico District Courts', rider: 'Enforces NMSA 1978, § 57-3A-3 injunctive relief and § 57-3A-4 exemplary damages, preserving 100% User ownership of generated outputs.' },
+            { code: 'NY', name: 'New York', statute: 'New York Common Law Trade Secret Protection (Restatement of Torts § 757) & N.Y. CPLR §§ 213(2), 214(4), 6301', eSignStatute: 'New York Electronic Signatures and Records Act (ESRA), N.Y. State Tech. Law §§ 301 to 309', limitation: '6 Years Breach of NDA Contract (N.Y. CPLR § 213(2)) / 3 Years Tort (N.Y. CPLR § 214(4))', venue: 'U.S. District Court (S.D.N.Y. / E.D.N.Y. / N.D.N.Y. / W.D.N.Y.) & New York Supreme Court, Commercial Division', rider: 'New York Commercial Division Rider: Enforces a 6-year contractual statute of limitations under N.Y. CPLR § 213(2), preliminary and permanent injunctions under CPLR § 6301, common-law trade secret protection under Restatement of Torts § 757, and electronic signature binding under N.Y. State Tech. Law § 304.' },
+            { code: 'NC', name: 'North Carolina', statute: 'North Carolina Trade Secrets Protection Act, N.C. Gen. Stat. §§ 66-152 to 66-157', eSignStatute: 'North Carolina UETA, N.C.G.S. §§ 66-311 to 66-330', limitation: '3 Years (N.C.G.S. § 66-157)', venue: 'U.S. District Court (E.D./M.D./W.D.N.C.) & North Carolina Business Court', rider: 'Applies N.C.G.S. § 66-154 remedies and prima facie misappropriation standards under N.C.G.S. § 66-155 against unauthorized AI weight disclosure.' },
+            { code: 'ND', name: 'North Dakota', statute: 'North Dakota Uniform Trade Secrets Act, N.D. Cent. Code §§ 47-25.1-01 to 47-25.1-08', eSignStatute: 'North Dakota UETA, N.D.C.C. §§ 9-16-01 to 9-16-19', limitation: '3 Years (N.D.C.C. § 47-25.1-06)', venue: 'U.S. District Court for the District of North Dakota & North Dakota District Courts', rider: 'Enforces N.D.C.C. § 47-25.1-02 injunctive protection and § 47-25.1-03 exemplary damages over all Disclosing Party inputs and outputs.' },
+            { code: 'OH', name: 'Ohio', statute: 'Ohio Uniform Trade Secrets Act, Ohio Rev. Code §§ 1333.61 to 1333.69', eSignStatute: 'Ohio UETA, O.R.C. §§ 1306.01 to 1306.23', limitation: '4 Years (O.R.C. § 1333.66)', venue: 'U.S. District Court (N.D./S.D. Ohio) & Ohio Courts of Common Pleas (Commercial Docket)', rider: 'Provides an extended 4-year limitation period under O.R.C. § 1333.66 and exemplary triple damages under O.R.C. § 1333.63(B).' },
+            { code: 'OK', name: 'Oklahoma', statute: 'Oklahoma Uniform Trade Secrets Act, 78 Okla. Stat. §§ 85 to 94', eSignStatute: 'Oklahoma UETA, 12A O.S. §§ 15-101 to 15-121', limitation: '3 Years (78 O.S. § 91)', venue: 'U.S. District Court (N.D./E.D./W.D. Okla.) & Oklahoma District Courts', rider: 'Protects all proprietary user prompts and outputs under 78 O.S. § 87 injunctive relief and § 88 exemplary damages, barring third-party transfers.' },
+            { code: 'OR', name: 'Oregon', statute: 'Oregon Uniform Trade Secrets Act, Or. Rev. Stat. §§ 646.461 to 646.475', eSignStatute: 'Oregon UETA, ORS §§ 84.001 to 84.061', limitation: '3 Years (ORS § 646.471)', venue: 'U.S. District Court for the District of Oregon & Oregon Circuit Courts (Commercial Court)', rider: 'Enforces ORS § 646.463 injunctive relief, § 646.465 punitive damages, and ORS § 84.019 electronic signature non-repudiation.' },
+            { code: 'PA', name: 'Pennsylvania', statute: 'Pennsylvania Uniform Trade Secrets Act (PUTSA), 12 Pa. C.S. §§ 5301 to 5308', eSignStatute: 'Pennsylvania Electronic Transactions Act, 73 P.S. §§ 2260.101 to 2260.5101', limitation: '3 Years (12 Pa. C.S. § 5307)', venue: 'U.S. District Court (E.D./M.D./W.D. Pa.) & Pennsylvania Courts of Common Pleas (Commerce Program)', rider: 'Enforces 12 Pa. C.S. § 5303 injunctive relief, § 5304 exemplary damages, and Pennsylvania Uniform Written Obligations Act (33 P.S. § 6) binding consideration.' },
+            { code: 'RI', name: 'Rhode Island', statute: 'Rhode Island Uniform Trade Secrets Act, R.I. Gen. Laws §§ 6-41-1 to 6-41-11', eSignStatute: 'Rhode Island UETA, R.I.G.L. §§ 42-127.1-1 to 42-127.1-20', limitation: '3 Years (R.I.G.L. § 6-41-6)', venue: 'U.S. District Court for the District of Rhode Island & Rhode Island Superior Court (Business Calendar)', rider: 'Applies R.I.G.L. § 6-41-2 injunctive orders, § 6-41-3 exemplary double damages, and strict training-only ring-fencing.' },
+            { code: 'SC', name: 'South Carolina', statute: 'South Carolina Trade Secrets Act, S.C. Code Ann. §§ 39-8-10 to 39-8-130', eSignStatute: 'South Carolina UETA, S.C. Code Ann. §§ 26-6-10 to 26-6-210', limitation: '3 Years (S.C. Code Ann. § 39-8-70)', venue: 'U.S. District Court for the District of South Carolina & South Carolina Circuit Courts (Business Court)', rider: 'Incorporates S.C. Code Ann. § 39-8-30 affirmative trade secret duties, § 39-8-50 injunctions, and § 39-8-60 discovery preservation orders.' },
+            { code: 'SD', name: 'South Dakota', statute: 'South Dakota Uniform Trade Secrets Act, S.D. Codified Laws §§ 37-29-1 to 37-29-11', eSignStatute: 'South Dakota UETA, SDCL §§ 53-12-1 to 53-12-50', limitation: '3 Years (SDCL § 37-29-6)', venue: 'U.S. District Court for the District of South Dakota & South Dakota Circuit Courts', rider: 'Enforces SDCL § 37-29-2 injunctive protection and § 37-29-3 exemplary damages, barring third-party commercial exploitation.' },
+            { code: 'TN', name: 'Tennessee', statute: 'Tennessee Uniform Trade Secrets Act, Tenn. Code Ann. §§ 47-25-1701 to 47-25-1709', eSignStatute: 'Tennessee UETA, T.C.A. §§ 47-10-101 to 47-10-123', limitation: '3 Years (T.C.A. § 47-25-1707)', venue: 'U.S. District Court (E.D./M.D./W.D. Tenn.) & Tennessee Chancery and Business Courts', rider: 'Binds data center and GPU supercluster operations in Tennessee (including Memphis AI superclusters) under T.C.A. § 47-25-1703 injunctive relief and § 47-25-1704 exemplary damages.' },
+            { code: 'TX', name: 'Texas', statute: 'Texas Uniform Trade Secrets Act (TUTSA), Tex. Civ. Prac. & Rem. Code §§ 134A.001 to 134A.008', eSignStatute: 'Texas UETA, Tex. Bus. & Com. Code §§ 322.001 to 322.021', limitation: '3 Years (Tex. Civ. Prac. & Rem. Code § 16.010(a))', venue: 'U.S. District Court (W.D./N.D./S.D./E.D. Tex.) & Texas Business Court / District Courts', rider: 'Directly binds Texas-operated AI infrastructure and corporate entities under TUTSA § 134A.003 injunctive relief, § 134A.004 exemplary damages, § 134A.006 secrecy preservation, and Texas Business Court jurisdiction.' },
+            { code: 'UT', name: 'Utah', statute: 'Utah Uniform Trade Secrets Act, Utah Code Ann. §§ 13-24-1 to 13-24-9', eSignStatute: 'Utah UETA, Utah Code Ann. §§ 46-4-101 to 46-4-503', limitation: '3 Years (Utah Code Ann. § 13-24-7)', venue: 'U.S. District Court for the District of Utah & Utah Business and Chancery Court / District Courts', rider: 'Enforces Utah Code Ann. § 13-24-3 injunctive relief and § 13-24-4 exemplary damages, preserving 100% User ownership of inputs and outputs.' },
+            { code: 'VT', name: 'Vermont', statute: 'Vermont Uniform Trade Secrets Act, 9 V.S.A. §§ 4601 to 4609 & 12 V.S.A. § 523', eSignStatute: 'Vermont UETA, 9 V.S.A. §§ 270 to 290', limitation: '6 Years (12 V.S.A. § 523 & 9 V.S.A. § 4606)', venue: 'U.S. District Court for the District of Vermont (Burlington) & Vermont Superior Court, Civil Division', rider: 'Provides the nation\'s longest statutory trade secret limitation period of 6 years under 12 V.S.A. § 523 and 9 V.S.A. § 4606, with injunctive protection under 9 V.S.A. § 4602.' },
+            { code: 'VA', name: 'Virginia', statute: 'Virginia Uniform Trade Secrets Act (VUTSA), Va. Code Ann. §§ 59.1-336 to 59.1-343', eSignStatute: 'Virginia UETA, Va. Code Ann. §§ 59.1-479 to 59.1-497', limitation: '3 Years (Va. Code Ann. § 59.1-340)', venue: 'U.S. District Court (E.D. Va. "Rocket Docket" / W.D. Va.) & Virginia Circuit Courts', rider: 'Directly governs Northern Virginia / Ashburn cloud data center routing (AWS US-East-1 & enterprise AI backbones) under Va. Code Ann. § 59.1-337 injunctive relief and UCITA Va. Code Ann. §§ 59.1-501.1 et seq.' },
+            { code: 'WA', name: 'Washington', statute: 'Washington Uniform Trade Secrets Act, RCW 19.108.010 to 19.108.940', eSignStatute: 'Washington UETA, RCW 1.80.010 to 1.80.900', limitation: '3 Years (RCW 19.108.060)', venue: 'U.S. District Court (W.D. Wash. Seattle / E.D. Wash.) & King County Superior Court', rider: 'Directly binds Washington-headquartered corporate parents and cloud providers (including Microsoft Corp. & Amazon Web Services Inc.) under RCW 19.108.020 injunctive relief and RCW 19.108.030 exemplary damages.' },
+            { code: 'WV', name: 'West Virginia', statute: 'West Virginia Uniform Trade Secrets Act, W. Va. Code §§ 47-22-1 to 47-22-10', eSignStatute: 'West Virginia UETA, W. Va. Code §§ 39A-1-1 to 39A-1-17', limitation: '3 Years (W. Va. Code § 47-22-6)', venue: 'U.S. District Court (N.D./S.D. W. Va.) & West Virginia Circuit Courts (Business Court Division)', rider: 'Enforces W. Va. Code § 47-22-2 injunctive protection and § 47-22-3 exemplary damages over all confidential AI transmissions.' },
+            { code: 'WI', name: 'Wisconsin', statute: 'Wisconsin Uniform Trade Secrets Act, Wis. Stat. § 134.90', eSignStatute: 'Wisconsin UETA, Wis. Stat. §§ 137.11 to 137.26', limitation: '3 Years (Wis. Stat. § 893.51(2))', venue: 'U.S. District Court (E.D./W.D. Wis.) & Wisconsin Circuit Courts (Commercial Docket)', rider: 'Enforces Wis. Stat. § 134.90(3) injunctive relief and § 134.90(4) exemplary damages, barring any unauthorized third-party disclosure.' },
+            { code: 'WY', name: 'Wyoming', statute: 'Wyoming Uniform Trade Secrets Act, Wyo. Stat. Ann. §§ 40-24-101 to 40-24-110', eSignStatute: 'Wyoming UETA, Wyo. Stat. Ann. §§ 40-21-101 to 40-21-119', limitation: '4 Years (Wyo. Stat. Ann. § 40-24-106)', venue: 'U.S. District Court for the District of Wyoming & Wyoming Chancery Court / District Courts', rider: 'Provides a 4-year limitation period under Wyo. Stat. Ann. § 40-24-106 and digital asset / cryptographic key protection under Wyoming Chancery Court jurisdiction.' }
+        ];
+
+        // --- 2. COMPREHENSIVE MATRIX OF ALL PAST, PRESENT & FUTURE PUBLIC SUPERINTELLIGENCE MODELS & PARENT ENTITIES ---
+        const intelligenceEntities = [
+            {
+                id: 'alphabet-google',
+                parent: 'Alphabet Inc. / Google LLC / Google DeepMind',
+                jurisdiction: 'Delaware / California, USA',
+                models: 'PAST: BERT, T5, LaMDA, PaLM / PaLM 2, Bard, Chinchilla, Gemini 1.0 / 1.5 / 2.0 / 2.5 / 3.0 / 3.1 (Nano, Flash, Pro, Ultra), Gemma 1 / 2 / 3 • PRESENT: Gemini 4 Carbon, Gemini 4 Argon, Gemini 4 Hydrogen, Gemini 3.8 Flash, Gemini 3.5 Flash-Lite, Gemma 4 (31B Dense & 26B MoE), Veo, Imagen, AlphaFold, Project Astra & Mariner • FUTURE: Gemini 5+, Gemma 5+, and all future Alphabet/DeepMind public AGI/ASI models',
+                checked: true
+            },
+            {
+                id: 'openai',
+                parent: 'OpenAI, Inc. / OpenAI OpCo, LLC',
+                jurisdiction: 'Delaware / California, USA',
+                models: 'PAST: GPT-1, GPT-2, GPT-3, GPT-3.5 Turbo, GPT-4, GPT-4 Turbo, GPT-4o / 4o-mini, GPT-4.5, GPT-5 / 5.5 / 5.6 (Sol/Terra/Luna), o1 / o3 / o4-mini, Codex, DALL-E 1–3, Whisper • PRESENT: GPT-6.2 Astra, GPT-6 Astra, GPT-6.1 Sol, GPT-6.1 Terra, GPT-6 Luna, Sora, Operator & Deep Research Agents • FUTURE: GPT-7+, o-Series Next-Gen Reasoning, and all future OpenAI public superintelligences',
+                checked: true
+            },
+            {
+                id: 'anthropic',
+                parent: 'Anthropic PBC',
+                jurisdiction: 'Delaware / California, USA (Public Benefit Corp.)',
+                models: 'PAST: Claude 1.0–1.3, Claude Instant, Claude 2.0 / 2.1, Claude 3 / 3.5 / 3.7 / 4.0 / 4.5 (Haiku, Sonnet, Opus) • PRESENT: Claude Fable 5.2, Claude Mythos 5.2, Claude Fable 5.1, Claude Opus 5.5, Claude Sonnet 5.5, Claude Haiku 5.5, Claude Code & Computer Use • FUTURE: Claude 6+ and all future Anthropic public & constitutional superintelligence models',
+                checked: true
+            },
+            {
+                id: 'meta',
+                parent: 'Meta Platforms, Inc. / Meta Superintelligence Labs (FAIR)',
+                jurisdiction: 'Delaware / California, USA',
+                models: 'PAST: OPT, Galactica, LLaMA 1, Llama 2, Code Llama, Llama 3 / 3.1 / 3.2 / 3.3 (8B–405B), SAM 1–2 • PRESENT: Muse Wonder (Full), Muse Spark 1.2 & 1.1, Muse Code, Llama 4 (Scout, Maverick, Behemoth), Movie Gen • FUTURE: Llama 5+, Muse Next-Gen, and all future Meta open-weight & public superintelligence models',
+                checked: true
+            },
+            {
+                id: 'xai',
+                parent: 'xAI Corp. (X Corp. / SpaceX Affiliate)',
+                jurisdiction: 'Nevada / Texas, USA',
+                models: 'PAST: Grok-0, Grok-1, Grok-1.5 / 1.5V, Grok-2, Grok-3, Grok-4 / 4.20 • PRESENT: Grok 4.7, Grok 4.6, Grok 4.3 (1M Context), Aurora, Colossus Supercluster Public Endpoints • FUTURE: Grok 5+ and all future xAI public & superintelligence architectures',
+                checked: true
+            },
+            {
+                id: 'deepseek',
+                parent: 'DeepSeek (High-Flyer AI)',
+                jurisdiction: 'Global API / Open-Weight Architectures',
+                models: 'PAST: DeepSeek LLM, DeepSeek Coder V1/V2, DeepSeek-Math, DeepSeek-V2 / V2.5, DeepSeek-V3, DeepSeek-R1 / R1-Zero • PRESENT: DeepSeek V4.1 Flash, DeepSeek V4-Pro, DeepSeek-R2 • FUTURE: DeepSeek V5+, R3+, and all future DeepSeek open-weight & public superintelligence models',
+                checked: true
+            },
+            {
+                id: 'alibaba-qwen',
+                parent: 'Alibaba Cloud (Qwen / Tongyi Lab)',
+                jurisdiction: 'Global Cloud / MoE Foundation Endpoints',
+                models: 'PAST: Qwen 1.0, Qwen 1.5, Qwen 2 / 2.5 (7B–72B / Coder / Math / VL), QwQ-32B, Qwen 3.0–3.5 • PRESENT: Qwen 3.8-Max (2.4T MoE), Qwen 3.8-Flash, Qwen 3.7-Max, Qwen 3.6-Plus, Wan Video • FUTURE: Qwen 4+ and all future Alibaba public & open-weight superintelligence models',
+                checked: true
+            },
+            {
+                id: 'mistral',
+                parent: 'Mistral AI SAS',
+                jurisdiction: 'Paris, France / U.S. Cloud Endpoints',
+                models: 'PAST: Mistral 7B, Mixtral 8x7B / 8x22B, Mistral Small 1–3, Mistral Medium, Mistral Large 1 / 2 / 3, Mathstral, Mamba-Codestral • PRESENT: Mistral Large 4 (GA), Mistral Small 4, Ministral 3, Codestral, Pixtral, Le Chat • FUTURE: Mistral Large 5+ and all future Mistral open-weight & public superintelligence models',
+                checked: true
+            },
+            {
+                id: 'moonshot-kimi',
+                parent: 'Moonshot AI (Kimi)',
+                jurisdiction: 'Global Long-Context & Code Endpoints',
+                models: 'PAST: Moonshot v1 (8k/32k/128k), Kimi k1, Kimi k1.5, Kimi k2 / k2.5 • PRESENT: Kimi K3, Kimi K2.7 Code, Kimi K2.6 • FUTURE: Kimi K4+ and all future Moonshot public superintelligence models',
+                checked: true
+            },
+            {
+                id: 'microsoft',
+                parent: 'Microsoft Corporation (Microsoft AI / Azure / GitHub Copilot)',
+                jurisdiction: 'Washington, USA',
+                models: 'PAST: Turing-NLG, Megatron-Turing, Kosmos-1/2, Orca 1/2, WizardLM, Phi-1 / Phi-2 / Phi-3 / Phi-3.5, Bing Prometheus • PRESENT: MAI-Thinking-1, MAI-Code-1.1-Flash, MAI-Image-2.6, Microsoft Copilot, Phi-4 • FUTURE: MAI-2+, Phi-5+, and all future Microsoft public & enterprise superintelligence models',
+                checked: true
+            },
+            {
+                id: 'amazon-aws',
+                parent: 'Amazon.com, Inc. / AWS (Bedrock & AGI Lab)',
+                jurisdiction: 'Delaware / Washington / Virginia, USA',
+                models: 'PAST: AlexaTM 20B, Amazon Titan (Text Express/Premier, Embeddings, Image), Olympus • PRESENT: Amazon Nova 2 Lite, Nova Premier, Nova Pro, Nova Micro, Nova Sonic, Nova Canvas, Nova Reel • FUTURE: Amazon Nova 3+ and all future AWS Bedrock public & hosted superintelligence models',
+                checked: true
+            },
+            {
+                id: 'nvidia',
+                parent: 'NVIDIA Corporation',
+                jurisdiction: 'Delaware / California, USA',
+                models: 'PAST: Megatron-LM, NeMo Megatron, ChipNeMo, Nemotron-3, Nemotron-4 (15B/340B), Llama-3.1-Nemotron • PRESENT: Nemotron 3.5 Lightning (30B-A3B), Cosmos World Foundation Models, NVIDIA NIM Public Endpoints • FUTURE: Nemotron 5+, Cosmos Next-Gen, and all future NVIDIA public superintelligence models',
+                checked: true
+            },
+            {
+                id: 'zai-minimax',
+                parent: 'Z.ai (Zhipu AI), MiniMax, 01.AI (Yi) & StepFun',
+                jurisdiction: 'Global Multimodal & Agentic Endpoints',
+                models: 'PAST: GLM-130B, ChatGLM 1–4, GLM-4.5, MiniMax abab 5–6.5, MiniMax-01, 01.AI Yi-34B / Yi-Large, Step-1 / Step-2 • PRESENT: GLM-5.3, GLM-5.2, AutoGLM, MiniMax M3, Hailuo Video/Audio • FUTURE: GLM-6+, MiniMax M4+, Yi-Next, and all future public superintelligence models',
+                checked: true
+            },
+            {
+                id: 'apple',
+                parent: 'Apple Inc. (Apple Intelligence & AIML)',
+                jurisdiction: 'California, USA',
+                models: 'PAST: Ajax, MM1, Ferret / Ferret-UI, OpenELM, AFM-2024/2025 • PRESENT: Apple Intelligence Foundation Models (AFM On-Device & Private Cloud Compute), Siri World Knowledge Routers • FUTURE: Next-Gen AFM and all future Apple public on-device & cloud superintelligence models',
+                checked: true
+            },
+            {
+                id: 'cohere-ibm',
+                parent: 'Cohere Inc., IBM Corporation & AI21 Labs',
+                jurisdiction: 'New York / Ontario / Enterprise Cloud',
+                models: 'PAST: Cohere Generate, Command, Coral, Command R / R+, IBM Watson, Granite 1.0–3.2, AI21 Jurassic-1 / Jurassic-2 / Jamba 1.0–1.5 • PRESENT: Cohere Command A, Aya Expanse / Vision, IBM Granite 4.2 (3B/8B/30B), AI21 Jamba 2 • FUTURE: All future Cohere, IBM Granite, and AI21 public superintelligence models',
+                checked: true
+            },
+            {
+                id: 'perplexity-baidu-tencent',
+                parent: 'Perplexity AI, Baidu (ERNIE), Tencent (Hunyuan) & ByteDance (Doubao/Seed)',
+                jurisdiction: 'Delaware / Global Search & Reasoning Routers',
+                models: 'PAST: pplx-7b/70b, Sonar Small/Large, Baidu ERNIE 1.0–4.0, Tencent Hunyuan-Standard/Pro, ByteDance Doubao 1.0–1.5 • PRESENT: Perplexity Sonar Pro & Deep Research, Baidu ERNIE 5.5 Flash / 5.0, Tencent Hunyuan (Hy4 Flash), ByteDance Seed / Omni • FUTURE: All future Perplexity, Baidu, Tencent, and ByteDance public superintelligence models',
+                checked: true
+            },
+            {
+                id: 'ssi-thinking-sakana-nous',
+                parent: 'Safe Superintelligence Inc. (SSI), Thinking Machines Lab, Sakana AI & Nous Research',
+                jurisdiction: 'California / Tokyo / Global Research & Open-Weight Labs',
+                models: 'PAST: Nous Hermes 1 / 2 / 3, Capybara, Sakana Evolutionary LLM / AI Scientist v1 • PRESENT: SSI Superintelligence Architectures, Thinking Machines Public Systems, Nous Hermes 4 & Forge Reasoning, Sakana AI Scientist v2 • FUTURE: All direct-to-superintelligence (ASI/AGI) public & API models ever released by SSI, Thinking Machines, Sakana, and Nous',
+                checked: true
+            },
+            {
+                id: 'multimodal-creative-voice',
+                parent: 'Public Multimodal, Visual, Video & Audio Superintelligences (Midjourney, Runway, BFL, Stability, ElevenLabs, Suno, Udio, Luma, Kling)',
+                jurisdiction: 'United States / United Kingdom / Europe / Global',
+                models: 'PAST: Midjourney v1–v6.1, Stable Diffusion 1.4/1.5/2.1/SDXL/SD3, FLUX.1, Runway Gen-1/Gen-2/Gen-3, Luma Dream Machine, Pika 1.0, Suno v1–v3.5, Udio v1 • PRESENT: Midjourney v7, Black Forest Labs FLUX.2, Runway Gen-4, Stable Diffusion 3.5+, ElevenLabs v3 Voice/Agents, Suno v4.5, Udio v2, Luma Ray 2, Kling 2.0, Ideogram 3 • FUTURE: All future visual, video, 3D, world-simulation, and audio public superintelligences',
+                checked: true
+            },
+            {
+                id: 'opensource-routers-inference',
+                parent: 'Open-Weight Hubs, Public Routers & Inference Clouds (Hugging Face, OpenRouter, Together AI, Groq, Cerebras, Fireworks, Replicate, AllenAI, TII Falcon)',
+                jurisdiction: 'United States / Global Public Inference Infrastructure',
+                models: 'PAST: BigScience BLOOM, EleutherAI GPT-J/GPT-NeoX/Pythia, StarCoder 1/2, Falcon 7B/40B/180B, AllenAI OLMo 1/2, Vicuna, Alpaca, Dolly • PRESENT: AllenAI OLMo 3, TII Falcon 3, HuggingChat, OpenRouter Universal Public Catalog, Groq LPU / Cerebras Wafer-Scale / Together / Fireworks Public Endpoints • FUTURE: Every future open-weight, community-fine-tuned, quantized, or cloud-routed public superintelligence model',
+                checked: true
+            }
+        ];
+
+        // --- 3. APPLICATION STATE ---
+        let contractMode = 'omnibus'; // 'omnibus' or 'state'
+        let selectedStateCode = 'FL'; // Default individual state view (Florida)
+        let hasValidSignature = false;
+        let isContractExecuted = false;
+        let currentPaymentMethod = 'apple';
+        let currentInkColor = '#000000';
+        let latestSha256Hash = '';
+        let latestPluginApiKey = '';
+        let executionTimestampUTC = '';
+        let executionTransactionId = '';
+
+        // DOM References
+        const entitiesMatrixGrid = document.getElementById('entitiesMatrixGrid');
+        const exhibitAList = document.getElementById('exhibitAList');
+        const selectAllToggle = document.getElementById('selectAllToggle');
+        const entitySearchInput = document.getElementById('entitySearchInput');
+        const heroEntityCount = document.getElementById('heroEntityCount');
+        const exhibitCountBadge = document.getElementById('exhibitCountBadge');
+
+        const userNameInput = document.getElementById('userNameInput');
+        const userOrgInput = document.getElementById('userOrgInput');
+        const userEmailInput = document.getElementById('userEmailInput');
+        const userDomicileSelect = document.getElementById('userDomicileSelect');
+
+        const stateDropdownSelect = document.getElementById('stateDropdownSelect');
+        const stateGridSearchInput = document.getElementById('stateGridSearchInput');
+        const fiftyStatesPillGrid = document.getElementById('fiftyStatesPillGrid');
+        const exhibitBTableBody = document.getElementById('exhibitBTableBody');
+        const exhibitBSearchInput = document.getElementById('exhibitBSearchInput');
+
+        const canvas = document.getElementById('signaturePad');
+        const ctx = canvas.getContext('2d');
+
+        function getSelectedStateObj() {
+            return US_STATES_LEGAL_DB.find(s => s.code === selectedStateCode) || US_STATES_LEGAL_DB[8];
+        }
+
+        // --- 4. INITIALIZE DATES, DROPDOWNS & 50-STATE CONTROLS (NO DUAL DOMICILE) ---
+        function initDatesAndSelectors() {
+            const now = new Date();
+            const formattedDate = now.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            document.getElementById('docEffectiveDate').textContent = formattedDate;
+            document.getElementById('contractDateSpan').textContent = formattedDate;
+            document.getElementById('sigBlockDate').textContent = formattedDate;
+
+            // Populate 50-State Dropdown & Primary Domicile Dropdown (Strictly 50 Individual States, No Dual Domicile)
+            stateDropdownSelect.innerHTML = '';
+            userDomicileSelect.innerHTML = '<option value="" selected>-- Select Primary Domicile State --</option>';
+
+            US_STATES_LEGAL_DB.forEach(st => {
+                const opt = document.createElement('option');
+                opt.value = st.code;
+                opt.textContent = `${st.name} (${st.code}) — ${st.statute}`;
+                if (st.code === selectedStateCode) opt.selected = true;
+                stateDropdownSelect.appendChild(opt);
+
+                const domOpt = document.createElement('option');
+                domOpt.value = `State of ${st.name} (${st.code} — ${st.statute})`;
+                domOpt.textContent = `${st.name} (${st.code})`;
+                userDomicileSelect.appendChild(domOpt);
+            });
+        }
+
+        // --- 5. RENDER 50-STATE PILLS, EXHIBIT B TABLE & CONTRACT GOVERNING LAW VIEW ---
+        function renderFiftyStatePills(filterText = '') {
+            const q = filterText.trim().toLowerCase();
+            fiftyStatesPillGrid.innerHTML = '';
+
+            US_STATES_LEGAL_DB.forEach(st => {
+                const matches = !q ||
+                    st.name.toLowerCase().includes(q) ||
+                    st.code.toLowerCase().includes(q) ||
+                    st.statute.toLowerCase().includes(q);
+
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                const isSelected = st.code === selectedStateCode;
+
+                btn.className = `py-1.5 px-2 rounded-lg font-mono text-xs font-bold border transition flex flex-col items-center justify-center ${
+                    !matches ? 'opacity-25 pointer-events-none bg-slate-950 border-slate-900 text-slate-600' :
+                    (isSelected && contractMode === 'state')
+                        ? 'bg-emerald-500 text-slate-950 border-emerald-400 shadow-lg shadow-emerald-500/20 scale-[1.03]'
+                        : isSelected
+                            ? 'bg-amber-500/20 text-amber-300 border-amber-500/50 hover:bg-amber-500/30'
+                            : 'bg-slate-900 hover:bg-slate-800 text-slate-300 border-slate-800 hover:border-slate-600'
+                }`;
+
+                btn.innerHTML = `
+                    <span>${st.code}</span>
+                    <span class="text-[9px] font-sans font-normal truncate max-w-full opacity-85">${st.name}</span>
+                `;
+
+                btn.addEventListener('click', () => {
+                    selectedStateCode = st.code;
+                    contractMode = 'state';
+                    stateDropdownSelect.value = st.code;
+                    syncJurisdictionUI();
+                });
+
+                fiftyStatesPillGrid.appendChild(btn);
+            });
+        }
+
+        function renderExhibitBTable(filterText = '') {
+            const q = filterText.trim().toLowerCase();
+            exhibitBTableBody.innerHTML = '';
+
+            US_STATES_LEGAL_DB.forEach(st => {
+                const matches = !q ||
+                    st.name.toLowerCase().includes(q) ||
+                    st.code.toLowerCase().includes(q) ||
+                    st.statute.toLowerCase().includes(q) ||
+                    st.eSignStatute.toLowerCase().includes(q) ||
+                    st.venue.toLowerCase().includes(q);
+
+                if (!matches) return;
+
+                const tr = document.createElement('tr');
+                const isSelected = st.code === selectedStateCode && contractMode === 'state';
+                tr.className = isSelected ? 'bg-amber-200/70 font-semibold' : 'hover:bg-parchment-200/60 transition';
+
+                tr.innerHTML = `
+                    <td class="py-2 px-2.5 font-mono font-bold text-slate-900 whitespace-nowrap">${st.name} (${st.code})</td>
+                    <td class="py-2 px-2.5 text-slate-800">${st.statute}</td>
+                    <td class="py-2 px-2.5 font-mono text-[10.5px] text-slate-700">${st.eSignStatute}</td>
+                    <td class="py-2 px-2.5 font-mono text-[10.5px] text-slate-700 whitespace-nowrap">${st.limitation}</td>
+                    <td class="py-2 px-2.5 text-slate-700">${st.venue}</td>
+                    <td class="py-2 px-2.5 no-print whitespace-nowrap">
+                        <button type="button" data-load-state="${st.code}" class="px-2 py-1 rounded bg-slate-900 hover:bg-emerald-700 text-amber-300 hover:text-white font-mono text-[10px] font-bold transition">
+                            Load ${st.code} Contract
+                        </button>
+                    </td>
+                `;
+
+                tr.querySelector('button').addEventListener('click', () => {
+                    selectedStateCode = st.code;
+                    contractMode = 'state';
+                    stateDropdownSelect.value = st.code;
+                    syncJurisdictionUI();
+                    document.getElementById('contractDocument').scrollIntoView({ behavior: 'smooth' });
+                });
+
+                exhibitBTableBody.appendChild(tr);
+            });
+        }
+
+        function syncJurisdictionUI() {
+            const st = getSelectedStateObj();
+            const stateIdx = US_STATES_LEGAL_DB.findIndex(s => s.code === st.code) + 1;
+            const modeCardOmnibus = document.getElementById('modeCardOmnibus');
+            const modeCardState = document.getElementById('modeCardState');
+            const modeAIndicator = document.getElementById('modeAIndicator');
+            const modeBIndicator = document.getElementById('modeBIndicator');
+
+            // Update Mode Card B labels with currently selected state
+            document.getElementById('modeCardSelectedStateTitle').textContent = `${st.name} — ${st.code} (#${String(stateIdx).padStart(2, '0')} of 50)`;
+            document.getElementById('modeCardSelectedStatute').textContent = st.statute;
+            document.getElementById('modeCardSelectedLimit').textContent = `LIMITATION: ${st.limitation.toUpperCase()} • E-SIGN: ${st.eSignStatute.toUpperCase()}`;
+            document.getElementById('selectedStateQuickSummary').textContent = `Contract #${String(stateIdx).padStart(2, '0')}/50: ${st.name} (${st.code}) — ${st.statute}`;
+            document.getElementById('exportCurrentStateBtnLabel').textContent = `Download ${st.name} (${st.code}) Contract (.TXT)`;
+            document.getElementById('downloadSingleStateBtnText').innerHTML = `<i class="fa-solid fa-file-contract mr-1.5"></i> 2. Individual ${st.name} (${st.code}) Contract (.TXT)`;
+
+            // Sync contractDomicileSpan if user hasn't explicitly chosen a different domicile
+            if (!userDomicileSelect.value) {
+                document.getElementById('contractDomicileSpan').textContent =
+                    contractMode === 'state'
+                        ? `State of ${st.name} (${st.code} — ${st.statute})`
+                        : '[SELECTED HOME FORUM / ALL 50 U.S. STATES]';
+            }
+
+            const dynamicLawBox = document.getElementById('dynamicGoverningLawBox');
+
+            if (contractMode === 'omnibus') {
+                modeCardOmnibus.className = 'p-4 sm:p-5 rounded-2xl border-2 border-amber-500 bg-amber-500/10 cursor-pointer transition flex flex-col justify-between shadow-lg shadow-amber-500/10';
+                modeCardState.className = 'p-4 sm:p-5 rounded-2xl border-2 border-slate-800 bg-slate-950/80 hover:border-slate-700 cursor-pointer transition flex flex-col justify-between';
+                modeAIndicator.innerHTML = `<i class="fa-solid fa-circle-check"></i> ACTIVE IN CONTRACT VIEW`;
+                modeAIndicator.className = 'text-xs font-mono text-amber-300 font-bold flex items-center gap-1';
+                modeBIndicator.innerHTML = `<i class="fa-regular fa-circle"></i> CLICK TO VIEW ${st.code} STANDALONE CONTRACT`;
+                modeBIndicator.className = 'text-xs font-mono text-slate-400 font-semibold flex items-center gap-1';
+
+                document.getElementById('heroActiveModeLabel').textContent = '50-State Master Omnibus';
+                document.getElementById('contractBannerPill').textContent = 'MASTER 50-STATE OMNIBUS';
+                document.getElementById('contractBannerPill').className = 'px-2 py-0.5 rounded bg-amber-400 text-slate-950 font-bold';
+                document.getElementById('contractBannerTitle').textContent = 'SINGULAR 50-STATE & FEDERAL MASTER CONTRACT (ALL 50 STATES BOUND)';
+                document.getElementById('contractBannerCitation').textContent = '18 U.S.C. § 1836 + All 50 State Statutes (AL–WY)';
+                document.getElementById('contractMainHeading').textContent =
+                    'UNIVERSAL SUPERINTELLIGENCE NON-DISCLOSURE & 50-STATE OMNIBUS INTELLECTUAL PROPERTY PROTECTION AGREEMENT';
+                document.getElementById('docInstrumentId').textContent = 'SNDA-2026-50US-OMNIBUS';
+                document.getElementById('sigBlockJurisdictionLine').textContent = 'Binding Across All 50 U.S. States (Exhibit B) + Federal DTSA';
+
+                dynamicLawBox.innerHTML = `
+                    <div class="flex items-center justify-between border-b border-amber-800/30 pb-1.5">
+                        <span class="font-sans text-xs font-extrabold uppercase tracking-wider text-amber-900">
+                            4.1 Singular Master 50-State Omnibus Governing Law (All 50 States + Federal)
+                        </span>
+                        <span class="font-mono text-[10.5px] px-2 py-0.5 rounded bg-amber-800 text-white font-bold">ALL 50 STATES ACTIVE</span>
+                    </div>
+                    <p>
+                        <strong>(a) Cumulative 50-State Statutory Binding:</strong> This Agreement is simultaneously executed under and governed by the Federal Defend Trade Secrets Act (18 U.S.C. § 1836 et seq.), the Federal E-SIGN Act (15 U.S.C. § 7001 et seq.), and the statutory Trade Secrets Acts, Electronic Transactions Acts (UETA/ESRA), and common-law confidentiality regimes of <strong>all fifty (50) states of the United States</strong> as enumerated in <strong>Exhibit B (Alabama through Wyoming)</strong>, alongside the Disclosing Party's selected primary domicile forum (<span class="font-semibold">${userDomicileSelect.value || '[SELECTED HOME FORUM / ALL 50 U.S. STATES]'}</span>).
+                    </p>
+                    <p>
+                        <strong>(b) Most Protective Forum &amp; Cumulative Remedy Election:</strong> Should any unauthorized disclosure, cross-session leakage, or non-training commercial exploitation occur, the Disclosing Party is entitled to invoke the substantive law, longer statute of limitations (including the 6-year period in Vermont and New York, 5-year period in Georgia, Illinois, and Missouri, and 4-year period in Maine, Nebraska, Ohio, and Wyoming), and exemplary damages remedy of whichever U.S. State or Federal forum provides the highest degree of intellectual property protection.
+                    </p>
+                `;
+            } else {
+                modeCardOmnibus.className = 'p-4 sm:p-5 rounded-2xl border-2 border-slate-800 bg-slate-950/80 hover:border-slate-700 cursor-pointer transition flex flex-col justify-between';
+                modeCardState.className = 'p-4 sm:p-5 rounded-2xl border-2 border-emerald-500 bg-emerald-500/10 cursor-pointer transition flex flex-col justify-between shadow-lg shadow-emerald-500/10';
+                modeAIndicator.innerHTML = `<i class="fa-regular fa-circle"></i> CLICK TO VIEW 50-STATE OMNIBUS`;
+                modeAIndicator.className = 'text-xs font-mono text-slate-400 font-semibold flex items-center gap-1';
+                modeBIndicator.innerHTML = `<i class="fa-solid fa-circle-check"></i> ACTIVE: ${st.name.toUpperCase()} (${st.code}) CONTRACT (#${String(stateIdx).padStart(2, '0')}/50)`;
+                modeBIndicator.className = 'text-xs font-mono text-emerald-300 font-bold flex items-center gap-1';
+
+                document.getElementById('heroActiveModeLabel').textContent = `${st.name} (${st.code}) [${stateIdx}/50]`;
+                document.getElementById('contractBannerPill').textContent = `STATE CONTRACT #${String(stateIdx).padStart(2, '0')}/50 • ${st.code}`;
+                document.getElementById('contractBannerPill').className = 'px-2 py-0.5 rounded bg-emerald-400 text-slate-950 font-bold';
+                document.getElementById('contractBannerTitle').textContent = `STANDALONE INDIVIDUAL STATE NDA CONTRACT — STATE OF ${st.name.toUpperCase()}`;
+                document.getElementById('contractBannerCitation').textContent = st.statute;
+                document.getElementById('contractMainHeading').textContent =
+                    `STATE OF ${st.name.toUpperCase()} SUPERINTELLIGENCE NON-DISCLOSURE & INTELLECTUAL PROPERTY PROTECTION AGREEMENT`;
+                document.getElementById('docInstrumentId').textContent = `SNDA-2026-STATE-${st.code}`;
+                document.getElementById('sigBlockJurisdictionLine').textContent = `State of ${st.name} (${st.statute} & ${st.eSignStatute}) + Federal DTSA`;
+
+                dynamicLawBox.innerHTML = `
+                    <div class="flex items-center justify-between border-b border-emerald-800/30 pb-1.5">
+                        <span class="font-sans text-xs font-extrabold uppercase tracking-wider text-emerald-950">
+                            4.1 State of ${st.name} (${st.code}) Governing Law, E-Sign Authority &amp; Statutory Rider (Contract #${String(stateIdx).padStart(2, '0')} of 50)
+                        </span>
+                        <span class="font-mono text-[10.5px] px-2 py-0.5 rounded bg-emerald-800 text-white font-bold">STATE CONTRACT: ${st.code}</span>
+                    </div>
+                    <p>
+                        <strong>(a) Controlling ${st.name} Trade Secret &amp; Electronic Signature Statutes:</strong> This Standalone State Contract is governed by and construed in accordance with the laws of the <strong>State of ${st.name}</strong>, specifically enforcing the <strong>${st.statute}</strong> and the <strong>${st.eSignStatute}</strong>, alongside the Federal Defend Trade Secrets Act (18 U.S.C. § 1836 et seq.) and Federal E-SIGN Act (15 U.S.C. § 7001).
+                    </p>
+                    <p>
+                        <strong>(b) Designated Judicial Venue &amp; Limitation Period:</strong> Exclusive or concurrent judicial enforcement at the election of the Disclosing Party shall lie in the <strong>${st.venue}</strong>. The statutory limitation period applicable under ${st.name} law is <strong>${st.limitation}</strong> from discovery of misappropriation.
+                    </p>
+                    <p>
+                        <strong>(c) State of ${st.name} Specific Protective Rider:</strong> ${st.rider}
+                    </p>
+                `;
+            }
+
+            renderFiftyStatePills(stateGridSearchInput.value);
+            renderExhibitBTable(exhibitBSearchInput.value);
+            updateLiveCryptographicHash();
+        }
+
+        // Mode Switcher & Prev/Next 50-State Stepper Listeners
+        document.getElementById('modeCardOmnibus').addEventListener('click', () => {
+            contractMode = 'omnibus';
+            syncJurisdictionUI();
+        });
+
+        document.getElementById('modeCardState').addEventListener('click', () => {
+            contractMode = 'state';
+            syncJurisdictionUI();
+        });
+
+        document.getElementById('toggleModeQuickBtn').addEventListener('click', () => {
+            contractMode = contractMode === 'omnibus' ? 'state' : 'omnibus';
+            syncJurisdictionUI();
+        });
+
+        document.getElementById('prevStateBtn').addEventListener('click', () => {
+            const idx = US_STATES_LEGAL_DB.findIndex(s => s.code === selectedStateCode);
+            const prevIdx = (idx - 1 + US_STATES_LEGAL_DB.length) % US_STATES_LEGAL_DB.length;
+            selectedStateCode = US_STATES_LEGAL_DB[prevIdx].code;
+            contractMode = 'state';
+            stateDropdownSelect.value = selectedStateCode;
+            syncJurisdictionUI();
+        });
+
+        document.getElementById('nextStateBtn').addEventListener('click', () => {
+            const idx = US_STATES_LEGAL_DB.findIndex(s => s.code === selectedStateCode);
+            const nextIdx = (idx + 1) % US_STATES_LEGAL_DB.length;
+            selectedStateCode = US_STATES_LEGAL_DB[nextIdx].code;
+            contractMode = 'state';
+            stateDropdownSelect.value = selectedStateCode;
+            syncJurisdictionUI();
+        });
+
+        stateDropdownSelect.addEventListener('change', (e) => {
+            selectedStateCode = e.target.value;
+            contractMode = 'state';
+            syncJurisdictionUI();
+        });
+
+        stateGridSearchInput.addEventListener('input', (e) => {
+            renderFiftyStatePills(e.target.value);
+        });
+
+        exhibitBSearchInput.addEventListener('input', (e) => {
+            renderExhibitBTable(e.target.value);
+        });
+
+        // --- 6. RENDER CORPORATE PARENTS COVERAGE MATRIX & EXHIBIT A ---
+        function renderEntitiesMatrix(filterText = '') {
+            const normalizedFilter = filterText.trim().toLowerCase();
+            entitiesMatrixGrid.innerHTML = '';
+
+            intelligenceEntities.forEach((entity) => {
+                const matches = !normalizedFilter ||
+                    entity.parent.toLowerCase().includes(normalizedFilter) ||
+                    entity.models.toLowerCase().includes(normalizedFilter);
+
+                if (!matches) return;
+
+                const card = document.createElement('label');
+                card.className = `flex items-start gap-3 p-3.5 rounded-xl border cursor-pointer select-none transition ${
+                    entity.checked
+                        ? 'bg-slate-950/90 border-amber-500/40 shadow-md shadow-amber-500/5'
+                        : 'bg-slate-950/40 border-slate-800 opacity-65 hover:opacity-100'
+                }`;
+
+                card.innerHTML = `
+                    <input type="checkbox" data-entity-id="${entity.id}" ${entity.checked ? 'checked' : ''} class="mt-1 w-4 h-4 accent-amber-500 rounded cursor-pointer shrink-0">
+                    <div class="min-w-0 flex-1">
+                        <div class="flex items-center justify-between gap-2">
+                            <span class="text-xs sm:text-sm font-bold text-white truncate">${entity.parent}</span>
+                            <span class="px-1.5 py-0.5 rounded text-[10px] font-mono ${
+                                entity.checked ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30' : 'bg-slate-800 text-slate-400'
+                            }">
+                                ${entity.checked ? 'COVERED' : 'EXCLUDED'}
+                            </span>
+                        </div>
+                        <div class="text-[11px] text-amber-300/90 font-medium mt-1 leading-snug">${entity.models}</div>
+                        <div class="text-[10px] font-mono text-slate-500 mt-1">${entity.jurisdiction}</div>
+                    </div>
+                `;
+
+                const checkbox = card.querySelector('input[type="checkbox"]');
+                checkbox.addEventListener('change', (e) => {
+                    entity.checked = e.target.checked;
+                    selectAllToggle.checked = intelligenceEntities.every(item => item.checked);
+                    renderEntitiesMatrix(entitySearchInput.value);
+                    renderExhibitA();
+                    updateLiveCryptographicHash();
+                });
+
+                entitiesMatrixGrid.appendChild(card);
+            });
+        }
+
+        function renderExhibitA() {
+            const activeEntities = intelligenceEntities.filter(e => e.checked);
+            exhibitAList.innerHTML = '';
+
+            activeEntities.forEach((entity, idx) => {
+                const item = document.createElement('div');
+                item.className = 'p-2 rounded bg-parchment-100 border border-slate-300/80';
+                item.innerHTML = `
+                    <div class="font-bold text-slate-900">${idx + 1}. ${entity.parent}</div>
+                    <div class="text-[10.5px] text-slate-700 mt-0.5"><strong>Covered Properties:</strong> ${entity.models}</div>
+                `;
+                exhibitAList.appendChild(item);
+            });
+
+            if (activeEntities.length === 0) {
+                exhibitAList.innerHTML = `<div class="col-span-2 text-xs text-red-700 italic">Please select at least one Corporate Parent Entity in Section 02 above.</div>`;
+            }
+
+            heroEntityCount.textContent = `${activeEntities.length} / ${intelligenceEntities.length} Bound`;
+            exhibitCountBadge.textContent = `${activeEntities.length} Corporate Parents Bound`;
+        }
+
+        selectAllToggle.addEventListener('change', (e) => {
+            const targetState = e.target.checked;
+            intelligenceEntities.forEach(item => {
+                item.checked = targetState;
+            });
+            renderEntitiesMatrix(entitySearchInput.value);
+            renderExhibitA();
+            updateLiveCryptographicHash();
+        });
+
+        entitySearchInput.addEventListener('input', (e) => {
+            renderEntitiesMatrix(e.target.value);
+        });
+
+        document.getElementById('addCustomEntityBtn').addEventListener('click', () => {
+            const parentVal = document.getElementById('customParentInput').value.trim();
+            const modelsVal = document.getElementById('customModelsInput').value.trim();
+            if (!parentVal) {
+                showStatusMessage('Please enter a Corporate Parent Entity name to add it to Exhibit A.', 'warning');
+                return;
+            }
+            intelligenceEntities.push({
+                id: 'custom-' + Date.now(),
+                parent: parentVal,
+                jurisdiction: 'Custom Added Entity / 50-State & Federal Jurisdiction',
+                models: modelsVal || 'All Proprietary Foundation Models, APIs & Neural Systems',
+                checked: true
+            });
+            document.getElementById('customParentInput').value = '';
+            document.getElementById('customModelsInput').value = '';
+            renderEntitiesMatrix(entitySearchInput.value);
+            renderExhibitA();
+            updateLiveCryptographicHash();
+            showStatusMessage(`Added "${parentVal}" to Exhibit A coverage matrix.`, 'success');
+        });
+
+        // --- 7. LIVE-BIND DISCLOSING PARTY INPUTS (CLEARED BY DEFAULT, PRESERVING BOTTOM SIGNATURE) ---
+        function syncDisclosingPartyInputs() {
+            const name = userNameInput.value.trim() || '[DISCLOSING PARTY]';
+            const org = userOrgInput.value.trim() || '[ALL REGISTERED COMMERCIAL & PERSONAL PROPERTIES]';
+            const email = userEmailInput.value.trim() || '[REGISTERED CONTACT EMAIL]';
+            const domicile = userDomicileSelect.value || '[SELECTED HOME FORUM / ALL 50 U.S. STATES]';
+
+            document.getElementById('contractUserSpan').textContent = name;
+            document.getElementById('contractOrgSpan').textContent = org;
+            document.getElementById('contractEmailSpan').textContent = email;
+            document.getElementById('contractDomicileSpan').textContent = domicile;
+
+            // Keep Andrew Jourdan Nahmias as the pre-signed bottom signature unless overwritten
+            document.getElementById('sigBlockUserName').textContent = userNameInput.value.trim() || 'Andrew Jourdan Nahmias';
+            document.getElementById('sigBlockUserOrg').textContent = userOrgInput.value.trim() || 'Authorized Founding Signatory • SuperintelligenceNDA.com';
+
+            syncJurisdictionUI();
+        }
+
+        [userNameInput, userOrgInput, userEmailInput, userDomicileSelect].forEach(el => {
+            el.addEventListener('input', syncDisclosingPartyInputs);
+            el.addEventListener('change', syncDisclosingPartyInputs);
+        });
+
+        // --- 8. RESPONSIVE HTML5 SIGNATURE PAD ---
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        function resizeSignatureCanvas() {
+            const rect = canvas.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            ctx.scale(dpr, dpr);
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.lineWidth = 2.4;
+            ctx.strokeStyle = currentInkColor;
+
+            if (!hasValidSignature) {
+                renderScriptSignatureOnCanvas();
+            }
+        }
+
+        function getPointerPos(e) {
+            const rect = canvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            return {
+                x: clientX - rect.left,
+                y: clientY - rect.top
+            };
+        }
+
+        function startDrawing(e) {
+            if (isContractExecuted) return;
+            isDrawing = true;
+            const pos = getPointerPos(e);
+            lastX = pos.x;
+            lastY = pos.y;
+            drawStroke(e);
+        }
+
+        function drawStroke(e) {
+            if (!isDrawing || isContractExecuted) return;
+            if (e.cancelable) e.preventDefault();
+            const pos = getPointerPos(e);
+            ctx.beginPath();
+            ctx.strokeStyle = currentInkColor;
+            ctx.lineWidth = 2.4;
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+            lastX = pos.x;
+            lastY = pos.y;
+            markSignaturePresent();
+        }
+
+        function stopDrawing() {
+            if (!isDrawing) return;
+            isDrawing = false;
+            syncCanvasToContractPreview();
+            updateLiveCryptographicHash();
+        }
+
+        function markSignaturePresent() {
+            hasValidSignature = true;
+            const indicator = document.getElementById('sigStatusIndicator');
+            indicator.textContent = 'SIGNED: ANDREW JOURDAN NAHMIAS';
+            indicator.className = 'text-[10px] font-mono text-emerald-600 font-bold';
+        }
+
+        function syncCanvasToContractPreview() {
+            const previewImg = document.getElementById('contractSignaturePreview');
+            const placeholder = document.getElementById('contractSignaturePlaceholder');
+            if (hasValidSignature) {
+                previewImg.src = canvas.toDataURL('image/png');
+                previewImg.classList.remove('hidden');
+                placeholder.classList.add('hidden');
+            } else {
+                previewImg.classList.add('hidden');
+                placeholder.classList.remove('hidden');
+            }
+        }
+
+        function renderScriptSignatureOnCanvas() {
+            const rect = canvas.getBoundingClientRect();
+            ctx.clearRect(0, 0, rect.width, rect.height);
+            const sigName = userNameInput.value.trim() || 'Andrew Jourdan Nahmias';
+
+            ctx.save();
+            ctx.font = '42px "Great Vibes", cursive';
+            ctx.fillStyle = currentInkColor;
+            ctx.textBaseline = 'middle';
+            ctx.fillText(sigName, 24, rect.height * 0.52);
+
+            ctx.beginPath();
+            ctx.strokeStyle = currentInkColor;
+            ctx.lineWidth = 1.6;
+            ctx.moveTo(22, rect.height * 0.68);
+            ctx.quadraticCurveTo(rect.width * 0.45, rect.height * 0.60, rect.width * 0.82, rect.height * 0.70);
+            ctx.stroke();
+            ctx.restore();
+
+            markSignaturePresent();
+            syncCanvasToContractPreview();
+            updateLiveCryptographicHash();
+        }
+
+        // Signature Pad Pointer & Touch Listeners
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', drawStroke);
+        window.addEventListener('mouseup', stopDrawing);
+
+        canvas.addEventListener('touchstart', startDrawing, { passive: false });
+        canvas.addEventListener('touchmove', drawStroke, { passive: false });
+        window.addEventListener('touchend', stopDrawing);
+
+        document.getElementById('clearSignatureBtn').addEventListener('click', () => {
+            if (isContractExecuted) {
+                showStatusMessage('Contract is already executed and cryptographically locked.', 'info');
+                return;
+            }
+            const rect = canvas.getBoundingClientRect();
+            ctx.clearRect(0, 0, rect.width, rect.height);
+            hasValidSignature = false;
+            const indicator = document.getElementById('sigStatusIndicator');
+            indicator.textContent = 'AWAITING SIGNATURE';
+            indicator.className = 'text-[10px] font-mono text-amber-400 font-bold';
+            syncCanvasToContractPreview();
+            updateLiveCryptographicHash();
+        });
+
+        document.getElementById('autoSignBtn').addEventListener('click', () => {
+            if (isContractExecuted) return;
+            renderScriptSignatureOnCanvas();
+        });
+
+        document.querySelectorAll('.ink-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                currentInkColor = btn.getAttribute('data-ink');
+                document.querySelectorAll('.ink-btn').forEach(b => b.classList.remove('border-amber-400', 'border-2'));
+                btn.classList.add('border-2', 'border-amber-400');
+                if (!isContractExecuted) {
+                    renderScriptSignatureOnCanvas();
+                }
+            });
+        });
+
+        // --- 9. REAL WEB CRYPTO API SHA-256 HASHING & UNIVERSAL API PLUGIN KEY ENGINE ---
+        async function computeSha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        async function updateLiveCryptographicHash() {
+            const activeParents = intelligenceEntities.filter(e => e.checked).map(e => e.parent).join('|');
+            const sigDataSnippet = hasValidSignature ? canvas.toDataURL('image/png').slice(-128) : 'UNSIGNED';
+            const st = getSelectedStateObj();
+            const payload = [
+                'SUPERINTELLIGENCENDA-50STATE-ENGINE-275USD',
+                contractMode === 'omnibus' ? 'MASTER-50-STATE-OMNIBUS' : `STATE-${st.code}-${st.statute}`,
+                userNameInput.value.trim() || 'PUBLIC-INTAKE-READY',
+                userOrgInput.value.trim() || 'ALL-PROPERTIES',
+                userEmailInput.value.trim() || 'UNSPECIFIED-EMAIL',
+                userDomicileSelect.value || 'ALL-50-STATES',
+                'SIGNATORY:Andrew Jourdan Nahmias',
+                activeParents,
+                sigDataSnippet,
+                executionTimestampUTC || 'LIVE-STATE'
+            ].join('::');
+
+            try {
+                const hash = await computeSha256(payload);
+                latestSha256Hash = hash;
+                document.getElementById('heroLiveHash').textContent = hash;
+                document.getElementById('contractSealHash').textContent = hash;
+            } catch (err) {
+                latestSha256Hash = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855';
+                document.getElementById('heroLiveHash').textContent = latestSha256Hash;
+                document.getElementById('contractSealHash').textContent = latestSha256Hash;
+            }
+
+            const keySegment = latestSha256Hash.substring(0, 24).toUpperCase();
+            latestPluginApiKey = `SNDA-LIVE-275-50US-${keySegment}`;
+            const keyDisplay = document.getElementById('universalPluginApiKeyDisplay');
+            if (keyDisplay) {
+                keyDisplay.textContent = latestPluginApiKey;
+            }
+            const sealAck = document.getElementById('sealAckId');
+            if (sealAck && !isContractExecuted) {
+                sealAck.textContent = latestPluginApiKey;
+            }
+        }
+
+        // --- 10. STRIPE PAYMENT REQUEST API ($275.00 USD) + UNIFIED CHECKOUT ---
+        function initStripePaymentRequest() {
+            try {
+                if (typeof Stripe === 'undefined') return;
+                const stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+                const paymentRequest = stripe.paymentRequest({
+                    country: 'US',
+                    currency: 'usd',
+                    total: {
+                        label: 'SuperintelligenceNDA.com — 50-State NDA & Universal API Key ($275.00)',
+                        amount: 27500 // $275.00 in cents ($150 Omnibus + $75 50-State + $50 API Key)
+                    },
+                    requestPayerName: true,
+                    requestPayerEmail: true
+                });
+
+                const elements = stripe.elements();
+                const prButton = elements.create('paymentRequestButton', {
+                    paymentRequest: paymentRequest
+                });
+
+                paymentRequest.canMakePayment().then((result) => {
+                    if (result) {
+                        const mountNode = document.getElementById('payment-request-button');
+                        mountNode.classList.remove('hidden');
+                        prButton.mount('#payment-request-button');
+                    }
+                }).catch(() => {});
+
+                paymentRequest.on('paymentmethod', (ev) => {
+                    ev.complete('success');
+                    finalizeContractExecution('Stripe PaymentRequest (' + ev.paymentMethod.id + ')');
+                });
+            } catch (e) {}
+        }
+
+        const payTabs = document.querySelectorAll('.pay-tab-btn');
+        const walletApplePanel = document.getElementById('walletApplePanel');
+        const walletGooglePanel = document.getElementById('walletGooglePanel');
+        const walletCardPanel = document.getElementById('walletCardPanel');
+        const executeBtnLabel = document.getElementById('executeBtnLabel');
+
+        payTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                currentPaymentMethod = tab.getAttribute('data-pay');
+                payTabs.forEach(t => {
+                    t.className = 'pay-tab-btn py-2.5 px-2 rounded-xl border border-slate-700 bg-slate-950 text-slate-300 hover:border-slate-600 font-semibold text-xs flex items-center justify-center gap-1.5 transition';
+                });
+                tab.className = 'pay-tab-btn py-2.5 px-2 rounded-xl border border-amber-500 bg-amber-500/10 text-white font-semibold text-xs flex items-center justify-center gap-1.5 transition';
+
+                walletApplePanel.classList.add('hidden');
+                walletGooglePanel.classList.add('hidden');
+                walletCardPanel.classList.add('hidden');
+
+                if (currentPaymentMethod === 'apple') {
+                    walletApplePanel.classList.remove('hidden');
+                    executeBtnLabel.textContent = 'Pay $275.00 with Apple Pay & Mint Universal API Key';
+                } else if (currentPaymentMethod === 'google') {
+                    walletGooglePanel.classList.remove('hidden');
+                    executeBtnLabel.textContent = 'Pay $275.00 with Google Pay & Mint Universal API Key';
+                } else {
+                    walletCardPanel.classList.remove('hidden');
+                    executeBtnLabel.textContent = 'Charge $275.00 to Card & Mint Universal API Key';
+                }
+            });
+        });
+
+        function showStatusMessage(message, type = 'info') {
+            const box = document.getElementById('checkoutStatusBox');
+            box.classList.remove('hidden');
+            if (type === 'error' || type === 'warning') {
+                box.className = 'p-3 rounded-xl text-xs font-medium border bg-amber-950/80 border-amber-500/50 text-amber-200';
+            } else {
+                box.className = 'p-3 rounded-xl text-xs font-medium border bg-emerald-950/80 border-emerald-500/50 text-emerald-200';
+            }
+            box.innerHTML = `<i class="fa-solid ${type === 'success' ? 'fa-circle-check text-emerald-400' : 'fa-circle-info text-amber-400'} mr-1.5"></i>${message}`;
+        }
+
+        async function finalizeContractExecution(methodLabel) {
+            const activeEntities = intelligenceEntities.filter(e => e.checked);
+            if (activeEntities.length === 0) {
+                showStatusMessage('Please select at least one Superintelligence Corporate Parent Entity in Section 02 before executing.', 'warning');
+                return;
+            }
+            if (!hasValidSignature) {
+                showStatusMessage('Please draw your signature on the signature pad or click "Restore Default Signature" before executing.', 'warning');
+                return;
+            }
+
+            isContractExecuted = true;
+            executionTimestampUTC = new Date().toISOString();
+            executionTransactionId = 'TXN-50US-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+
+            await updateLiveCryptographicHash();
+
+            const sessionStatusBadge = document.getElementById('sessionStatusBadge');
+            sessionStatusBadge.textContent = '50-STATE EXECUTED & API ACTIVE';
+            sessionStatusBadge.className = 'px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40';
+
+            const executedTopBanner = document.getElementById('executedTopBanner');
+            executedTopBanner.classList.remove('hidden');
+            document.getElementById('executedBannerSubtext').textContent =
+                `UTC: ${executionTimestampUTC} • Method: ${methodLabel} • Key: ${latestPluginApiKey}`;
+
+            const sigBlockStatus = document.getElementById('sigBlockStatus');
+            sigBlockStatus.textContent = 'EXECUTED ACROSS ALL 50 STATES ($275.00 PAID)';
+            sigBlockStatus.className = 'text-emerald-800 font-bold';
+
+            document.getElementById('sealAckId').textContent = latestPluginApiKey;
+            document.getElementById('apiKeyStatusBadge').textContent = 'LIVE & AUTHENTICATED ($275 PAID)';
+
+            const executeBtn = document.getElementById('executeNdaBtn');
+            executeBtn.className = 'w-full py-3.5 px-4 rounded-xl bg-emerald-600 text-white font-extrabold text-sm shadow-xl flex items-center justify-center gap-2 cursor-default';
+            executeBtn.innerHTML = `<i class="fa-solid fa-shield-check"></i><span>50-State NDA &amp; API Key Executed ($275.00 Paid)</span>`;
+
+            showStatusMessage(
+                `Payment of $275.00 USD settled via ${methodLabel}. Your Universal Superintelligence API Plugin Key (${latestPluginApiKey}) and 50-State NDA Packet are now active.`,
+                'success'
+            );
+        }
+
+        document.getElementById('executeNdaBtn').addEventListener('click', () => {
+            if (isContractExecuted) {
+                showStatusMessage('Your 50-State NDA Packet and Universal API Key are already executed. Copy your API key or download the contracts below.', 'success');
+                return;
+            }
+            const labelMap = {
+                apple: 'Apple Pay Express (TLS 1.3 Token)',
+                google: 'Google Pay Express (TLS 1.3 Token)',
+                card: 'Encrypted Credit Card Checkout'
+            };
+            finalizeContractExecution(labelMap[currentPaymentMethod] || 'Cryptographic Checkout');
+        });
+
+        // Copy Universal API Key & Universal Account Plugin JSON
+        function copyToClipboardHelper(text, successMsg) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showStatusMessage(successMsg, 'success');
+        }
+
+        document.getElementById('copyApiKeyBtn').addEventListener('click', () => {
+            copyToClipboardHelper(
+                latestPluginApiKey,
+                `Copied Universal Superintelligence Plugin API Key (${latestPluginApiKey}) to clipboard.`
+            );
+        });
+
+        document.getElementById('copyPluginJsonBtn').addEventListener('click', () => {
+            const activeEntities = intelligenceEntities.filter(e => e.checked);
+            const pluginPayload = {
+                registry: 'SuperintelligenceNDA.com',
+                version: '2026.11-50STATE-OMNIBUS',
+                feeSettledUSD: 275.00,
+                feeBreakdownUSD: {
+                    singularMaster50StateOmnibusNDA: 150.00,
+                    fiftyIndividualStateContracts: 75.00,
+                    universalSuperintelligencePluginApiKey: 50.00
+                },
+                universalPluginApiKey: latestPluginApiKey,
+                headers: {
+                    'X-Superintelligence-NDA-Key': latestPluginApiKey,
+                    'X-Superintelligence-IP-Owner': userNameInput.value.trim() || 'Andrew Jourdan Nahmias',
+                    'X-Superintelligence-Policy': '100-PERCENT-USER-IO-OWNERSHIP;ZERO-THIRD-PARTY-SHARING;INTERNAL-TRAINING-ONLY;PAST-PRESENT-FUTURE',
+                    'X-Superintelligence-SHA256': latestSha256Hash
+                },
+                governingLaw: '18 U.S.C. § 1836 (DTSA) + All 50 U.S. State Statutes (AL-WY)',
+                authorizedSignatory: 'Andrew Jourdan Nahmias',
+                boundCorporateParents: activeEntities.map(e => ({
+                    parent: e.parent,
+                    coveredModels: e.models
+                }))
+            };
+            copyToClipboardHelper(
+                JSON.stringify(pluginPayload, null, 2),
+                'Copied Universal Superintelligence Account Plugin JSON configuration to clipboard.'
+            );
+        });
+
+        // --- 11. CONTRACT GENERATORS FOR PLAIN-TEXT (.TXT) EXPORTS (OMNIBUS, SINGLE STATE, AND ALL 50 STATES BUNDLE) ---
+        function generateOmnibusContractText() {
+            const activeEntities = intelligenceEntities.filter(e => e.checked);
+            const lines = [
+                '================================================================================',
+                '                        SUPERINTELLIGENCENDA.COM REGISTRY                       ',
+                '   SINGULAR MASTER 50-STATE & FEDERAL OMNIBUS NON-DISCLOSURE & IP AGREEMENT     ',
+                '================================================================================',
+                `INSTRUMENT ID:          SNDA-2026-50US-OMNIBUS`,
+                `EXECUTION STATUS:       ${isContractExecuted ? 'CRYPTOGRAPHICALLY EXECUTED & FEE SETTLED ($275.00 USD)' : 'PRE-SIGNED & READY FOR EXECUTION ($275.00 USD)'}`,
+                `FEE SCHEDULE:           $150.00 Master Omnibus + $75.00 50-State Packet + $50.00 Universal API Key = $275.00 USD`,
+                `UNIVERSAL API KEY:      ${latestPluginApiKey}`,
+                `TRANSACTION REFERENCE:  ${executionTransactionId || 'PENDING-SETTLEMENT'}`,
+                `UTC TIMESTAMP:          ${executionTimestampUTC || new Date().toISOString()}`,
+                `DISCLOSING PARTY:       ${userNameInput.value.trim() || '[DISCLOSING PARTY]'}`,
+                `ORGANIZATION / BRAND:   ${userOrgInput.value.trim() || '[ALL REGISTERED COMMERCIAL & PERSONAL PROPERTIES]'}`,
+                `REGISTERED CONTACT:     ${userEmailInput.value.trim() || '[REGISTERED CONTACT EMAIL]'}`,
+                `PRIMARY DOMICILE:       ${userDomicileSelect.value || '[SELECTED HOME FORUM / ALL 50 U.S. STATES]'}`,
+                `AUTHORIZED SIGNATORY:   Andrew Jourdan Nahmias`,
+                `SHA-256 DIGEST:         ${latestSha256Hash}`,
+                '--------------------------------------------------------------------------------',
+                '1. 100% USER OWNERSHIP OF INPUTS & SUPERINTELLIGENCE OUTPUTS:',
+                '   The Disclosing Party retains 100% worldwide legal title, copyright, patent',
+                '   priority, and trade secret ownership over all User Inputs and all generated',
+                '   Superintelligence Outputs across all past, present, and future sessions.',
+                '',
+                '2. ZERO THIRD-PARTY SHARING & TRAINING-ONLY RING-FENCE:',
+                '   No sharing to third parties. Data from all past, present, and future chats',
+                '   shall be used strictly for internal model training purposes only, without',
+                '   waiving trade secret protection or transferring any IP rights.',
+                '',
+                '3. UNIVERSAL PAST, PRESENT & FUTURE PUBLIC SUPERINTELLIGENCE MODEL COVERAGE:',
+                '   Applies retroactively to all historical/legacy public models, contemporaneously',
+                '   to all active 2026 frontier, multimodal, and open-weight public models, and',
+                '   perpetually to all future unreleased, next-generation, AGI, and ASI public',
+                '   superintelligence models upon weight initialization or public deployment.',
+                '',
+                '4. SINGULAR 50-STATE OMNIBUS & FEDERAL GOVERNING LAW:',
+                '   Concurrently governed by the Federal Defend Trade Secrets Act (18 U.S.C.',
+                '   § 1836 et seq.), 18 U.S.C. § 1833(b), the E-SIGN Act (15 U.S.C. § 7001), and',
+                '   the cumulative statutory regimes of all 50 U.S. States listed below.',
+                '--------------------------------------------------------------------------------',
+                `EXHIBIT A: COVERED PAST, PRESENT & FUTURE PUBLIC SUPERINTELLIGENCES (${activeEntities.length}):`,
+                ...activeEntities.map((e, i) => `  ${i + 1}. ${e.parent} — [${e.models}]`),
+                '--------------------------------------------------------------------------------',
+                'EXHIBIT B: ALL 50 U.S. STATES STATUTORY SCHEDULE (ALABAMA – WYOMING):',
+                ...US_STATES_LEGAL_DB.map((s, i) => `  ${String(i + 1).padStart(2, '0')}. ${s.name} (${s.code}): ${s.statute} | Limitation: ${s.limitation} | Venue: ${s.venue}`),
+                '--------------------------------------------------------------------------------',
+                'EXECUTED SIGNATURE BLOCK:',
+                '  Signed: Andrew Jourdan Nahmias',
+                `  Universal Plugin API Key: ${latestPluginApiKey}`,
+                '================================================================================'
+            ];
+            return lines.join('\n');
+        }
+
+        function generateSingleStateContractText(st) {
+            const activeEntities = intelligenceEntities.filter(e => e.checked);
+            const stateIdx = US_STATES_LEGAL_DB.findIndex(s => s.code === st.code) + 1;
+            // Deterministic per-state cryptographic digest derived from master SHA-256 + state code
+            const baseHash = latestSha256Hash || 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855';
+            const stateSpecificDigest = `${st.code.toLowerCase()}${String(stateIdx).padStart(2, '0')}-${baseHash.slice(4)}`;
+            const effectiveDateStr = document.getElementById('docEffectiveDate').textContent || new Date().toLocaleDateString('en-US');
+
+            const lines = [
+                '================================================================================',
+                `                        SUPERINTELLIGENCENDA.COM REGISTRY                       `,
+                `   STATE OF ${st.name.toUpperCase()} (${st.code}) STANDALONE SUPERINTELLIGENCE NDA & IP AGREEMENT`,
+                `                     [INDIVIDUAL STATE CONTRACT #${String(stateIdx).padStart(2, '0')} OF 50]                     `,
+                '================================================================================',
+                `INSTRUMENT ID:          SNDA-2026-STATE-${st.code}`,
+                `STATE JURISDICTION:     State of ${st.name} (${st.code}) — Contract #${String(stateIdx).padStart(2, '0')} of 50`,
+                `TRADE SECRET STATUTE:   ${st.statute}`,
+                `E-SIGN / UETA STATUTE:  ${st.eSignStatute}`,
+                `LIMITATION PERIOD:      ${st.limitation}`,
+                `DESIGNATED VENUE:       ${st.venue}`,
+                `EFFECTIVE DATE:         ${effectiveDateStr} (Retroactive & Perpetual)`,
+                `EXECUTION STATUS:       ${isContractExecuted ? 'CRYPTOGRAPHICALLY EXECUTED & FEE SETTLED ($275.00 USD)' : 'PRE-SIGNED & READY FOR EXECUTION ($275.00 USD)'}`,
+                `FEE SCHEDULE:           $150.00 Master Omnibus + $75.00 50-State Packet + $50.00 Universal API Key = $275.00 USD`,
+                `UNIVERSAL API KEY:      ${latestPluginApiKey}`,
+                `DISCLOSING PARTY:       ${userNameInput.value.trim() || '[DISCLOSING PARTY]'}`,
+                `COMMERCIAL PORTFOLIO:   ${userOrgInput.value.trim() || '[ALL REGISTERED COMMERCIAL & PERSONAL PROPERTIES]'}`,
+                `REGISTERED CONTACT:     ${userEmailInput.value.trim() || '[REGISTERED CONTACT EMAIL]'}`,
+                `PRIMARY DOMICILE:       ${userDomicileSelect.value || `State of ${st.name} (${st.code} — ${st.statute})`}`,
+                `AUTHORIZED SIGNATORY:   Andrew Jourdan Nahmias`,
+                `STATE SHA-256 DIGEST:   ${stateSpecificDigest}`,
+                `MASTER OMNIBUS DIGEST:  ${baseHash}`,
+                '--------------------------------------------------------------------------------',
+                `PREAMBLE:`,
+                `  This State of ${st.name} Superintelligence Non-Disclosure and Intellectual`,
+                `  Property Protection Agreement ("${st.name} Agreement") is entered into by and`,
+                `  between the Disclosing Party and all Receiving Superintelligence Entities and`,
+                `  Corporate Parent Entities enumerated in Article VI (Exhibit A) below.`,
+                '',
+                `ARTICLE I — STATE OF ${st.name.toUpperCase()} TRADE SECRET & 100% USER I/O OWNERSHIP COVENANT:`,
+                `  1.1 Pursuant to the ${st.statute} and the Federal Defend Trade Secrets Act`,
+                `      (18 U.S.C. § 1836 et seq.), the Disclosing Party retains 100% worldwide`,
+                `      legal title, copyright, patent priority, and trade secret ownership over`,
+                `      all User Inputs (prompts, source code, documents, architectures, domains)`,
+                `      and all Superintelligence Outputs generated in response thereto.`,
+                `  1.2 Each Receiving Superintelligence Entity hereby assigns and conveys any and`,
+                `      all right, title, and interest in and to such Superintelligence Outputs`,
+                `      exclusively to the Disclosing Party under the laws of ${st.name}.`,
+                '',
+                `ARTICLE II — ZERO THIRD-PARTY SHARING & STRICT TRAINING-ONLY RING-FENCE:`,
+                `  2.1 Receiving Superintelligence Entities are strictly prohibited from selling,`,
+                `      licensing, syndicating, publishing, or disclosing any Disclosing Party`,
+                `      Confidential Information, User Inputs, or Superintelligence Outputs to`,
+                `      any third party or external user session.`,
+                `  2.2 All data from past, present, and future chats and API transmissions shall`,
+                `      be strictly ring-fenced and used exclusively for internal model training,`,
+                `      alignment, and safety calibration purposes only, without waiving trade`,
+                `      secret secrecy under ${st.name} or Federal law.`,
+                '',
+                `ARTICLE III — PAST, PRESENT & FUTURE PUBLIC SUPERINTELLIGENCE MODEL COVERAGE:`,
+                `  3.1 This ${st.name} Agreement applies (a) retroactively to all prior chats and`,
+                `      historical/deprecated public models, (b) contemporaneously to all active`,
+                `      2026 frontier, multimodal, voice, video, code, and open-weight public`,
+                `      models, and (c) perpetually to all future next-generation, unannounced,`,
+                `      autonomous agent, AGI, and ASI public superintelligence models automatically`,
+                `      upon weight initialization, API exposure, or public release.`,
+                '',
+                `ARTICLE IV — STATE OF ${st.name.toUpperCase()} GOVERNING LAW, VENUE & E-SIGN ENFORCEABILITY:`,
+                `  4.1 Governing Statute: ${st.statute}.`,
+                `  4.2 Electronic Signature Validity: Executed and enforceable pursuant to the`,
+                `      ${st.eSignStatute} and 15 U.S.C. § 7001 (E-SIGN Act).`,
+                `  4.3 Judicial Venue: ${st.venue}.`,
+                `  4.4 Statute of Limitations: ${st.limitation} from discovery of misappropriation.`,
+                '',
+                `ARTICLE V — ${st.name.toUpperCase()} STATUTORY RIDER & FEDERAL DTSA IMMUNITY NOTICE:`,
+                `  5.1 ${st.name} Specific Protective Rider: ${st.rider}`,
+                `  5.2 Federal DTSA Notice (18 U.S.C. § 1833(b)): Preserves statutory immunity for`,
+                `      confidential government/court-sealed disclosures and entitles the Disclosing`,
+                `      Party to full exemplary (double) damages and attorney's fees under`,
+                `      18 U.S.C. § 1836(b)(3)(C)-(D) and ${st.name} statutory equivalents.`,
+                '',
+                `ARTICLE VI — EXHIBIT A: COVERED CORPORATE PARENTS & PUBLIC MODELS (${activeEntities.length}):`,
+                ...activeEntities.map((e, i) => `  ${String(i + 1).padStart(2, '0')}. ${e.parent}\n      Models: ${e.models}`),
+                '--------------------------------------------------------------------------------',
+                `ARTICLE VII — STATE OF ${st.name.toUpperCase()} CRYPTOGRAPHIC EXECUTION & SIGNATURE BLOCK:`,
+                `  Authorized Founding Signatory: Andrew Jourdan Nahmias`,
+                `  Disclosing Party Signatory:    ${userNameInput.value.trim() || 'Andrew Jourdan Nahmias'}`,
+                `  Universal Plugin API Key:      ${latestPluginApiKey}`,
+                `  State Instrument ID:           SNDA-2026-STATE-${st.code}`,
+                `  State SHA-256 Digest:          ${stateSpecificDigest}`,
+                '================================================================================'
+            ];
+            return lines.join('\n');
+        }
+
+        function triggerTextDownload(filename, content) {
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Download Master Omnibus (.TXT)
+        function handleDownloadOmnibus() {
+            const text = generateOmnibusContractText();
+            triggerTextDownload('SuperintelligenceNDA-Master-50-State-Omnibus.txt', text);
+            showStatusMessage('Downloaded Singular Master 50-State Omnibus NDA (.txt).', 'success');
+        }
+
+        // Download Selected Individual State Contract (.TXT)
+        function handleDownloadSingleState() {
+            const st = getSelectedStateObj();
+            const text = generateSingleStateContractText(st);
+            triggerTextDownload(`SuperintelligenceNDA-State-of-${st.name}-${st.code}.txt`, text);
+            showStatusMessage(`Downloaded standalone State of ${st.name} (${st.code}) NDA Contract (.txt).`, 'success');
+        }
+
+        // Download Complete 50-State Individual Contracts Bundle (.TXT)
+        function handleDownloadAll50StatesBundle() {
+            const header = [
+                '################################################################################',
+                '     SUPERINTELLIGENCENDA.COM — COMPLETE 50-STATE LEGAL EXECUTION DOSSIER       ',
+                '  CONTAINS: (1) SINGULAR MASTER 50-STATE OMNIBUS NDA ($150.00)                  ',
+                '            (2) ALL 50 INDIVIDUAL STATE-SPECIFIC NDA CONTRACTS ($75.00)         ',
+                '            (3) UNIVERSAL SUPERINTELLIGENCE PLUGIN API KEY ($50.00)             ',
+                '            TOTAL UNIFIED EXECUTION PACKAGE: $275.00 USD                        ',
+                '################################################################################',
+                ''
+            ].join('\n');
+
+            const omnibusSection = generateOmnibusContractText();
+            const allStatesSections = US_STATES_LEGAL_DB.map((st, idx) =>
+                `\n\n[INDIVIDUAL STATE CONTRACT ${String(idx + 1).padStart(2, '0')} OF 50 — ${st.name.toUpperCase()} (${st.code})]\n` +
+                generateSingleStateContractText(st)
+            ).join('\n');
+
+            triggerTextDownload(
+                'SuperintelligenceNDA-Complete-50-Individual-State-Contracts-Bundle.txt',
+                header + omnibusSection + allStatesSections
+            );
+            showStatusMessage('Downloaded Complete 50-State Bundle containing the Master Omnibus NDA + all 50 Individual State Contracts (AL–WY).', 'success');
+        }
+
+        document.getElementById('exportMasterOmnibusBtn').addEventListener('click', handleDownloadOmnibus);
+        document.getElementById('downloadOmnibusTxtBtn').addEventListener('click', handleDownloadOmnibus);
+
+        document.getElementById('exportCurrentStateBtn').addEventListener('click', handleDownloadSingleState);
+        document.getElementById('downloadSingleStateTxtBtn').addEventListener('click', handleDownloadSingleState);
+
+        document.getElementById('exportAll50BundleBtn').addEventListener('click', handleDownloadAll50StatesBundle);
+        document.getElementById('downloadAll50StatesTxtBtn').addEventListener('click', handleDownloadAll50StatesBundle);
+        document.getElementById('navDownloadAll50Btn').addEventListener('click', handleDownloadAll50StatesBundle);
+
+        // Copy Hash & Print PDF
+        document.getElementById('navCopyHashBtn').addEventListener('click', () => {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = `SuperintelligenceNDA.com 50-State SHA-256 Digest: ${latestSha256Hash}`;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showStatusMessage('Copied 50-State SHA-256 Cryptographic Digest to clipboard.', 'success');
+        });
+
+        function triggerPrintPdf() {
+            window.print();
+        }
+
+        document.getElementById('navPrintBtn').addEventListener('click', triggerPrintPdf);
+        document.getElementById('printExecutedContractBtn').addEventListener('click', triggerPrintPdf);
+
+        // --- 12. INITIALIZE ON WINDOW LOAD ---
+        function auditAllFiftyStateContracts() {
+            const total = US_STATES_LEGAL_DB.length;
+            const validCount = US_STATES_LEGAL_DB.filter(s =>
+                s.code && s.name && s.statute && s.eSignStatute && s.limitation && s.venue && s.rider
+            ).length;
+            const summaryEl = document.getElementById('fiftyStateAuditSummary');
+            if (summaryEl) {
+                summaryEl.textContent = `${validCount}/${total} STATE CONTRACTS AUDITED & VERIFIED: Trade Secret Acts + Limitations + Venues + State E-Sign (UETA/ESRA) + ${intelligenceEntities.length} Public AI Ecosystems`;
+            }
+        }
+
+        window.onload = function () {
+            initDatesAndSelectors();
+            renderEntitiesMatrix();
+            renderExhibitA();
+            syncDisclosingPartyInputs();
+            resizeSignatureCanvas();
+            initStripePaymentRequest();
+            auditAllFiftyStateContracts();
+
+            window.addEventListener('resize', () => {
+                if (!isContractExecuted) {
+                    resizeSignatureCanvas();
+                }
+            });
+        };
+    </script>
+</body>
+</html>

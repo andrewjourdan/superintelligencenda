@@ -171,8 +171,8 @@
 
             <!-- Cryptographic Status & Action Controls -->
             <div class="flex items-center gap-2 sm:gap-3">
-                <button id="navCopyHashBtn" type="button" class="px-3 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 text-xs font-medium flex items-center gap-2 transition" title="Copy Live SHA-256 Document Hash">
-                    <i class="fa-solid fa-fingerprint text-amber-400"></i>
+                <button id="navCopyHashBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 text-xs font-medium flex items-center gap-2 transition" title="Copy Live SHA-256 Document Hash">
+                    <i id="navCopyHashBtnLockIcon" class="fa-solid fa-lock" aria-hidden="true"></i>
                     <span class="hidden md:inline">Copy SHA-256</span>
                 </button>
 
@@ -844,12 +844,12 @@
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-2">
-                            <button id="copyApiKeyBtn" type="button" class="py-2 px-2.5 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 text-[11px] font-semibold flex items-center justify-center gap-1.5 transition">
-                                <i class="fa-solid fa-copy"></i>
+                            <button id="copyApiKeyBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="py-2 px-2.5 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 text-[11px] font-semibold flex items-center justify-center gap-1.5 transition">
+                                <i id="copyApiKeyBtnLockIcon" class="fa-solid fa-lock" aria-hidden="true"></i>
                                 <span>Copy API Key</span>
                             </button>
-                            <button id="copyPluginJsonBtn" type="button" class="py-2 px-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-emerald-300 border border-slate-700 text-[11px] font-semibold flex items-center justify-center gap-1.5 transition">
-                                <i class="fa-solid fa-code"></i>
+                            <button id="copyPluginJsonBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="py-2 px-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-emerald-300 border border-slate-700 text-[11px] font-semibold flex items-center justify-center gap-1.5 transition">
+                                <i id="copyPluginJsonBtnLockIcon" class="fa-solid fa-lock" aria-hidden="true"></i>
                                 <span>Copy Account JSON</span>
                             </button>
                         </div>
@@ -1759,14 +1759,16 @@
         let verifiedServiceKey = '';
         let deliveryPolling = false;
 
-        const PAID_EXPORT_BUTTONS = ["paidPdfBundleBtn","navDownloadAll50Btn","navPrintBtn","exportMasterOmnibusBtn","exportCurrentStateBtn","exportAll50BundleBtn","downloadOmnibusTxtBtn","downloadSingleStateTxtBtn","downloadAll50StatesTxtBtn","printExecutedContractBtn"];
+        const PAID_EXPORT_BUTTONS = ["copyApiKeyBtn","copyPluginJsonBtn","navCopyHashBtn","paidPdfBundleBtn","navDownloadAll50Btn","navPrintBtn","exportMasterOmnibusBtn","exportCurrentStateBtn","exportAll50BundleBtn","downloadOmnibusTxtBtn","downloadSingleStateTxtBtn","downloadAll50StatesTxtBtn","printExecutedContractBtn"];
         function setDocumentAccess(allowed) {
             document.documentElement.setAttribute('data-paid-document-access', allowed ? 'true' : 'false');
             PAID_EXPORT_BUTTONS.forEach(id => {
                 const button = document.getElementById(id);
                 button.disabled = !allowed;
                 button.setAttribute('aria-disabled', String(!allowed));
-                button.title = allowed ? 'Payment verified — export available' : 'Complete checkout to unlock printing and downloads';
+                button.title = allowed ? 'Payment verified — action available' : 'Complete checkout to unlock this action';
+                const lockIcon = document.getElementById(id + 'LockIcon');
+                if (lockIcon) lockIcon.className = allowed ? 'fa-solid fa-unlock' : 'fa-solid fa-lock';
             });
         }
         async function requirePaidDocumentAccess() {
@@ -1775,6 +1777,7 @@
                 const response = await orderRequest('/credentials');
                 const credentials = await response.json();
                 if (!credentials.api_key) throw new Error('Payment verification is required before exporting documents.');
+                verifiedServiceKey = credentials.api_key;
                 setDocumentAccess(true);
                 return true;
             } catch (error) {
@@ -1946,11 +1949,13 @@
         }
 
 
-        document.getElementById('copyApiKeyBtn').addEventListener('click', () => {
+        document.getElementById('copyApiKeyBtn').addEventListener('click', async () => {
+            if (!await requirePaidDocumentAccess()) return;
             if (!verifiedServiceKey) { showStatusMessage('Complete checkout and verify payment to receive a service API key.', 'warning'); return; }
             copyToClipboardHelper(verifiedServiceKey, 'Copied your private SuperintelligenceNDA API key.');
         });
-        document.getElementById('copyPluginJsonBtn').addEventListener('click', () => {
+        document.getElementById('copyPluginJsonBtn').addEventListener('click', async () => {
+            if (!await requirePaidDocumentAccess()) return;
             if (!verifiedServiceKey) { showStatusMessage('A verified payment is required for API configuration.', 'warning'); return; }
             copyToClipboardHelper(JSON.stringify(serviceConfig(),null,2), 'Copied your SuperintelligenceNDA API configuration.');
         });
@@ -2172,7 +2177,8 @@
         document.getElementById('navDownloadAll50Btn').addEventListener('click', handleDownloadAll50StatesBundle);
 
         // Copy Hash & Print PDF
-        document.getElementById('navCopyHashBtn').addEventListener('click', () => {
+        document.getElementById('navCopyHashBtn').addEventListener('click', async () => {
+            if (!await requirePaidDocumentAccess()) return;
             const tempInput = document.createElement('textarea');
             tempInput.value = `SuperintelligenceNDA.com 50-State SHA-256 Digest: ${latestSha256Hash}`;
             document.body.appendChild(tempInput);

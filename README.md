@@ -33,3 +33,5 @@ Original project materials are proprietary; third-party components retain their 
 Public intake starts with blank identity fields. Each user's name, commercial brand, contact email, and primary domicile populate the master contract and all 50 individual state templates. Signature blocks use that user's name; no founder name or signature is inserted by default. Enter a name before choosing Auto-Sign, or draw a signature. Existing paid document snapshots remain unchanged.
 
 Run `node payments/per-user.test.mjs` to check blank intake, two separate user identities across all 51 templates, cleared fields, Auto-Sign's name requirement, and frontend JavaScript syntax.
+
+Section 03 (Per-User NDA Requirements) requires a full legal name or legal entity, valid contact email, and primary domicile state before a new checkout can create an order. Brand/domain portfolio remains optional. The per-user test also checks checkout rejection for incomplete details and successful continuation with optional brand details blank.

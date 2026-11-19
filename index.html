@@ -814,10 +814,11 @@
                         <p id="deliveryStatusText" class="text-sm text-slate-300"></p>
                         <div class="flex flex-wrap gap-2">
                             <button id="checkPaymentBtn" type="button" class="px-3 py-2 rounded-lg bg-slate-700 text-white text-xs">Check payment</button>
-                            <button id="paidBundleBtn" disabled type="button" class="px-3 py-2 rounded-lg bg-emerald-600 text-white text-xs disabled:opacity-40">Download saved bundle</button>
+                            <button id="paidBundleBtn" disabled type="button" class="px-3 py-2 rounded-lg bg-emerald-600 text-white text-xs disabled:opacity-40">Download TXT</button>
+                            <button id="paidPdfBundleBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3 py-2 rounded-lg bg-emerald-600 text-white text-xs disabled:opacity-40">Download PDF</button>
                             <button id="saveServiceConfigBtn" disabled type="button" class="px-3 py-2 rounded-lg bg-amber-500 text-slate-950 text-xs disabled:opacity-40">Save private API configuration</button>
                         </div>
-                        <p class="text-xs text-slate-400">Keep this browser's order access and save your private API configuration for future downloads. Delivery is available here after payment verification.</p>
+                        <p class="text-xs text-slate-400">Keep this browser's order access and save your private API configuration for future downloads. PDF and TXT delivery are available here after payment verification.</p>
                     </section>
                     <p class="text-xs text-slate-400">Checkout saves your current document details for delivery. You will return here after payment. Your service API key provides document access on SuperintelligenceNDA only.</p>
                     <!-- CARD 3: UNIVERSAL SUPERINTELLIGENCE PLUGIN API KEY & ACCOUNT CONNECTOR -->
@@ -1758,7 +1759,7 @@
         let verifiedServiceKey = '';
         let deliveryPolling = false;
 
-        const PAID_EXPORT_BUTTONS = ["navDownloadAll50Btn","navPrintBtn","exportMasterOmnibusBtn","exportCurrentStateBtn","exportAll50BundleBtn","downloadOmnibusTxtBtn","downloadSingleStateTxtBtn","downloadAll50StatesTxtBtn","printExecutedContractBtn"];
+        const PAID_EXPORT_BUTTONS = ["paidPdfBundleBtn","navDownloadAll50Btn","navPrintBtn","exportMasterOmnibusBtn","exportCurrentStateBtn","exportAll50BundleBtn","downloadOmnibusTxtBtn","downloadSingleStateTxtBtn","downloadAll50StatesTxtBtn","printExecutedContractBtn"];
         function setDocumentAccess(allowed) {
             document.documentElement.setAttribute('data-paid-document-access', allowed ? 'true' : 'false');
             PAID_EXPORT_BUTTONS.forEach(id => {
@@ -1806,14 +1807,29 @@
             }
             return response;
         }
-        async function downloadPaidBundle(automatic = false) {
+        async function downloadPaidBundle(automatic = false, format = 'txt') {
+            const button = document.getElementById(format === 'pdf' ? 'paidPdfBundleBtn' : 'paidBundleBtn');
+            button.disabled = true;
             try {
                 const response = await orderRequest('/bundle');
-                triggerTextDownload('SuperintelligenceNDA-Paid-Document-Bundle.txt', await response.text());
+                const text = await response.text();
+                if (format === 'pdf') {
+                    deliveryStatus('Preparing your PDF bundle. This can take a moment for all 51 documents.');
+                    const {downloadBundlePdf} = await import('./payments/document-pdf.mjs');
+                    await downloadBundlePdf(text);
+                } else {
+                    triggerTextDownload('SuperintelligenceNDA-Paid-Document-Bundle.txt', text);
+                }
                 const order = savedOrder();
                 localStorage.setItem(ORDER_STORAGE, JSON.stringify({...order, downloaded: true}));
-                if (!automatic) deliveryStatus('Your verified document bundle has been downloaded.');
-            } catch (error) { deliveryStatus(error.message); }
+                deliveryStatus('Your ' + format.toUpperCase() + ' bundle is ready. Both PDF and TXT downloads remain available below.');
+            } catch (error) {
+                if (format === 'pdf') deliveryStatus('PDF download could not finish. Try Download PDF again, or use Download TXT or Print / Save PDF.');
+                else deliveryStatus(error.message);
+            } finally {
+                // Only an authenticated paid credential response can enable exports again.
+                await requirePaidDocumentAccess();
+            }
         }
         async function checkOrder() {
             if (!savedOrder()) { setDocumentAccess(false); return 'missing'; }
@@ -1841,7 +1857,7 @@
             document.getElementById('saveServiceConfigBtn').disabled = false;
             deliveryStatus('Payment verified. Your saved document bundle and SuperintelligenceNDA API key are ready.');
             if (new URLSearchParams(location.search).get('checkout') === 'return' && !savedOrder().downloaded) {
-                await downloadPaidBundle(true);
+                await downloadPaidBundle(true, 'pdf');
             }
             return 'paid';
         }
@@ -1893,6 +1909,7 @@
             }
         });
         document.getElementById('paidBundleBtn').addEventListener('click', () => downloadPaidBundle());
+        document.getElementById('paidPdfBundleBtn').addEventListener('click', () => downloadPaidBundle(false, 'pdf'));
         document.getElementById('checkPaymentBtn').addEventListener('click', () => {
             checkOrder().catch(error => { setDocumentAccess(false); deliveryStatus(error.message); });
         });

@@ -721,11 +721,11 @@
                             <span class="font-mono">$75.00</span>
                         </div>
                         <div class="flex justify-between text-slate-400">
-                            <span>Universal Superintelligence Plugin API Key</span>
+                            <span>SuperintelligenceNDA Document API Access</span>
                             <span class="font-mono">$50.00</span>
                         </div>
                         <div class="flex justify-between text-white font-bold pt-1.5 border-t border-slate-800">
-                            <span>Total Execution &amp; API Key Fee (USD)</span>
+                            <span>Total Document &amp; API Access Fee (USD)</span>
                             <span class="font-mono text-emerald-400">$275.00</span>
                         </div>
                     </div>
@@ -792,26 +792,37 @@
                     <!-- Inline Status / Validation Message Box -->
                     <div id="checkoutStatusBox" class="hidden p-3 rounded-xl text-xs font-medium border"></div>
 
+                    <section id="orderDelivery" class="hidden p-4 rounded-xl border border-emerald-500/40 bg-slate-950 space-y-3" aria-live="polite">
+                        <h3 class="text-white font-bold">Your order and downloads</h3>
+                        <p id="deliveryStatusText" class="text-sm text-slate-300"></p>
+                        <div class="flex flex-wrap gap-2">
+                            <button id="checkPaymentBtn" type="button" class="px-3 py-2 rounded-lg bg-slate-700 text-white text-xs">Check payment</button>
+                            <button id="paidBundleBtn" disabled type="button" class="px-3 py-2 rounded-lg bg-emerald-600 text-white text-xs disabled:opacity-40">Download saved bundle</button>
+                            <button id="saveServiceConfigBtn" disabled type="button" class="px-3 py-2 rounded-lg bg-amber-500 text-slate-950 text-xs disabled:opacity-40">Save private API configuration</button>
+                        </div>
+                        <p class="text-xs text-slate-400">Keep this browser's order access and save your private API configuration for future downloads. Delivery is available here after payment verification.</p>
+                    </section>
+                    <p class="text-xs text-slate-400">Checkout saves your current document details for delivery. You will return here after payment. Your service API key provides document access on SuperintelligenceNDA only.</p>
                     <!-- CARD 3: UNIVERSAL SUPERINTELLIGENCE PLUGIN API KEY & ACCOUNT CONNECTOR -->
                     <div class="pt-3 border-t border-slate-800 space-y-2.5">
                         <div class="flex items-center justify-between">
                             <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-300">
-                                <i class="fa-solid fa-key mr-1"></i> Universal Superintelligence Account API Plugin
+                                <i class="fa-solid fa-key mr-1"></i> SuperintelligenceNDA Document API
                             </span>
                             <span id="apiKeyStatusBadge" class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 font-mono text-[10px]">
-                                ALL 19 ECOSYSTEMS READY
+                                AWAITING VERIFIED PAYMENT
                             </span>
                         </div>
                         <p class="text-[11px] text-slate-400 leading-relaxed">
-                            Plug this cryptographic NDA API key and header into your registered Gemini, OpenAI, Anthropic, Meta, xAI, DeepSeek, Qwen, Mistral, or MCP accounts to enforce 100% I/O ownership &amp; training-only lock across every session:
+                            Use this private API key to retrieve your purchased document bundle from SuperintelligenceNDA. It does not authenticate to other AI providers or change their data policies.
                         </p>
                         <div class="p-2.5 rounded-lg bg-slate-950 border border-slate-800 font-mono text-[11px] space-y-1.5">
                             <div class="flex items-center justify-between text-[10px] text-slate-400">
-                                <span>X-Superintelligence-NDA-Key:</span>
-                                <span class="text-emerald-400">50-State Omnibus Bound</span>
+                                <span>Authorization: Bearer</span>
+                                <span class="text-emerald-400">Document access</span>
                             </div>
                             <div id="universalPluginApiKeyDisplay" class="text-amber-300 font-bold break-all select-all">
-                                SNDA-LIVE-275-50US-Generating...
+                                Available after verified payment
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-2">
@@ -1673,16 +1684,10 @@
                 document.getElementById('contractSealHash').textContent = latestSha256Hash;
             }
 
-            const keySegment = latestSha256Hash.substring(0, 24).toUpperCase();
-            latestPluginApiKey = `SNDA-LIVE-275-50US-${keySegment}`;
+            latestPluginApiKey = 'SERVICE-CREDENTIAL-ISSUED-SEPARATELY';
             const keyDisplay = document.getElementById('universalPluginApiKeyDisplay');
-            if (keyDisplay) {
-                keyDisplay.textContent = latestPluginApiKey;
-            }
-            const sealAck = document.getElementById('sealAckId');
-            if (sealAck && !isContractExecuted) {
-                sealAck.textContent = latestPluginApiKey;
-            }
+            if (keyDisplay) keyDisplay.textContent = verifiedServiceKey || 'Available after verified payment';
+
         }
 
         // Payments are collected on Stripe's hosted checkout.
@@ -1730,10 +1735,137 @@
             box.innerHTML = `<i class="fa-solid ${type === 'success' ? 'fa-circle-check text-emerald-400' : 'fa-circle-info text-amber-400'} mr-1.5"></i>${message}`;
         }
 
-        // Never mark an order paid in browser code or from a return URL.
-        document.getElementById('executeNdaBtn').addEventListener('click', () => {
-            window.location.assign(STRIPE_PAYMENT_LINK);
+
+        const DELIVERY_API = 'https://api.superintelligencenda.com';
+        const ORDER_STORAGE = 'snda.delivery.order.v1';
+        let verifiedServiceKey = '';
+        let deliveryPolling = false;
+        function savedOrder() {
+            try { return JSON.parse(localStorage.getItem(ORDER_STORAGE) || 'null'); }
+            catch { return null; }
+        }
+        function deliveryStatus(text) {
+            document.getElementById('orderDelivery').classList.remove('hidden');
+            document.getElementById('deliveryStatusText').textContent = text;
+        }
+        async function orderRequest(path) {
+            const order = savedOrder();
+            if (!order) throw new Error('No saved order. Start checkout from this browser.');
+            const response = await fetch(DELIVERY_API + '/v1/orders/' + order.order_id + path, {
+                headers: {Authorization: 'Bearer ' + order.access_token}, cache: 'no-store'
+            });
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.error === 'payment_not_verified'
+                    ? 'Payment is not verified yet. Please check again shortly.'
+                    : 'Order access is unavailable. Check your payment status or contact support.');
+            }
+            return response;
+        }
+        async function downloadPaidBundle(automatic = false) {
+            try {
+                const response = await orderRequest('/bundle');
+                triggerTextDownload('SuperintelligenceNDA-Paid-Document-Bundle.txt', await response.text());
+                const order = savedOrder();
+                localStorage.setItem(ORDER_STORAGE, JSON.stringify({...order, downloaded: true}));
+                if (!automatic) deliveryStatus('Your verified document bundle has been downloaded.');
+            } catch (error) { deliveryStatus(error.message); }
+        }
+        async function checkOrder() {
+            if (!savedOrder()) return 'missing';
+            const status = await (await orderRequest('')).json();
+            if (status.status !== 'paid') {
+                verifiedServiceKey = '';
+                document.getElementById('universalPluginApiKeyDisplay').textContent = status.status === 'revoked' ? 'Access revoked' : 'Available after verified payment';
+                document.getElementById('paidBundleBtn').disabled = true;
+                document.getElementById('saveServiceConfigBtn').disabled = true;
+                document.getElementById('apiKeyStatusBadge').textContent = status.status === 'revoked' ? 'ACCESS REVOKED' : 'AWAITING PAYMENT';
+                deliveryStatus(status.status === 'revoked'
+                    ? 'Access was revoked following a refund or payment dispute.'
+                    : status.status === 'failed'
+                    ? 'This checkout did not complete. You can start a new checkout.'
+                    : 'Waiting for verified payment from Stripe. Some payment methods take longer to settle.');
+                return status.status;
+            }
+            const credentials = await (await orderRequest('/credentials')).json();
+            verifiedServiceKey = credentials.api_key;
+            document.getElementById('universalPluginApiKeyDisplay').textContent = verifiedServiceKey;
+            document.getElementById('apiKeyStatusBadge').textContent = 'SERVICE API ACTIVE';
+            document.getElementById('paidBundleBtn').disabled = false;
+            document.getElementById('saveServiceConfigBtn').disabled = false;
+            deliveryStatus('Payment verified. Your saved document bundle and SuperintelligenceNDA API key are ready.');
+            if (new URLSearchParams(location.search).get('checkout') === 'return' && !savedOrder().downloaded) {
+                await downloadPaidBundle(true);
+            }
+            return 'paid';
+        }
+        async function resumeDelivery() {
+            if (!savedOrder() || deliveryPolling) return;
+            deliveryPolling = true;
+            try {
+                for (let attempt = 0; attempt < 24; attempt++) {
+                    const status = await checkOrder();
+                    if (status !== 'pending') break;
+                    await new Promise(resolve => setTimeout(resolve, 5000));
+                }
+            } catch (error) { deliveryStatus('Could not check payment yet. Use Check payment to retry.'); }
+            finally { deliveryPolling = false; }
+        }
+        document.getElementById('executeNdaBtn').addEventListener('click', async () => {
+            const button = document.getElementById('executeNdaBtn');
+            try {
+                // Persist access before redirecting; never treat redirect parameters as payment proof.
+                localStorage.setItem('snda.storage.check','1');
+                localStorage.removeItem('snda.storage.check');
+                if (!userNameInput.value.trim() || !userEmailInput.value.trim() || !userEmailInput.checkValidity()) {
+                    showStatusMessage('Enter your legal name and a valid contact email before checkout.', 'warning');
+                    return;
+                }
+                if (!intelligenceEntities.some(entity => entity.checked)) {
+                    showStatusMessage('Select at least one entity for your document snapshot.', 'warning'); return;
+                }
+                button.disabled = true;
+                await updateLiveCryptographicHash();
+                const bundle = [
+                    'SUPERINTELLIGENCENDA.COM — SAVED DOCUMENT BUNDLE',
+                    'These documents are templates. Payment does not establish third-party acceptance.',
+                    generateOmnibusContractText(),
+                    ...US_STATES_LEGAL_DB.map(state => generateSingleStateContractText(state))
+                ].join('\n\n');
+                const response = await fetch(DELIVERY_API + '/v1/orders', {
+                    method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({bundle})
+                });
+                if (!response.ok) throw new Error('Unable to prepare your order. Please retry shortly.');
+                const order = await response.json();
+                localStorage.setItem(ORDER_STORAGE, JSON.stringify({
+                    order_id:order.order_id, access_token:order.access_token, downloaded:false
+                }));
+                window.location.assign(order.checkout_url);
+            } catch (error) {
+                showStatusMessage(error.message || 'Please enable browser storage before checkout.', 'warning');
+                button.disabled = false;
+            }
         });
+        document.getElementById('paidBundleBtn').addEventListener('click', () => downloadPaidBundle());
+        document.getElementById('checkPaymentBtn').addEventListener('click', () => {
+            checkOrder().catch(error => deliveryStatus(error.message));
+        });
+        function serviceConfig() {
+            return {
+                service:'SuperintelligenceNDA',
+                api_base:DELIVERY_API+'/v1',
+                api_key:verifiedServiceKey,
+                scope:['documents:read'],
+                headers:{Authorization:'Bearer '+verifiedServiceKey},
+                endpoints:{account:'/me',document_bundle:'/documents/bundle'},
+                note:'For SuperintelligenceNDA only. Keep this credential private.'
+            };
+        }
+        document.getElementById('saveServiceConfigBtn').addEventListener('click', () => {
+            if (!verifiedServiceKey) return;
+            triggerTextDownload('SuperintelligenceNDA-Private-API-Configuration.json', JSON.stringify(serviceConfig(),null,2));
+        });
+        window.addEventListener('DOMContentLoaded', resumeDelivery);
 
         // Copy Universal API Key & Universal Account Plugin JSON
         function copyToClipboardHelper(text, successMsg) {
@@ -1746,42 +1878,14 @@
             showStatusMessage(successMsg, 'success');
         }
 
-        document.getElementById('copyApiKeyBtn').addEventListener('click', () => {
-            copyToClipboardHelper(
-                latestPluginApiKey,
-                `Copied Universal Superintelligence Plugin API Key (${latestPluginApiKey}) to clipboard.`
-            );
-        });
 
+        document.getElementById('copyApiKeyBtn').addEventListener('click', () => {
+            if (!verifiedServiceKey) { showStatusMessage('Complete checkout and verify payment to receive a service API key.', 'warning'); return; }
+            copyToClipboardHelper(verifiedServiceKey, 'Copied your private SuperintelligenceNDA API key.');
+        });
         document.getElementById('copyPluginJsonBtn').addEventListener('click', () => {
-            const activeEntities = intelligenceEntities.filter(e => e.checked);
-            const pluginPayload = {
-                registry: 'SuperintelligenceNDA.com',
-                version: '2026.11-50STATE-OMNIBUS',
-                feeSettledUSD: 275.00,
-                feeBreakdownUSD: {
-                    singularMaster50StateOmnibusNDA: 150.00,
-                    fiftyIndividualStateContracts: 75.00,
-                    universalSuperintelligencePluginApiKey: 50.00
-                },
-                universalPluginApiKey: latestPluginApiKey,
-                headers: {
-                    'X-Superintelligence-NDA-Key': latestPluginApiKey,
-                    'X-Superintelligence-IP-Owner': userNameInput.value.trim() || 'Andrew Jourdan Nahmias',
-                    'X-Superintelligence-Policy': '100-PERCENT-USER-IO-OWNERSHIP;ZERO-THIRD-PARTY-SHARING;INTERNAL-TRAINING-ONLY;PAST-PRESENT-FUTURE',
-                    'X-Superintelligence-SHA256': latestSha256Hash
-                },
-                governingLaw: '18 U.S.C. § 1836 (DTSA) + All 50 U.S. State Statutes (AL-WY)',
-                authorizedSignatory: 'Andrew Jourdan Nahmias',
-                boundCorporateParents: activeEntities.map(e => ({
-                    parent: e.parent,
-                    coveredModels: e.models
-                }))
-            };
-            copyToClipboardHelper(
-                JSON.stringify(pluginPayload, null, 2),
-                'Copied Universal Superintelligence Account Plugin JSON configuration to clipboard.'
-            );
+            if (!verifiedServiceKey) { showStatusMessage('A verified payment is required for API configuration.', 'warning'); return; }
+            copyToClipboardHelper(JSON.stringify(serviceConfig(),null,2), 'Copied your SuperintelligenceNDA API configuration.');
         });
 
         // --- 11. CONTRACT GENERATORS FOR PLAIN-TEXT (.TXT) EXPORTS (OMNIBUS, SINGLE STATE, AND ALL 50 STATES BUNDLE) ---
@@ -1793,9 +1897,9 @@
                 '   SINGULAR MASTER 50-STATE & FEDERAL OMNIBUS NON-DISCLOSURE & IP AGREEMENT     ',
                 '================================================================================',
                 `INSTRUMENT ID:          SNDA-2026-50US-OMNIBUS`,
-                `EXECUTION STATUS:       ${isContractExecuted ? 'CRYPTOGRAPHICALLY EXECUTED & FEE SETTLED ($275.00 USD)' : 'PRE-SIGNED & READY FOR EXECUTION ($275.00 USD)'}`,
+                `EXECUTION STATUS:       DOCUMENT TEMPLATE — PAYMENT RECEIPT PROVIDED SEPARATELY`,
                 `FEE SCHEDULE:           $150.00 Master Omnibus + $75.00 50-State Packet + $50.00 Universal API Key = $275.00 USD`,
-                `UNIVERSAL API KEY:      ${latestPluginApiKey}`,
+                'SERVICE API ACCESS:     Private credential supplied separately after verified payment',
                 `TRANSACTION REFERENCE:  ${executionTransactionId || 'PENDING-SETTLEMENT'}`,
                 `UTC TIMESTAMP:          ${executionTimestampUTC || new Date().toISOString()}`,
                 `DISCLOSING PARTY:       ${userNameInput.value.trim() || '[DISCLOSING PARTY]'}`,
@@ -1834,7 +1938,7 @@
                 '--------------------------------------------------------------------------------',
                 'EXECUTED SIGNATURE BLOCK:',
                 '  Signed: Andrew Jourdan Nahmias',
-                `  Universal Plugin API Key: ${latestPluginApiKey}`,
+                '  Service API credential: supplied separately; never share in a contract',
                 '================================================================================'
             ];
             return lines.join('\n');
@@ -1861,9 +1965,9 @@
                 `LIMITATION PERIOD:      ${st.limitation}`,
                 `DESIGNATED VENUE:       ${st.venue}`,
                 `EFFECTIVE DATE:         ${effectiveDateStr} (Retroactive & Perpetual)`,
-                `EXECUTION STATUS:       ${isContractExecuted ? 'CRYPTOGRAPHICALLY EXECUTED & FEE SETTLED ($275.00 USD)' : 'PRE-SIGNED & READY FOR EXECUTION ($275.00 USD)'}`,
+                `EXECUTION STATUS:       DOCUMENT TEMPLATE — PAYMENT RECEIPT PROVIDED SEPARATELY`,
                 `FEE SCHEDULE:           $150.00 Master Omnibus + $75.00 50-State Packet + $50.00 Universal API Key = $275.00 USD`,
-                `UNIVERSAL API KEY:      ${latestPluginApiKey}`,
+                'SERVICE API ACCESS:     Private credential supplied separately after verified payment',
                 `DISCLOSING PARTY:       ${userNameInput.value.trim() || '[DISCLOSING PARTY]'}`,
                 `COMMERCIAL PORTFOLIO:   ${userOrgInput.value.trim() || '[ALL REGISTERED COMMERCIAL & PERSONAL PROPERTIES]'}`,
                 `REGISTERED CONTACT:     ${userEmailInput.value.trim() || '[REGISTERED CONTACT EMAIL]'}`,
@@ -1926,7 +2030,7 @@
                 `ARTICLE VII — STATE OF ${st.name.toUpperCase()} CRYPTOGRAPHIC EXECUTION & SIGNATURE BLOCK:`,
                 `  Authorized Founding Signatory: Andrew Jourdan Nahmias`,
                 `  Disclosing Party Signatory:    ${userNameInput.value.trim() || 'Andrew Jourdan Nahmias'}`,
-                `  Universal Plugin API Key:      ${latestPluginApiKey}`,
+                '  Service API credential: supplied separately; never share in a contract',
                 `  State Instrument ID:           SNDA-2026-STATE-${st.code}`,
                 `  State SHA-256 Digest:          ${stateSpecificDigest}`,
                 '================================================================================'

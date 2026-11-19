@@ -38,5 +38,11 @@ Stripe Tax is enabled on the checkout link. No tax registrations were recorded a
 Node's built-in sqlite is used for the backend integration tests:
     node payments/worker.test.mjs
     node payments/frontend.test.mjs
+    node payments/export-lock.test.mjs
 
 Tests cover payment signatures, stale events, pending access denial, paid fulfillment, duplicate delivery, credential scope, refunds and out-of-order success events. The live health endpoint and unpaid-access denial were checked without charging a card. A real paid transaction was not performed.
+
+## Print and export controls
+All nine print/text-download controls are disabled by default. Verified paid orders unlock them. Each button action rechecks paid access with the delivery API; a verification failure relocks them. Unpaid browser printing renders a payment-required notice. The export-lock tests exercise pending, paid and revoked access against the actual frontend code.
+
+This is an export-control gate, not a private-content paywall. The current HTML preview, generators and repository history still contain document text. A visitor can copy publicly delivered text or inspect source. Protecting the template content itself requires serving the complete documents only after server-side payment verification and showing a limited public preview.

@@ -88,6 +88,22 @@
             border-radius: 2px;
         }
 
+        [data-paid-export][disabled] {
+            opacity: 0.45;
+            cursor: not-allowed;
+        }
+        /* Unpaid printing shows a notice, including the browser's Print command. */
+        @media print {
+            html:not([data-paid-document-access="true"]) body > * { display: none !important; }
+            html:not([data-paid-document-access="true"]) body::before {
+                content: "Payment required. Complete checkout at www.superintelligencenda.com to unlock document printing and downloads.";
+                display: block !important;
+                padding: 32px;
+                font: 18px sans-serif;
+                color: #000 !important;
+            }
+        }
+
         /* Print Media Styles for Formal Legal PDF Output */
         @media print {
             body {
@@ -160,17 +176,18 @@
                     <span class="hidden md:inline">Copy SHA-256</span>
                 </button>
 
-                <button id="navDownloadAll50Btn" type="button" class="px-3 py-2 rounded-lg bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/40 text-xs font-semibold flex items-center gap-2 transition" title="Download Complete 50-State + Omnibus Bundle (.TXT)">
+                <button id="navDownloadAll50Btn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3 py-2 rounded-lg bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/40 text-xs font-semibold flex items-center gap-2 transition" title="Download Complete 50-State + Omnibus Bundle (.TXT)">
                     <i class="fa-solid fa-layer-group"></i>
                     <span class="hidden sm:inline">All 50 States Packet (.TXT)</span>
                 </button>
 
-                <button id="navPrintBtn" type="button" class="px-3.5 py-2 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-amber-500/10 transition">
+                <button id="navPrintBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3.5 py-2 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-amber-500/10 transition">
                     <i class="fa-solid fa-file-pdf"></i>
                     <span>Print / Save PDF</span>
                 </button>
             </div>
         </div>
+        <p class="text-center text-xs text-amber-300 px-4 pb-2">Payment verification is required to unlock printing and document downloads.</p>
     </header>
 
     <!-- ==================== HERO & ARCHITECTURAL TRUST BANNER ==================== -->
@@ -242,15 +259,15 @@
 
                 <!-- Quick Multi-Contract Export Bar -->
                 <div class="flex flex-wrap items-center gap-2">
-                    <button id="exportMasterOmnibusBtn" type="button" class="px-3.5 py-2 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 text-xs font-semibold flex items-center gap-2 transition">
+                    <button id="exportMasterOmnibusBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3.5 py-2 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 text-xs font-semibold flex items-center gap-2 transition">
                         <i class="fa-solid fa-scroll"></i>
                         <span>Download Master Omnibus (.TXT)</span>
                     </button>
-                    <button id="exportCurrentStateBtn" type="button" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 text-xs font-semibold flex items-center gap-2 transition">
+                    <button id="exportCurrentStateBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 text-xs font-semibold flex items-center gap-2 transition">
                         <i class="fa-solid fa-file-contract text-emerald-400"></i>
                         <span id="exportCurrentStateBtnLabel">Download Florida (FL) Contract (.TXT)</span>
                     </button>
-                    <button id="exportAll50BundleBtn" type="button" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs flex items-center gap-2 shadow-lg shadow-emerald-600/20 transition">
+                    <button id="exportAll50BundleBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs flex items-center gap-2 shadow-lg shadow-emerald-600/20 transition">
                         <i class="fa-solid fa-boxes-packing"></i>
                         <span>Download All 50 Individual State Contracts Bundle (.TXT)</span>
                     </button>
@@ -842,19 +859,19 @@
                         <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-1">
                             Direct Plain-Text (.TXT) &amp; PDF Contract Downloads:
                         </div>
-                        <button id="downloadOmnibusTxtBtn" type="button" class="w-full py-2 px-3 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 text-xs font-semibold flex items-center justify-between transition">
+                        <button id="downloadOmnibusTxtBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="w-full py-2 px-3 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 text-xs font-semibold flex items-center justify-between transition">
                             <span><i class="fa-solid fa-scroll mr-1.5"></i> 1. Master 50-State Omnibus NDA (.TXT)</span>
                             <i class="fa-solid fa-download"></i>
                         </button>
-                        <button id="downloadSingleStateTxtBtn" type="button" class="w-full py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-emerald-300 border border-slate-700 text-xs font-semibold flex items-center justify-between transition">
+                        <button id="downloadSingleStateTxtBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="w-full py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-emerald-300 border border-slate-700 text-xs font-semibold flex items-center justify-between transition">
                             <span id="downloadSingleStateBtnText"><i class="fa-solid fa-file-contract mr-1.5"></i> 2. Individual Florida (FL) Contract (.TXT)</span>
                             <i class="fa-solid fa-download"></i>
                         </button>
-                        <button id="downloadAll50StatesTxtBtn" type="button" class="w-full py-2.5 px-3 rounded-xl bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/40 text-xs font-bold flex items-center justify-between transition">
+                        <button id="downloadAll50StatesTxtBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="w-full py-2.5 px-3 rounded-xl bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/40 text-xs font-bold flex items-center justify-between transition">
                             <span><i class="fa-solid fa-boxes-packing mr-1.5"></i> 3. All 50 Individual State Contracts Bundle (.TXT)</span>
                             <i class="fa-solid fa-download"></i>
                         </button>
-                        <button id="printExecutedContractBtn" type="button" class="w-full py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 text-xs font-semibold flex items-center justify-between transition">
+                        <button id="printExecutedContractBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="w-full py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 text-xs font-semibold flex items-center justify-between transition">
                             <span><i class="fa-solid fa-print mr-1.5"></i> 4. Print / Save Active Contract View as PDF</span>
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </button>
@@ -1740,6 +1757,33 @@
         const ORDER_STORAGE = 'snda.delivery.order.v1';
         let verifiedServiceKey = '';
         let deliveryPolling = false;
+
+        const PAID_EXPORT_BUTTONS = ["navDownloadAll50Btn","navPrintBtn","exportMasterOmnibusBtn","exportCurrentStateBtn","exportAll50BundleBtn","downloadOmnibusTxtBtn","downloadSingleStateTxtBtn","downloadAll50StatesTxtBtn","printExecutedContractBtn"];
+        function setDocumentAccess(allowed) {
+            document.documentElement.setAttribute('data-paid-document-access', allowed ? 'true' : 'false');
+            PAID_EXPORT_BUTTONS.forEach(id => {
+                const button = document.getElementById(id);
+                button.disabled = !allowed;
+                button.setAttribute('aria-disabled', String(!allowed));
+                button.title = allowed ? 'Payment verified — export available' : 'Complete checkout to unlock printing and downloads';
+            });
+        }
+        async function requirePaidDocumentAccess() {
+            try {
+                if (!savedOrder()) throw new Error('Complete checkout to unlock document printing and downloads.');
+                const response = await orderRequest('/credentials');
+                const credentials = await response.json();
+                if (!credentials.api_key) throw new Error('Payment verification is required before exporting documents.');
+                setDocumentAccess(true);
+                return true;
+            } catch (error) {
+                setDocumentAccess(false);
+                showStatusMessage(error.message || 'Unable to verify payment. Please check your order and retry.', 'warning');
+                return false;
+            }
+        }
+        setDocumentAccess(false);
+
         function savedOrder() {
             try { return JSON.parse(localStorage.getItem(ORDER_STORAGE) || 'null'); }
             catch { return null; }
@@ -1772,9 +1816,10 @@
             } catch (error) { deliveryStatus(error.message); }
         }
         async function checkOrder() {
-            if (!savedOrder()) return 'missing';
+            if (!savedOrder()) { setDocumentAccess(false); return 'missing'; }
             const status = await (await orderRequest('')).json();
             if (status.status !== 'paid') {
+                setDocumentAccess(false);
                 verifiedServiceKey = '';
                 document.getElementById('universalPluginApiKeyDisplay').textContent = status.status === 'revoked' ? 'Access revoked' : 'Available after verified payment';
                 document.getElementById('paidBundleBtn').disabled = true;
@@ -1789,6 +1834,7 @@
             }
             const credentials = await (await orderRequest('/credentials')).json();
             verifiedServiceKey = credentials.api_key;
+            setDocumentAccess(true);
             document.getElementById('universalPluginApiKeyDisplay').textContent = verifiedServiceKey;
             document.getElementById('apiKeyStatusBadge').textContent = 'SERVICE API ACTIVE';
             document.getElementById('paidBundleBtn').disabled = false;
@@ -1808,7 +1854,7 @@
                     if (status !== 'pending') break;
                     await new Promise(resolve => setTimeout(resolve, 5000));
                 }
-            } catch (error) { deliveryStatus('Could not check payment yet. Use Check payment to retry.'); }
+            } catch (error) { setDocumentAccess(false); deliveryStatus('Could not check payment yet. Use Check payment to retry.'); }
             finally { deliveryPolling = false; }
         }
         document.getElementById('executeNdaBtn').addEventListener('click', async () => {
@@ -1848,7 +1894,7 @@
         });
         document.getElementById('paidBundleBtn').addEventListener('click', () => downloadPaidBundle());
         document.getElementById('checkPaymentBtn').addEventListener('click', () => {
-            checkOrder().catch(error => deliveryStatus(error.message));
+            checkOrder().catch(error => { setDocumentAccess(false); deliveryStatus(error.message); });
         });
         function serviceConfig() {
             return {
@@ -1866,6 +1912,10 @@
             triggerTextDownload('SuperintelligenceNDA-Private-API-Configuration.json', JSON.stringify(serviceConfig(),null,2));
         });
         window.addEventListener('DOMContentLoaded', resumeDelivery);
+        window.addEventListener('pageshow', () => { setDocumentAccess(false); resumeDelivery(); });
+        window.addEventListener('storage', event => {
+            if (event.key === ORDER_STORAGE) { setDocumentAccess(false); resumeDelivery(); }
+        });
 
         // Copy Universal API Key & Universal Account Plugin JSON
         function copyToClipboardHelper(text, successMsg) {
@@ -2051,14 +2101,16 @@
         }
 
         // Download Master Omnibus (.TXT)
-        function handleDownloadOmnibus() {
+        async function handleDownloadOmnibus() {
+            if (!await requirePaidDocumentAccess()) return;
             const text = generateOmnibusContractText();
             triggerTextDownload('SuperintelligenceNDA-Master-50-State-Omnibus.txt', text);
             showStatusMessage('Downloaded Singular Master 50-State Omnibus NDA (.txt).', 'success');
         }
 
         // Download Selected Individual State Contract (.TXT)
-        function handleDownloadSingleState() {
+        async function handleDownloadSingleState() {
+            if (!await requirePaidDocumentAccess()) return;
             const st = getSelectedStateObj();
             const text = generateSingleStateContractText(st);
             triggerTextDownload(`SuperintelligenceNDA-State-of-${st.name}-${st.code}.txt`, text);
@@ -2066,7 +2118,8 @@
         }
 
         // Download Complete 50-State Individual Contracts Bundle (.TXT)
-        function handleDownloadAll50StatesBundle() {
+        async function handleDownloadAll50StatesBundle() {
+            if (!await requirePaidDocumentAccess()) return;
             const header = [
                 '################################################################################',
                 '     SUPERINTELLIGENCENDA.COM — COMPLETE 50-STATE LEGAL EXECUTION DOSSIER       ',
@@ -2112,7 +2165,8 @@
             showStatusMessage('Copied 50-State SHA-256 Cryptographic Digest to clipboard.', 'success');
         });
 
-        function triggerPrintPdf() {
+        async function triggerPrintPdf() {
+            if (!await requirePaidDocumentAccess()) return;
             window.print();
         }
 

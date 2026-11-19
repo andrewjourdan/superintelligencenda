@@ -27,3 +27,9 @@ Website and document generator for a master 50-state omnibus NDA and 50 individu
 ## Access and execution
 
 Original project materials are proprietary; third-party components retain their licenses. Payment grants the document access implemented by the service and does not establish any AI provider's signature or assent. Customer rights remain subject to applicable purchase terms and separate agreements. Public previews contain document text; export controls are not a complete content paywall. See LEGAL.md for details.
+
+## Per-user intake
+
+Public intake starts with blank identity fields. Each user's name, commercial brand, contact email, and primary domicile populate the master contract and all 50 individual state templates. Signature blocks use that user's name; no founder name or signature is inserted by default. Enter a name before choosing Auto-Sign, or draw a signature. Existing paid document snapshots remain unchanged.
+
+Run `node payments/per-user.test.mjs` to check blank intake, two separate user identities across all 51 templates, cleared fields, Auto-Sign's name requirement, and frontend JavaScript syntax.

@@ -54,5 +54,52 @@ for (const input of ['userNameInput','userOrgInput','userEmailInput','userDomici
 vm.runInContext('syncDisclosingPartyInputs()', context);
 assert.equal(elements.get('sigBlockUserName').textContent, '[DISCLOSING PARTY]');
 assert.ok(!html.includes('PRE-SIGNED:'));
-assert.ok(html.includes('as you type per user.'));
+assert.ok(html.includes('SECTION 03 • PER-USER NDA REQUIREMENTS'));
 console.log('Passed: blank intake, explicit Auto-Sign, two independent users, all 51 contracts, cleared identity, JavaScript syntax.');
+
+const checkoutElements = new Map();
+let requestCount = 0, redirected = false, warning = '';
+const checkoutContext = vm.createContext({
+    userNameInput:{value:''},
+    userEmailInput:{value:'', checkValidity(){return this.value === 'test@example.test';}},
+    userDomicileSelect:{value:''},
+    document:{getElementById(id){
+        if (!checkoutElements.has(id)) checkoutElements.set(id,{disabled:false,addEventListener(event,handler){this[event]=handler;}});
+        return checkoutElements.get(id);
+    }},
+    showStatusMessage(message){warning=message;},
+    localStorage:{setItem(){},removeItem(){}},
+    intelligenceEntities:[{checked:true}], US_STATES_LEGAL_DB:[],
+    updateLiveCryptographicHash:async()=>{},
+    generateOmnibusContractText:()=>'TEST NDA',
+    DELIVERY_API:'https://example.test', ORDER_STORAGE:'test-order',
+    fetch:async()=>{requestCount++;return {ok:true,json:async()=>({order_id:'test',access_token:'test',checkout_url:'https://example.test/checkout'})};},
+    window:{location:{assign(){redirected=true;}}}
+});
+vm.runInContext(extract('validateNdaRequirements'),checkoutContext);
+const checkoutStart = script.indexOf("document.getElementById('executeNdaBtn').addEventListener('click'");
+const checkoutEnd = script.indexOf("document.getElementById('paidBundleBtn').addEventListener",checkoutStart);
+vm.runInContext(script.slice(checkoutStart,checkoutEnd),checkoutContext);
+const clickCheckout = () => checkoutElements.get('executeNdaBtn').click();
+await clickCheckout();
+assert.match(warning,/legal name/);
+assert.equal(requestCount,0);
+checkoutContext.userNameInput.value='Test User';
+checkoutContext.userEmailInput.value='example.test';
+await clickCheckout();
+assert.match(warning,/valid contact email/);
+assert.equal(requestCount,0);
+checkoutContext.userEmailInput.value='test@example.test';
+await clickCheckout();
+assert.match(warning,/domicile state/);
+assert.equal(requestCount,0);
+checkoutContext.userDomicileSelect.value='State of Florida';
+await clickCheckout();
+assert.equal(requestCount,1);
+assert.equal(redirected,true);
+for (const id of ['userNameInput','userEmailInput','userDomicileSelect']) {
+    assert.match(html,new RegExp('<(?:input|select) id="'+id+'"[^>]*required'));
+}
+assert.match(html,/<input id="userEmailInput" type="email"/);
+assert.ok(!/<input id="userOrgInput"[^>]*required/.test(html));
+console.log('Passed: Section 03 blocks checkout for missing name, invalid email, and missing domicile; valid details proceed with optional brand blank.');

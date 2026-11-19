@@ -2,7 +2,7 @@ const encoder = new TextEncoder();
 const ORIGIN = 'https://www.superintelligencenda.com';
 const PAYMENT_LINK = 'https://buy.stripe.com/eVq6oJefs4aRcxGf6OfYY00';
 const PAYMENT_LINK_ID = 'plink_1UdUHCPLxF0ESp8cJlU9fYN5';
-const MAX_BODY = 900000;
+const MAX_BODY = 1800000;
 const hex = bytes => [...new Uint8Array(bytes)].map(b => b.toString(16).padStart(2,'0')).join('');
 const hash = async text => hex(await crypto.subtle.digest('SHA-256', encoder.encode(text)));
 async function hmac(secret, message) {
@@ -57,7 +57,7 @@ async function createOrder(request,env) {
   const rate=await env.DB.prepare('INSERT INTO rate_limits (bucket,key,count) VALUES (?,?,1) ON CONFLICT(bucket,key) DO UPDATE SET count=count+1 RETURNING count').bind(bucket,ip).first();
   if(rate.count>10) return json({error:'too_many_orders_try_later'},429);
   let body;try{body=JSON.parse(await boundedBody(request));}catch{return json({error:'invalid_or_oversized_order'},400);}
-  if(typeof body.bundle!=='string' || body.bundle.length<100 || encoder.encode(body.bundle).length>800000 ||
+  if(typeof body.bundle!=='string' || body.bundle.length<100 || encoder.encode(body.bundle).length>1500000 ||
       !body.bundle.includes('SUPERINTELLIGENCENDA.COM') || !body.bundle.includes('OMNIBUS')) return json({error:'invalid_document_bundle'},400);
   const id=crypto.randomUUID(), token=crypto.randomUUID()+crypto.randomUUID();
   const key=await license(env,id);

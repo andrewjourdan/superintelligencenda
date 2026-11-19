@@ -224,7 +224,7 @@
                         </div>
                         <div class="bg-slate-950/70 p-2.5 rounded-lg border border-slate-800/80">
                             <div class="text-slate-400">Public Model Ecosystems</div>
-                            <div id="heroEntityCount" class="text-sm font-bold text-emerald-400 font-mono mt-0.5">20 / 20 Bound</div>
+                            <div id="heroEntityCount" class="text-sm font-bold text-emerald-400 font-mono mt-0.5">62 / 62 Selected</div>
                         </div>
                     </div>
                     <div class="bg-slate-950/90 p-2.5 rounded-lg border border-slate-800">
@@ -366,7 +366,7 @@
                 <div class="flex flex-wrap items-center justify-between gap-2 px-3 py-2 rounded-lg bg-emerald-950/40 border border-emerald-500/30 text-[11px] font-mono">
                     <div class="flex items-center gap-2 text-emerald-300">
                         <i class="fa-solid fa-shield-check text-emerald-400"></i>
-                        <span id="fiftyStateAuditSummary">50/50 STATE CONTRACTS AUDITED &amp; VERIFIED: Trade Secret Acts + Limitations + Venues + State E-Sign (UETA/ESRA) + 20 Public AI Ecosystems</span>
+                        <span id="fiftyStateAuditSummary">50/50 STATE CONTRACTS AUDITED &amp; VERIFIED: Trade Secret Acts + Limitations + Venues + State E-Sign (UETA/ESRA) + 62 AI Providers &amp; Research Organizations</span>
                     </div>
                     <span class="text-amber-300 font-bold">ALABAMA (01) → WYOMING (50)</span>
                 </div>
@@ -420,7 +420,7 @@
                 </div>
             </div>
 
-            <!-- Interactive Grid of 20 Corporate Parent Entities -->
+            <!-- Interactive Grid of 62 Individual Provider and Research Entries -->
             <div id="entitiesMatrixGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 mt-4">
                 <!-- Populated dynamically by JavaScript -->
             </div>
@@ -591,7 +591,7 @@
                                     EXHIBIT A: COVERED PAST, PRESENT &amp; FUTURE PUBLIC SUPERINTELLIGENCE MODELS &amp; CORPORATE PARENTS
                                 </h3>
                                 <span id="exhibitCountBadge" class="font-mono text-[11px] px-2 py-0.5 rounded bg-slate-200 text-slate-800 font-bold">
-                                    20 Corporate Parents Bound
+                                    62 Entities Selected
                                 </span>
                             </div>
                             <div id="exhibitAList" class="grid grid-cols-1 sm:grid-cols-2 gap-2 font-sans text-[11.5px] text-slate-800">
@@ -957,144 +957,438 @@
         // --- 2. COMPREHENSIVE MATRIX OF ALL PAST, PRESENT & FUTURE PUBLIC SUPERINTELLIGENCE MODELS & PARENT ENTITIES ---
         const intelligenceEntities = [
             {
-                id: 'adobe',
-                parent: 'Adobe Inc. / Adobe Firefly / Adobe Sensei',
-                jurisdiction: 'United States',
-                models: 'PAST: Adobe Sensei and legacy Adobe AI/ML systems; Firefly Image 1 / 2 and earlier Firefly Image, Vector, Design, Video and audio generations • PRESENT: all current Adobe Firefly models, including Firefly Image 3 / 4 / 4 Ultra / 5; Firefly Video, Vector, Design, speech, sound-effects and soundtrack models; Firefly Custom Models, Firefly Foundry, Adobe Creative Agent and Firefly AI Assistant; Adobe Sensei, Acrobat AI Assistant, and Adobe AI features across Photoshop, Illustrator, Premiere, After Effects, Lightroom, Adobe Express, Creative Cloud, Document Cloud and Experience Cloud; Adobe-hosted partner-model integrations remain identified with their respective corporate parents • FUTURE: all future Adobe-owned, developed, acquired, fine-tuned, distilled, custom and successor AI/ML, image, video, vector, design, audio, speech, 3D, document, agentic and public superintelligence models, plus future Adobe-hosted model integrations',
-                checked: true
+                "id": "adobe",
+                "parent": "Adobe Inc. / Adobe Firefly / Adobe Sensei",
+                "jurisdiction": "United States",
+                "models": "PAST: Adobe Sensei and legacy Adobe AI/ML systems; Firefly Image 1 / 2 and earlier Firefly Image, Vector, Design, Video and audio generations • PRESENT: all current Adobe Firefly models, including Firefly Image 3 / 4 / 4 Ultra / 5; Firefly Video, Vector, Design, speech, sound-effects and soundtrack models; Firefly Custom Models, Firefly Foundry, Adobe Creative Agent and Firefly AI Assistant; Adobe Sensei, Acrobat AI Assistant, and Adobe AI features across Photoshop, Illustrator, Premiere, After Effects, Lightroom, Adobe Express, Creative Cloud, Document Cloud and Experience Cloud; Adobe-hosted partner-model integrations remain identified with their respective corporate parents • FUTURE: all future Adobe-owned, developed, acquired, fine-tuned, distilled, custom and successor AI/ML, image, video, vector, design, audio, speech, 3D, document, agentic and public superintelligence models, plus future Adobe-hosted model integrations",
+                "checked": true
             },
             {
-                id: 'alphabet-google',
-                parent: 'Alphabet Inc. / Google LLC / Google DeepMind',
-                jurisdiction: 'Delaware / California, USA',
-                models: 'PAST: BERT, T5, LaMDA, PaLM / PaLM 2, Bard, Chinchilla, Gemini 1.0 / 1.5 / 2.0 / 2.5 / 3.0 / 3.1 (Nano, Flash, Pro, Ultra), Gemma 1 / 2 / 3 • PRESENT: Gemini 4 Carbon, Gemini 4 Argon, Gemini 4 Hydrogen, Gemini 3.8 Flash, Gemini 3.5 Flash-Lite, Gemma 4 (31B Dense & 26B MoE), Veo, Imagen, AlphaFold, Project Astra & Mariner • FUTURE: Gemini 5+, Gemma 5+, and all future Alphabet/DeepMind public AGI/ASI models',
-                checked: true
+                "id": "alphabet-google",
+                "parent": "Alphabet Inc. / Google LLC / Google DeepMind",
+                "jurisdiction": "Delaware / California, USA",
+                "models": "PAST: BERT, T5, LaMDA, PaLM / PaLM 2, Bard, Chinchilla, Gemini 1.0 / 1.5 / 2.0 / 2.5 / 3.0 / 3.1 (Nano, Flash, Pro, Ultra), Gemma 1 / 2 / 3 • PRESENT: Gemini 4 Carbon, Gemini 4 Argon, Gemini 4 Hydrogen, Gemini 3.8 Flash, Gemini 3.5 Flash-Lite, Gemma 4 (31B Dense & 26B MoE), Veo, Imagen, AlphaFold, Project Astra & Mariner • FUTURE: Gemini 5+, Gemma 5+, and all future Alphabet/DeepMind public AGI/ASI models",
+                "checked": true
             },
             {
-                id: 'openai',
-                parent: 'OpenAI, Inc. / OpenAI OpCo, LLC',
-                jurisdiction: 'Delaware / California, USA',
-                models: 'PAST: GPT-1, GPT-2, GPT-3, GPT-3.5 Turbo, GPT-4, GPT-4 Turbo, GPT-4o / 4o-mini, GPT-4.5, GPT-5 / 5.5 / 5.6 (Sol/Terra/Luna), o1 / o3 / o4-mini, Codex, DALL-E 1–3, Whisper • PRESENT: GPT-6.2 Astra, GPT-6 Astra, GPT-6.1 Sol, GPT-6.1 Terra, GPT-6 Luna, Sora, Operator & Deep Research Agents • FUTURE: GPT-7+, o-Series Next-Gen Reasoning, and all future OpenAI public superintelligences',
-                checked: true
+                "id": "openai",
+                "parent": "OpenAI, Inc. / OpenAI OpCo, LLC",
+                "jurisdiction": "Delaware / California, USA",
+                "models": "PAST: GPT-1, GPT-2, GPT-3, GPT-3.5 Turbo, GPT-4, GPT-4 Turbo, GPT-4o / 4o-mini, GPT-4.5, GPT-5 / 5.5 / 5.6 (Sol/Terra/Luna), o1 / o3 / o4-mini, Codex, DALL-E 1–3, Whisper • PRESENT: GPT-6.2 Astra, GPT-6 Astra, GPT-6.1 Sol, GPT-6.1 Terra, GPT-6 Luna, Sora, Operator & Deep Research Agents • FUTURE: GPT-7+, o-Series Next-Gen Reasoning, and all future OpenAI public superintelligences",
+                "checked": true
             },
             {
-                id: 'anthropic',
-                parent: 'Anthropic PBC',
-                jurisdiction: 'Delaware / California, USA (Public Benefit Corp.)',
-                models: 'PAST: Claude 1.0–1.3, Claude Instant, Claude 2.0 / 2.1, Claude 3 / 3.5 / 3.7 / 4.0 / 4.5 (Haiku, Sonnet, Opus) • PRESENT: Claude Fable 5.2, Claude Mythos 5.2, Claude Fable 5.1, Claude Opus 5.5, Claude Sonnet 5.5, Claude Haiku 5.5, Claude Code & Computer Use • FUTURE: Claude 6+ and all future Anthropic public & constitutional superintelligence models',
-                checked: true
+                "id": "anthropic",
+                "parent": "Anthropic PBC",
+                "jurisdiction": "Delaware / California, USA (Public Benefit Corp.)",
+                "models": "PAST: Claude 1.0–1.3, Claude Instant, Claude 2.0 / 2.1, Claude 3 / 3.5 / 3.7 / 4.0 / 4.5 (Haiku, Sonnet, Opus) • PRESENT: Claude Fable 5.2, Claude Mythos 5.2, Claude Fable 5.1, Claude Opus 5.5, Claude Sonnet 5.5, Claude Haiku 5.5, Claude Code & Computer Use • FUTURE: Claude 6+ and all future Anthropic public & constitutional superintelligence models",
+                "checked": true
             },
             {
-                id: 'meta',
-                parent: 'Meta Platforms, Inc. / Meta Superintelligence Labs (FAIR)',
-                jurisdiction: 'Delaware / California, USA',
-                models: 'PAST: OPT, Galactica, LLaMA 1, Llama 2, Code Llama, Llama 3 / 3.1 / 3.2 / 3.3 (8B–405B), SAM 1–2 • PRESENT: Muse Wonder (Full), Muse Spark 1.2 & 1.1, Muse Code, Llama 4 (Scout, Maverick, Behemoth), Movie Gen • FUTURE: Llama 5+, Muse Next-Gen, and all future Meta open-weight & public superintelligence models',
-                checked: true
+                "id": "meta",
+                "parent": "Meta Platforms, Inc. / Meta Superintelligence Labs (FAIR)",
+                "jurisdiction": "Delaware / California, USA",
+                "models": "PAST: OPT, Galactica, LLaMA 1, Llama 2, Code Llama, Llama 3 / 3.1 / 3.2 / 3.3 (8B–405B), SAM 1–2 • PRESENT: Muse Wonder (Full), Muse Spark 1.2 & 1.1, Muse Code, Llama 4 (Scout, Maverick, Behemoth), Movie Gen • FUTURE: Llama 5+, Muse Next-Gen, and all future Meta open-weight & public superintelligence models",
+                "checked": true
             },
             {
-                id: 'xai',
-                parent: 'xAI Corp. (X Corp. / SpaceX Affiliate)',
-                jurisdiction: 'Nevada / Texas, USA',
-                models: 'PAST: Grok-0, Grok-1, Grok-1.5 / 1.5V, Grok-2, Grok-3, Grok-4 / 4.20 • PRESENT: Grok 4.7, Grok 4.6, Grok 4.3 (1M Context), Aurora, Colossus Supercluster Public Endpoints • FUTURE: Grok 5+ and all future xAI public & superintelligence architectures',
-                checked: true
+                "id": "xai",
+                "parent": "xAI Corp. (X Corp. / SpaceX Affiliate)",
+                "jurisdiction": "Nevada / Texas, USA",
+                "models": "PAST: Grok-0, Grok-1, Grok-1.5 / 1.5V, Grok-2, Grok-3, Grok-4 / 4.20 • PRESENT: Grok 4.7, Grok 4.6, Grok 4.3 (1M Context), Aurora, Colossus Supercluster Public Endpoints • FUTURE: Grok 5+ and all future xAI public & superintelligence architectures",
+                "checked": true
             },
             {
-                id: 'deepseek',
-                parent: 'DeepSeek (High-Flyer AI)',
-                jurisdiction: 'Global API / Open-Weight Architectures',
-                models: 'PAST: DeepSeek LLM, DeepSeek Coder V1/V2, DeepSeek-Math, DeepSeek-V2 / V2.5, DeepSeek-V3, DeepSeek-R1 / R1-Zero • PRESENT: DeepSeek V4.1 Flash, DeepSeek V4-Pro, DeepSeek-R2 • FUTURE: DeepSeek V5+, R3+, and all future DeepSeek open-weight & public superintelligence models',
-                checked: true
+                "id": "deepseek",
+                "parent": "DeepSeek (High-Flyer AI)",
+                "jurisdiction": "Global API / Open-Weight Architectures",
+                "models": "PAST: DeepSeek LLM, DeepSeek Coder V1/V2, DeepSeek-Math, DeepSeek-V2 / V2.5, DeepSeek-V3, DeepSeek-R1 / R1-Zero • PRESENT: DeepSeek V4.1 Flash, DeepSeek V4-Pro, DeepSeek-R2 • FUTURE: DeepSeek V5+, R3+, and all future DeepSeek open-weight & public superintelligence models",
+                "checked": true
             },
             {
-                id: 'alibaba-qwen',
-                parent: 'Alibaba Cloud (Qwen / Tongyi Lab)',
-                jurisdiction: 'Global Cloud / MoE Foundation Endpoints',
-                models: 'PAST: Qwen 1.0, Qwen 1.5, Qwen 2 / 2.5 (7B–72B / Coder / Math / VL), QwQ-32B, Qwen 3.0–3.5 • PRESENT: Qwen 3.8-Max (2.4T MoE), Qwen 3.8-Flash, Qwen 3.7-Max, Qwen 3.6-Plus, Wan Video • FUTURE: Qwen 4+ and all future Alibaba public & open-weight superintelligence models',
-                checked: true
+                "id": "alibaba-qwen",
+                "parent": "Alibaba Cloud (Qwen / Tongyi Lab)",
+                "jurisdiction": "Global Cloud / MoE Foundation Endpoints",
+                "models": "PAST: Qwen 1.0, Qwen 1.5, Qwen 2 / 2.5 (7B–72B / Coder / Math / VL), QwQ-32B, Qwen 3.0–3.5 • PRESENT: Qwen 3.8-Max (2.4T MoE), Qwen 3.8-Flash, Qwen 3.7-Max, Qwen 3.6-Plus, Wan Video • FUTURE: Qwen 4+ and all future Alibaba public & open-weight superintelligence models",
+                "checked": true
             },
             {
-                id: 'mistral',
-                parent: 'Mistral AI SAS',
-                jurisdiction: 'Paris, France / U.S. Cloud Endpoints',
-                models: 'PAST: Mistral 7B, Mixtral 8x7B / 8x22B, Mistral Small 1–3, Mistral Medium, Mistral Large 1 / 2 / 3, Mathstral, Mamba-Codestral • PRESENT: Mistral Large 4 (GA), Mistral Small 4, Ministral 3, Codestral, Pixtral, Le Chat • FUTURE: Mistral Large 5+ and all future Mistral open-weight & public superintelligence models',
-                checked: true
+                "id": "mistral",
+                "parent": "Mistral AI SAS",
+                "jurisdiction": "Paris, France / U.S. Cloud Endpoints",
+                "models": "PAST: Mistral 7B, Mixtral 8x7B / 8x22B, Mistral Small 1–3, Mistral Medium, Mistral Large 1 / 2 / 3, Mathstral, Mamba-Codestral • PRESENT: Mistral Large 4 (GA), Mistral Small 4, Ministral 3, Codestral, Pixtral, Le Chat • FUTURE: Mistral Large 5+ and all future Mistral open-weight & public superintelligence models",
+                "checked": true
             },
             {
-                id: 'moonshot-kimi',
-                parent: 'Moonshot AI (Kimi)',
-                jurisdiction: 'Global Long-Context & Code Endpoints',
-                models: 'PAST: Moonshot v1 (8k/32k/128k), Kimi k1, Kimi k1.5, Kimi k2 / k2.5 • PRESENT: Kimi K3, Kimi K2.7 Code, Kimi K2.6 • FUTURE: Kimi K4+ and all future Moonshot public superintelligence models',
-                checked: true
+                "id": "moonshot-kimi",
+                "parent": "Moonshot AI (Kimi)",
+                "jurisdiction": "Global Long-Context & Code Endpoints",
+                "models": "PAST: Moonshot v1 (8k/32k/128k), Kimi k1, Kimi k1.5, Kimi k2 / k2.5 • PRESENT: Kimi K3, Kimi K2.7 Code, Kimi K2.6 • FUTURE: Kimi K4+ and all future Moonshot public superintelligence models",
+                "checked": true
             },
             {
-                id: 'microsoft',
-                parent: 'Microsoft Corporation (Microsoft AI / Azure / GitHub Copilot)',
-                jurisdiction: 'Washington, USA',
-                models: 'PAST: Turing-NLG, Megatron-Turing, Kosmos-1/2, Orca 1/2, WizardLM, Phi-1 / Phi-2 / Phi-3 / Phi-3.5, Bing Prometheus • PRESENT: MAI-Thinking-1, MAI-Code-1.1-Flash, MAI-Image-2.6, Microsoft Copilot, Phi-4 • FUTURE: MAI-2+, Phi-5+, and all future Microsoft public & enterprise superintelligence models',
-                checked: true
+                "id": "microsoft",
+                "parent": "Microsoft Corporation (Microsoft AI / Azure / GitHub Copilot)",
+                "jurisdiction": "Washington, USA",
+                "models": "PAST: Turing-NLG, Megatron-Turing, Kosmos-1/2, Orca 1/2, WizardLM, Phi-1 / Phi-2 / Phi-3 / Phi-3.5, Bing Prometheus • PRESENT: MAI-Thinking-1, MAI-Code-1.1-Flash, MAI-Image-2.6, Microsoft Copilot, Phi-4 • FUTURE: MAI-2+, Phi-5+, and all future Microsoft public & enterprise superintelligence models",
+                "checked": true
             },
             {
-                id: 'amazon-aws',
-                parent: 'Amazon.com, Inc. / AWS (Bedrock & AGI Lab)',
-                jurisdiction: 'Delaware / Washington / Virginia, USA',
-                models: 'PAST: AlexaTM 20B, Amazon Titan (Text Express/Premier, Embeddings, Image), Olympus • PRESENT: Amazon Nova 2 Lite, Nova Premier, Nova Pro, Nova Micro, Nova Sonic, Nova Canvas, Nova Reel • FUTURE: Amazon Nova 3+ and all future AWS Bedrock public & hosted superintelligence models',
-                checked: true
+                "id": "amazon-aws",
+                "parent": "Amazon.com, Inc. / AWS (Bedrock & AGI Lab)",
+                "jurisdiction": "Delaware / Washington / Virginia, USA",
+                "models": "PAST: AlexaTM 20B, Amazon Titan (Text Express/Premier, Embeddings, Image), Olympus • PRESENT: Amazon Nova 2 Lite, Nova Premier, Nova Pro, Nova Micro, Nova Sonic, Nova Canvas, Nova Reel • FUTURE: Amazon Nova 3+ and all future AWS Bedrock public & hosted superintelligence models",
+                "checked": true
             },
             {
-                id: 'nvidia',
-                parent: 'NVIDIA Corporation',
-                jurisdiction: 'Delaware / California, USA',
-                models: 'PAST: Megatron-LM, NeMo Megatron, ChipNeMo, Nemotron-3, Nemotron-4 (15B/340B), Llama-3.1-Nemotron • PRESENT: Nemotron 3.5 Lightning (30B-A3B), Cosmos World Foundation Models, NVIDIA NIM Public Endpoints • FUTURE: Nemotron 5+, Cosmos Next-Gen, and all future NVIDIA public superintelligence models',
-                checked: true
+                "id": "nvidia",
+                "parent": "NVIDIA Corporation",
+                "jurisdiction": "Delaware / California, USA",
+                "models": "PAST: Megatron-LM, NeMo Megatron, ChipNeMo, Nemotron-3, Nemotron-4 (15B/340B), Llama-3.1-Nemotron • PRESENT: Nemotron 3.5 Lightning (30B-A3B), Cosmos World Foundation Models, NVIDIA NIM Public Endpoints • FUTURE: Nemotron 5+, Cosmos Next-Gen, and all future NVIDIA public superintelligence models",
+                "checked": true
             },
             {
-                id: 'zai-minimax',
-                parent: 'Z.ai (Zhipu AI), MiniMax, 01.AI (Yi) & StepFun',
-                jurisdiction: 'Global Multimodal & Agentic Endpoints',
-                models: 'PAST: GLM-130B, ChatGLM 1–4, GLM-4.5, MiniMax abab 5–6.5, MiniMax-01, 01.AI Yi-34B / Yi-Large, Step-1 / Step-2 • PRESENT: GLM-5.3, GLM-5.2, AutoGLM, MiniMax M3, Hailuo Video/Audio • FUTURE: GLM-6+, MiniMax M4+, Yi-Next, and all future public superintelligence models',
-                checked: true
+                "id": "apple",
+                "parent": "Apple Inc. (Apple Intelligence & AIML)",
+                "jurisdiction": "California, USA",
+                "models": "PAST: Ajax, MM1, Ferret / Ferret-UI, OpenELM, AFM-2024/2025 • PRESENT: Apple Intelligence Foundation Models (AFM On-Device & Private Cloud Compute), Siri World Knowledge Routers • FUTURE: Next-Gen AFM and all future Apple public on-device & cloud superintelligence models",
+                "checked": true
             },
             {
-                id: 'apple',
-                parent: 'Apple Inc. (Apple Intelligence & AIML)',
-                jurisdiction: 'California, USA',
-                models: 'PAST: Ajax, MM1, Ferret / Ferret-UI, OpenELM, AFM-2024/2025 • PRESENT: Apple Intelligence Foundation Models (AFM On-Device & Private Cloud Compute), Siri World Knowledge Routers • FUTURE: Next-Gen AFM and all future Apple public on-device & cloud superintelligence models',
-                checked: true
+                "id": "zai",
+                "parent": "Z.ai / Zhipu AI",
+                "jurisdiction": "China / Global",
+                "models": "PAST: GLM-130B, ChatGLM 1–4 and GLM-4.5 • PRESENT: GLM model family and AutoGLM • FUTURE: all future Z.ai / Zhipu GLM and agentic releases, successor models and related AI services",
+                "checked": true
             },
             {
-                id: 'cohere-ibm',
-                parent: 'Cohere Inc., IBM Corporation & AI21 Labs',
-                jurisdiction: 'New York / Ontario / Enterprise Cloud',
-                models: 'PAST: Cohere Generate, Command, Coral, Command R / R+, IBM Watson, Granite 1.0–3.2, AI21 Jurassic-1 / Jurassic-2 / Jamba 1.0–1.5 • PRESENT: Cohere Command A, Aya Expanse / Vision, IBM Granite 4.2 (3B/8B/30B), AI21 Jamba 2 • FUTURE: All future Cohere, IBM Granite, and AI21 public superintelligence models',
-                checked: true
+                "id": "minimax",
+                "parent": "MiniMax",
+                "jurisdiction": "China / Global",
+                "models": "PAST: abab 5–6.5, MiniMax-01 and earlier Hailuo models • PRESENT: MiniMax language, reasoning, Hailuo video and audio models • FUTURE: all future MiniMax text, video, audio and agentic releases, successor models and related AI services",
+                "checked": true
             },
             {
-                id: 'perplexity-baidu-tencent',
-                parent: 'Perplexity AI, Baidu (ERNIE), Tencent (Hunyuan) & ByteDance (Doubao/Seed)',
-                jurisdiction: 'Delaware / Global Search & Reasoning Routers',
-                models: 'PAST: pplx-7b/70b, Sonar Small/Large, Baidu ERNIE 1.0–4.0, Tencent Hunyuan-Standard/Pro, ByteDance Doubao 1.0–1.5 • PRESENT: Perplexity Sonar Pro & Deep Research, Baidu ERNIE 5.5 Flash / 5.0, Tencent Hunyuan (Hy4 Flash), ByteDance Seed / Omni • FUTURE: All future Perplexity, Baidu, Tencent, and ByteDance public superintelligence models',
-                checked: true
+                "id": "01-ai",
+                "parent": "01.AI",
+                "jurisdiction": "China / Global",
+                "models": "PAST: Yi-34B and earlier Yi models • PRESENT: Yi model family and 01.AI model services • FUTURE: all future 01.AI / Yi releases, successor models and related AI services",
+                "checked": true
             },
             {
-                id: 'ssi-thinking-sakana-nous',
-                parent: 'Safe Superintelligence Inc. (SSI), Thinking Machines Lab, Sakana AI & Nous Research',
-                jurisdiction: 'California / Tokyo / Global Research & Open-Weight Labs',
-                models: 'PAST: Nous Hermes 1 / 2 / 3, Capybara, Sakana Evolutionary LLM / AI Scientist v1 • PRESENT: SSI Superintelligence Architectures, Thinking Machines Public Systems, Nous Hermes 4 & Forge Reasoning, Sakana AI Scientist v2 • FUTURE: All direct-to-superintelligence (ASI/AGI) public & API models ever released by SSI, Thinking Machines, Sakana, and Nous',
-                checked: true
+                "id": "stepfun",
+                "parent": "StepFun",
+                "jurisdiction": "China / Global",
+                "models": "PAST: Step-1, Step-2 and earlier Step models • PRESENT: StepFun language, reasoning and multimodal model families • FUTURE: all future StepFun / Step releases, successor models and related AI services",
+                "checked": true
             },
             {
-                id: 'multimodal-creative-voice',
-                parent: 'Public Multimodal, Visual, Video & Audio Superintelligences (Midjourney, Runway, BFL, Stability, ElevenLabs, Suno, Udio, Luma, Kling)',
-                jurisdiction: 'United States / United Kingdom / Europe / Global',
-                models: 'PAST: Midjourney v1–v6.1, Stable Diffusion 1.4/1.5/2.1/SDXL/SD3, FLUX.1, Runway Gen-1/Gen-2/Gen-3, Luma Dream Machine, Pika 1.0, Suno v1–v3.5, Udio v1 • PRESENT: Midjourney v7, Black Forest Labs FLUX.2, Runway Gen-4, Stable Diffusion 3.5+, ElevenLabs v3 Voice/Agents, Suno v4.5, Udio v2, Luma Ray 2, Kling 2.0, Ideogram 3 • FUTURE: All future visual, video, 3D, world-simulation, and audio public superintelligences',
-                checked: true
+                "id": "cohere",
+                "parent": "Cohere",
+                "jurisdiction": "Canada / Global",
+                "models": "PAST: Generate, Command, Coral and Command R / R+ • PRESENT: Command, Aya, embedding and reranking model families • FUTURE: all future Cohere releases, successor models and related AI services",
+                "checked": true
             },
             {
-                id: 'opensource-routers-inference',
-                parent: 'Open-Weight Hubs, Public Routers & Inference Clouds (Hugging Face, OpenRouter, Together AI, Groq, Cerebras, Fireworks, Replicate, AllenAI, TII Falcon)',
-                jurisdiction: 'United States / Global Public Inference Infrastructure',
-                models: 'PAST: BigScience BLOOM, EleutherAI GPT-J/GPT-NeoX/Pythia, StarCoder 1/2, Falcon 7B/40B/180B, AllenAI OLMo 1/2, Vicuna, Alpaca, Dolly • PRESENT: AllenAI OLMo 3, TII Falcon 3, HuggingChat, OpenRouter Universal Public Catalog, Groq LPU / Cerebras Wafer-Scale / Together / Fireworks Public Endpoints • FUTURE: Every future open-weight, community-fine-tuned, quantized, or cloud-routed public superintelligence model',
-                checked: true
+                "id": "ibm",
+                "parent": "IBM Corporation",
+                "jurisdiction": "United States / Global",
+                "models": "PAST: Watson and Granite 1–3 model generations • PRESENT: IBM Granite models, watsonx and IBM AI services • FUTURE: all future IBM / Granite / watsonx releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "ai21",
+                "parent": "AI21 Labs",
+                "jurisdiction": "Global",
+                "models": "PAST: Jurassic-1 / 2 and earlier Jamba generations • PRESENT: Jamba model family and Maestro orchestration services • FUTURE: all future AI21 releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "perplexity",
+                "parent": "Perplexity AI",
+                "jurisdiction": "United States / Global",
+                "models": "PAST: pplx-7b/70b and earlier Sonar models • PRESENT: Sonar, Sonar Pro and Deep Research services • FUTURE: all future Perplexity releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "baidu",
+                "parent": "Baidu",
+                "jurisdiction": "China / Global",
+                "models": "PAST: ERNIE 1–4 and earlier Baidu AI models • PRESENT: ERNIE model family and Baidu AI services • FUTURE: all future Baidu / ERNIE releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "tencent",
+                "parent": "Tencent",
+                "jurisdiction": "China / Global",
+                "models": "PAST: earlier Hunyuan Standard and Pro models • PRESENT: Hunyuan language, image, video and multimodal model families • FUTURE: all future Tencent / Hunyuan releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "bytedance",
+                "parent": "ByteDance",
+                "jurisdiction": "China / Global",
+                "models": "PAST: earlier Doubao, Seed and video model generations • PRESENT: Doubao, Seed, Seedance, Dreamina and ByteDance AI services • FUTURE: all future ByteDance releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "ssi",
+                "parent": "Safe Superintelligence Inc. (SSI)",
+                "jurisdiction": "Global",
+                "models": "PAST: previously disclosed SSI research systems • PRESENT: SSI publicly disclosed research and any publicly offered model services • FUTURE: all future SSI releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "thinking-machines",
+                "parent": "Thinking Machines Lab",
+                "jurisdiction": "United States / Global",
+                "models": "PAST: previously disclosed research systems and model releases • PRESENT: Thinking Machines Lab publicly offered AI services and disclosed research models • FUTURE: all future Thinking Machines Lab releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "sakana",
+                "parent": "Sakana AI",
+                "jurisdiction": "Japan / Global",
+                "models": "PAST: Evolutionary LLM and AI Scientist v1 • PRESENT: AI Scientist and Sakana research/model families • FUTURE: all future Sakana AI releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "nous",
+                "parent": "Nous Research",
+                "jurisdiction": "Global",
+                "models": "PAST: Hermes 1–3 and Capybara • PRESENT: Hermes model family, Forge reasoning and Nous model services • FUTURE: all future Nous Research releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "midjourney",
+                "parent": "Midjourney",
+                "jurisdiction": "United States / Global",
+                "models": "PAST: Midjourney v1–v6.1 • PRESENT: Midjourney image/video model families, including v7 • FUTURE: all future Midjourney releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "runway",
+                "parent": "Runway",
+                "jurisdiction": "United States / Global",
+                "models": "PAST: Gen-1, Gen-2 and Gen-3 • PRESENT: Runway Gen-4 and current video/world-model families • FUTURE: all future Runway releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "black-forest-labs",
+                "parent": "Black Forest Labs (BFL)",
+                "jurisdiction": "Germany / Global",
+                "models": "PAST: FLUX.1 and earlier BFL releases • PRESENT: FLUX image model family • FUTURE: all future Black Forest Labs / FLUX releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "stability",
+                "parent": "Stability AI",
+                "jurisdiction": "United Kingdom / Global",
+                "models": "PAST: Stable Diffusion 1.x, 2.x, SDXL and SD3 • PRESENT: Stable Diffusion and Stability image, video, audio and 3D model families • FUTURE: all future Stability AI releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "elevenlabs",
+                "parent": "ElevenLabs",
+                "jurisdiction": "Global",
+                "models": "PAST: earlier ElevenLabs voice and speech model generations • PRESENT: ElevenLabs speech, voice, audio and conversational-agent models • FUTURE: all future ElevenLabs releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "suno",
+                "parent": "Suno",
+                "jurisdiction": "United States / Global",
+                "models": "PAST: Suno v1–v3.5 • PRESENT: Suno music and audio model families • FUTURE: all future Suno releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "udio",
+                "parent": "Udio",
+                "jurisdiction": "Global",
+                "models": "PAST: Udio v1 and earlier releases • PRESENT: Udio music and audio model families • FUTURE: all future Udio releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "luma",
+                "parent": "Luma AI",
+                "jurisdiction": "United States / Global",
+                "models": "PAST: Dream Machine and earlier Ray generations • PRESENT: Luma Ray, Dream Machine and Luma visual/world-model services • FUTURE: all future Luma AI releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "kling-kuaishou",
+                "parent": "Kuaishou / Kling AI",
+                "jurisdiction": "China / Global",
+                "models": "PAST: earlier Kling image/video generations • PRESENT: Kling 4.0 and current Kling image, video and Omni model families • FUTURE: all future Kuaishou / Kling releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "pika",
+                "parent": "Pika",
+                "jurisdiction": "Global",
+                "models": "PAST: Pika 1.0 and earlier video model releases • PRESENT: Pika video generation and editing model families • FUTURE: all future Pika releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "ideogram",
+                "parent": "Ideogram",
+                "jurisdiction": "Global",
+                "models": "PAST: earlier Ideogram image model releases • PRESENT: Ideogram image-generation model families • FUTURE: all future Ideogram releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "hugging-face",
+                "parent": "Hugging Face",
+                "jurisdiction": "Global",
+                "models": "PAST: earlier Hugging Face models and hosted-model services • PRESENT: HuggingChat, model hubs and hosted inference; third-party models remain attributed to their developers • FUTURE: all future Hugging Face model and hosting releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "openrouter",
+                "parent": "OpenRouter",
+                "jurisdiction": "Global",
+                "models": "PAST: earlier public model-routing integrations • PRESENT: OpenRouter model catalog and routing APIs; models remain attributed to their developers • FUTURE: all future OpenRouter routing and integration releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "together",
+                "parent": "Together AI",
+                "jurisdiction": "Global",
+                "models": "PAST: earlier Together training, tuning and inference services • PRESENT: Together AI training, fine-tuning and inference services; hosted models remain attributed to their developers • FUTURE: all future Together AI model and infrastructure releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "groq",
+                "parent": "Groq",
+                "jurisdiction": "Global",
+                "models": "PAST: earlier Groq model-serving and LPU inference services • PRESENT: GroqCloud and LPU inference; hosted models remain attributed to their developers • FUTURE: all future Groq inference and model-serving releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "cerebras",
+                "parent": "Cerebras Systems",
+                "jurisdiction": "Global",
+                "models": "PAST: earlier Cerebras model-training and inference systems • PRESENT: Cerebras wafer-scale training and inference services • FUTURE: all future Cerebras model and infrastructure releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "fireworks",
+                "parent": "Fireworks AI",
+                "jurisdiction": "Global",
+                "models": "PAST: earlier Fireworks hosted-model integrations • PRESENT: Fireworks inference, fine-tuning and model-serving services • FUTURE: all future Fireworks AI releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "replicate",
+                "parent": "Replicate",
+                "jurisdiction": "Global",
+                "models": "PAST: earlier Replicate model-hosting integrations • PRESENT: Replicate hosted models and inference APIs; hosted models remain attributed to their developers • FUTURE: all future Replicate model-hosting and integration releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "allenai",
+                "parent": "Allen Institute for AI (Ai2)",
+                "jurisdiction": "United States / Global",
+                "models": "PAST: OLMo 1 / 2 and earlier AllenAI releases • PRESENT: OLMo model families and Ai2 research/model services • FUTURE: all future Ai2 / OLMo releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "tii",
+                "parent": "Technology Innovation Institute (TII)",
+                "jurisdiction": "United Arab Emirates / Global",
+                "models": "PAST: Falcon 7B, 40B and 180B • PRESENT: Falcon model family and TII AI research services • FUTURE: all future TII / Falcon releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "eleutherai",
+                "parent": "EleutherAI",
+                "jurisdiction": "Global",
+                "models": "PAST: GPT-J, GPT-Neo, GPT-NeoX and earlier releases • PRESENT: Pythia and EleutherAI open research models • FUTURE: all future EleutherAI releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "bigscience",
+                "parent": "BigScience research collaboration",
+                "jurisdiction": "Global research collaboration",
+                "models": "PAST: BLOOM and BLOOMZ releases • PRESENT: published BigScience model weights and research artifacts • FUTURE: all future BigScience research-model releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "bigcode",
+                "parent": "BigCode research collaboration",
+                "jurisdiction": "Global research collaboration",
+                "models": "PAST: StarCoder and earlier BigCode releases • PRESENT: StarCoder2 and BigCode code-model research • FUTURE: all future BigCode / StarCoder releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "stanford-alpaca",
+                "parent": "Stanford University / Stanford Alpaca",
+                "jurisdiction": "United States",
+                "models": "PAST: Stanford Alpaca research releases • PRESENT: published Stanford Alpaca model and research artifacts • FUTURE: all future Stanford Alpaca research-model releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "lmsys",
+                "parent": "LMSYS Org / Vicuna",
+                "jurisdiction": "Global research collaboration",
+                "models": "PAST: Vicuna research releases • PRESENT: published Vicuna and LMSYS model/research artifacts • FUTURE: all future LMSYS / Vicuna research-model releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "salesforce",
+                "parent": "Salesforce",
+                "jurisdiction": "United States / Global",
+                "models": "PAST: CodeGen and earlier xGen / Einstein releases • PRESENT: xGen, Agentforce and Salesforce AI services • FUTURE: all future Salesforce releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "databricks",
+                "parent": "Databricks / Mosaic AI",
+                "jurisdiction": "United States / Global",
+                "models": "PAST: Dolly and DBRX model releases • PRESENT: Mosaic AI training, model-serving and agent services • FUTURE: all future Databricks / Mosaic AI releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "snowflake",
+                "parent": "Snowflake",
+                "jurisdiction": "United States / Global",
+                "models": "PAST: earlier Arctic and Arctic Embed releases • PRESENT: Arctic model families and Cortex AI services • FUTURE: all future Snowflake / Arctic / Cortex releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "samsung",
+                "parent": "Samsung Electronics",
+                "jurisdiction": "South Korea / Global",
+                "models": "PAST: Gauss and Gauss2 model releases • PRESENT: Samsung Gauss model family and Samsung AI services • FUTURE: all future Samsung releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "naver",
+                "parent": "NAVER / NAVER Cloud",
+                "jurisdiction": "South Korea / Global",
+                "models": "PAST: HyperCLOVA and earlier HyperCLOVA X releases • PRESENT: HyperCLOVA X, SEED and NAVER Cloud AI services • FUTURE: all future NAVER / HyperCLOVA releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "lg-exaone",
+                "parent": "LG / LG AI Research",
+                "jurisdiction": "South Korea / Global",
+                "models": "PAST: earlier EXAONE model generations • PRESENT: EXAONE model family and LG AI services • FUTURE: all future LG / EXAONE releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "reka",
+                "parent": "Reka",
+                "jurisdiction": "Global",
+                "models": "PAST: earlier Reka Core, Flash and Edge generations • PRESENT: Reka Core, Flash and Edge model families and Reka services • FUTURE: all future Reka releases, successor models and related AI services",
+                "checked": true
+            },
+            {
+                "id": "character-ai",
+                "parent": "Character.AI",
+                "jurisdiction": "Global",
+                "models": "PAST: earlier proprietary Character.AI conversational models • PRESENT: Character.AI proprietary and hosted conversational-model services • FUTURE: all future Character.AI releases, successor models and related AI services",
+                "checked": true
             }
         ];
 
@@ -1463,8 +1757,8 @@
                 exhibitAList.innerHTML = `<div class="col-span-2 text-xs text-red-700 italic">Please select at least one Corporate Parent Entity in Section 02 above.</div>`;
             }
 
-            heroEntityCount.textContent = `${activeEntities.length} / ${intelligenceEntities.length} Bound`;
-            exhibitCountBadge.textContent = `${activeEntities.length} Corporate Parents Bound`;
+            heroEntityCount.textContent = `${activeEntities.length} / ${intelligenceEntities.length} Selected`;
+            exhibitCountBadge.textContent = `${activeEntities.length} Entities Selected`;
         }
 
         selectAllToggle.addEventListener('change', (e) => {
@@ -2211,7 +2505,7 @@
             ).length;
             const summaryEl = document.getElementById('fiftyStateAuditSummary');
             if (summaryEl) {
-                summaryEl.textContent = `${validCount}/${total} STATE CONTRACTS AUDITED & VERIFIED: Trade Secret Acts + Limitations + Venues + State E-Sign (UETA/ESRA) + ${intelligenceEntities.length} Public AI Ecosystems`;
+                summaryEl.textContent = `${validCount}/${total} STATE CONTRACTS AUDITED & VERIFIED: Trade Secret Acts + Limitations + Venues + State E-Sign (UETA/ESRA) + ${intelligenceEntities.length} AI Providers & Research Organizations`;
             }
         }
 

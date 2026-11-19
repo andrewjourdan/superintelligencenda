@@ -432,7 +432,7 @@
                 <span class="px-2.5 py-0.5 rounded-md bg-amber-500/20 text-amber-300 font-mono text-xs font-bold">SECTION 03 • DISCLOSING PARTY</span>
                 <div>
                     <h2 class="text-lg sm:text-xl font-bold text-white">Disclosing Party Identity, Commercial Brand &amp; Primary Domicile State</h2>
-                    <p class="text-xs text-slate-400">Fields are cleared by default for public intake and dynamically populate the Master 50-State Omnibus Contract and all 50 Individual State Contracts as you type.</p>
+                    <p class="text-xs text-slate-400">Fields are cleared by default for public intake and dynamically populate the Master 50-State Omnibus Contract and all 50 Individual State Contracts as you type per user.</p>
                 </div>
             </div>
 
@@ -636,20 +636,20 @@
 
                         <!-- Formal Execution & Signature Block inside the Contract -->
                         <div class="mt-8 pt-6 border-t-2 border-slate-900 grid grid-cols-1 md:grid-cols-2 gap-6 print-break-inside-avoid">
-                            <!-- Disclosing Party Signature Box (Pre-Signed by Andrew Jourdan Nahmias) -->
+                            <!-- Disclosing Party Signature Box (Completed Per User) -->
                             <div class="p-4 rounded-xl bg-parchment-100 border border-slate-300 flex flex-col justify-between">
                                 <div>
                                     <div class="font-sans text-[11px] font-bold uppercase tracking-wider text-slate-600">AUTHORIZED SIGNATORY &amp; 100% IP OWNER</div>
-                                    <div id="sigBlockUserName" class="font-sans text-sm font-bold text-slate-900 mt-1">Andrew Jourdan Nahmias</div>
-                                    <div id="sigBlockUserOrg" class="font-sans text-xs text-slate-600">Authorized Founding Signatory • SuperintelligenceNDA.com</div>
+                                    <div id="sigBlockUserName" class="font-sans text-sm font-bold text-slate-900 mt-1">[DISCLOSING PARTY]</div>
+                                    <div id="sigBlockUserOrg" class="font-sans text-xs text-slate-600">[COMMERCIAL BRAND / LEGAL ENTITY]</div>
                                 </div>
                                 <div class="my-3 h-20 bg-white border border-dashed border-slate-400 rounded-lg flex items-center justify-center overflow-hidden p-1">
-                                    <img id="contractSignaturePreview" alt="Andrew Jourdan Nahmias Digital Signature" class="max-h-full max-w-full object-contain hidden" />
+                                    <img id="contractSignaturePreview" alt="Disclosing Party Digital Signature" class="max-h-full max-w-full object-contain hidden" />
                                     <span id="contractSignaturePlaceholder" class="font-sans text-xs text-slate-400 italic">Awaiting signature capture &amp; execution...</span>
                                 </div>
                                 <div class="font-mono text-[10.5px] text-slate-600 flex justify-between border-t border-slate-300 pt-2">
                                     <span>DATE: <strong id="sigBlockDate"></strong></span>
-                                    <span id="sigBlockStatus" class="text-emerald-800 font-bold">PRE-SIGNED: ANDREW JOURDAN NAHMIAS</span>
+                                    <span id="sigBlockStatus" class="text-emerald-800 font-bold">AWAITING SIGNATURE</span>
                                 </div>
                             </div>
 
@@ -693,14 +693,14 @@
                     </div>
 
                     <p class="text-xs text-slate-400 mb-3">
-                        Pre-signed by default as <strong>Andrew Jourdan Nahmias</strong> at the bottom of the contract, or draw/re-sign below to bind all 50 states simultaneously.
+                        Enter your legal name above, then draw your signature or choose Auto-Sign to add your signature to the Master 50-State Omnibus Contract and all 50 Individual State Contracts.
                     </p>
 
                     <div class="relative rounded-xl overflow-hidden border-2 border-slate-700 focus-within:border-amber-400 transition">
                         <canvas id="signaturePad" class="w-full h-44 block"></canvas>
                         <div class="absolute bottom-2 left-3 right-3 border-b border-slate-300 pointer-events-none flex justify-between items-end pb-1">
                             <span class="text-[10px] font-mono text-slate-400">SIGN ABOVE LINE (X)</span>
-                            <span id="sigStatusIndicator" class="text-[10px] font-mono text-emerald-600 font-bold">SIGNED: ANDREW JOURDAN NAHMIAS</span>
+                            <span id="sigStatusIndicator" class="text-[10px] font-mono text-emerald-600 font-bold">AWAITING SIGNATURE</span>
                         </div>
                     </div>
 
@@ -1804,7 +1804,7 @@
             showStatusMessage(`Added "${parentVal}" to Exhibit A coverage matrix.`, 'success');
         });
 
-        // --- 7. LIVE-BIND DISCLOSING PARTY INPUTS (CLEARED BY DEFAULT, PRESERVING BOTTOM SIGNATURE) ---
+        // --- 7. LIVE-BIND DISCLOSING PARTY INPUTS (CLEARED BY DEFAULT, COMPLETED PER USER) ---
         function syncDisclosingPartyInputs() {
             const name = userNameInput.value.trim() || '[DISCLOSING PARTY]';
             const org = userOrgInput.value.trim() || '[ALL REGISTERED COMMERCIAL & PERSONAL PROPERTIES]';
@@ -1816,9 +1816,9 @@
             document.getElementById('contractEmailSpan').textContent = email;
             document.getElementById('contractDomicileSpan').textContent = domicile;
 
-            // Keep Andrew Jourdan Nahmias as the pre-signed bottom signature unless overwritten
-            document.getElementById('sigBlockUserName').textContent = userNameInput.value.trim() || 'Andrew Jourdan Nahmias';
-            document.getElementById('sigBlockUserOrg').textContent = userOrgInput.value.trim() || 'Authorized Founding Signatory • SuperintelligenceNDA.com';
+            // Use only the current user's identity in the signature block.
+            document.getElementById('sigBlockUserName').textContent = userNameInput.value.trim() || '[DISCLOSING PARTY]';
+            document.getElementById('sigBlockUserOrg').textContent = userOrgInput.value.trim() || '[COMMERCIAL BRAND / LEGAL ENTITY]';
 
             syncJurisdictionUI();
         }
@@ -1844,9 +1844,7 @@
             ctx.lineWidth = 2.4;
             ctx.strokeStyle = currentInkColor;
 
-            if (!hasValidSignature) {
-                renderScriptSignatureOnCanvas();
-            }
+            syncCanvasToContractPreview();
         }
 
         function getPointerPos(e) {
@@ -1893,7 +1891,8 @@
         function markSignaturePresent() {
             hasValidSignature = true;
             const indicator = document.getElementById('sigStatusIndicator');
-            indicator.textContent = 'SIGNED: ANDREW JOURDAN NAHMIAS';
+            indicator.textContent = 'SIGNATURE CAPTURED';
+            document.getElementById('sigBlockStatus').textContent = 'SIGNATURE CAPTURED';
             indicator.className = 'text-[10px] font-mono text-emerald-600 font-bold';
         }
 
@@ -1911,9 +1910,13 @@
         }
 
         function renderScriptSignatureOnCanvas() {
+            if (!userNameInput.value.trim()) {
+                showStatusMessage('Enter your full legal name before using Auto-Sign.', 'warning');
+                return;
+            }
             const rect = canvas.getBoundingClientRect();
             ctx.clearRect(0, 0, rect.width, rect.height);
-            const sigName = userNameInput.value.trim() || 'Andrew Jourdan Nahmias';
+            const sigName = userNameInput.value.trim() || '[DISCLOSING PARTY]';
 
             ctx.save();
             ctx.font = '42px "Great Vibes", cursive';
@@ -1951,6 +1954,7 @@
             const rect = canvas.getBoundingClientRect();
             ctx.clearRect(0, 0, rect.width, rect.height);
             hasValidSignature = false;
+            document.getElementById('sigBlockStatus').textContent = 'AWAITING SIGNATURE';
             const indicator = document.getElementById('sigStatusIndicator');
             indicator.textContent = 'AWAITING SIGNATURE';
             indicator.className = 'text-[10px] font-mono text-amber-400 font-bold';
@@ -1993,7 +1997,7 @@
                 userOrgInput.value.trim() || 'ALL-PROPERTIES',
                 userEmailInput.value.trim() || 'UNSPECIFIED-EMAIL',
                 userDomicileSelect.value || 'ALL-50-STATES',
-                'SIGNATORY:Andrew Jourdan Nahmias',
+                `SIGNATORY:${userNameInput.value.trim() || '[DISCLOSING PARTY]'}`,
                 activeParents,
                 sigDataSnippet,
                 executionTimestampUTC || 'LIVE-STATE'
@@ -2286,7 +2290,7 @@
                 `ORGANIZATION / BRAND:   ${userOrgInput.value.trim() || '[ALL REGISTERED COMMERCIAL & PERSONAL PROPERTIES]'}`,
                 `REGISTERED CONTACT:     ${userEmailInput.value.trim() || '[REGISTERED CONTACT EMAIL]'}`,
                 `PRIMARY DOMICILE:       ${userDomicileSelect.value || '[SELECTED HOME FORUM / ALL 50 U.S. STATES]'}`,
-                `AUTHORIZED SIGNATORY:   Andrew Jourdan Nahmias`,
+                `AUTHORIZED SIGNATORY:   ${userNameInput.value.trim() || '[DISCLOSING PARTY]'}`,
                 `SHA-256 DIGEST:         ${latestSha256Hash}`,
                 '--------------------------------------------------------------------------------',
                 '1. 100% USER OWNERSHIP OF INPUTS & SUPERINTELLIGENCE OUTPUTS:',
@@ -2317,7 +2321,7 @@
                 ...US_STATES_LEGAL_DB.map((s, i) => `  ${String(i + 1).padStart(2, '0')}. ${s.name} (${s.code}): ${s.statute} | Limitation: ${s.limitation} | Venue: ${s.venue}`),
                 '--------------------------------------------------------------------------------',
                 'EXECUTED SIGNATURE BLOCK:',
-                '  Signed: Andrew Jourdan Nahmias',
+                `  Signatory: ${userNameInput.value.trim() || '[DISCLOSING PARTY]'}`,
                 '  Service API credential: supplied separately; never share in a contract',
                 '================================================================================'
             ];
@@ -2351,8 +2355,8 @@
                 `DISCLOSING PARTY:       ${userNameInput.value.trim() || '[DISCLOSING PARTY]'}`,
                 `COMMERCIAL PORTFOLIO:   ${userOrgInput.value.trim() || '[ALL REGISTERED COMMERCIAL & PERSONAL PROPERTIES]'}`,
                 `REGISTERED CONTACT:     ${userEmailInput.value.trim() || '[REGISTERED CONTACT EMAIL]'}`,
-                `PRIMARY DOMICILE:       ${userDomicileSelect.value || `State of ${st.name} (${st.code} — ${st.statute})`}`,
-                `AUTHORIZED SIGNATORY:   Andrew Jourdan Nahmias`,
+                `PRIMARY DOMICILE:       ${userDomicileSelect.value || '[SELECTED HOME FORUM / ALL 50 U.S. STATES]'}`,
+                `AUTHORIZED SIGNATORY:   ${userNameInput.value.trim() || '[DISCLOSING PARTY]'}`,
                 `STATE SHA-256 DIGEST:   ${stateSpecificDigest}`,
                 `MASTER OMNIBUS DIGEST:  ${baseHash}`,
                 '--------------------------------------------------------------------------------',
@@ -2408,8 +2412,8 @@
                 ...activeEntities.map((e, i) => `  ${String(i + 1).padStart(2, '0')}. ${e.parent}\n      Models: ${e.models}`),
                 '--------------------------------------------------------------------------------',
                 `ARTICLE VII — STATE OF ${st.name.toUpperCase()} CRYPTOGRAPHIC EXECUTION & SIGNATURE BLOCK:`,
-                `  Authorized Founding Signatory: Andrew Jourdan Nahmias`,
-                `  Disclosing Party Signatory:    ${userNameInput.value.trim() || 'Andrew Jourdan Nahmias'}`,
+                `  Authorized Signatory:         ${userNameInput.value.trim() || '[DISCLOSING PARTY]'}`,
+                `  Disclosing Party Signatory:    ${userNameInput.value.trim() || '[DISCLOSING PARTY]'}`,
                 '  Service API credential: supplied separately; never share in a contract',
                 `  State Instrument ID:           SNDA-2026-STATE-${st.code}`,
                 `  State SHA-256 Digest:          ${stateSpecificDigest}`,

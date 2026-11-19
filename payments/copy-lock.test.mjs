@@ -49,3 +49,9 @@ try{
  if(!(await import(pathToFileURL(path).href)).passed)throw new Error('Copy tests unfinished');
  console.log('PASS: copy actions blocked for unpaid orders, enabled after verification, and relocked after revocation');
 }finally{await rm(temp,{recursive:true,force:true});}
+
+for (const id of ['navCopyHashBtn','navDownloadAll50Btn','navPrintBtn']) {
+ const button = html.match(new RegExp('<button id="'+id+'"[^>]*>[\\s\\S]*?</button>'))?.[0];
+ if (!button?.includes('disabled') || !button.includes('id="'+id+'LockIcon"') || !button.includes('class="paid-lock-label">Locked</span>')) throw new Error(id+' needs default disabled state, padlock and Locked label');
+}
+console.log('PASS: all three navigation export buttons have explicit locked indicators');

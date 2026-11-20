@@ -47,6 +47,10 @@ Tests cover payment signatures, stale events, pending access denial, paid fulfil
 
 ## Print and export controls
 
+Ordinary visits no longer automatically unlock from a previously saved paid order. Automatic restoration is limited to a fresh checkout return carrying the locally recorded in-progress checkout marker, which is consumed after server verification. A return URL by itself is insufficient. Customers can explicitly use Check payment to restore an existing purchase. Changes to identity, international particulars, provider selections or signature input immediately relock exports; revision checks prevent late verification responses from undoing that relock. Saved paid documents remain available through the authenticated API and explicit restoration.
+
+Run `node payments/payment-resume.test.mjs` to check saved-order startup, fresh returns, explicit restoration, relocking after edits and in-flight response races.
+
 All navigation, contract TXT, paid PDF/TXT, Mode C, copy and private-configuration controls now share one default-locked state with padlocks, explicit Locked labels and neutral disabled styling. Verified paid credentials unlock them; failed verification relocks every control and clears the cached service credential. Saving the API configuration also rechecks paid access immediately before downloading. Restored-state pages recheck access instead of trusting a return URL.
 
 The public homepage has a narrowly scoped Super Bot Fight Mode exception for GET `/` and `/index.html` on the apex and www hosts to prevent repeated browser challenges. WAF managed rules, rate limits, the separate API exception, application authentication and signed-webhook verification remain in place. Other paths and methods are not included in the homepage exception.

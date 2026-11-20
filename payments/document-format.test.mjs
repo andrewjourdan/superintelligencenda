@@ -4,7 +4,7 @@ import {join} from 'node:path';
 import {pathToFileURL} from 'node:url';
 const html=await readFile(new URL('../index.html',import.meta.url),'utf8');
 const start=html.indexOf('        async function downloadPaidBundle(');
-const end=html.indexOf('        async function checkOrder()',start);
+const end=html.indexOf('        async function checkOrder(',start);
 if(start<0 || end<0)throw new Error('Bundle download handler missing');
 const handler=html.slice(start,end).replace("await import('./payments/document-pdf.mjs')",'await mockPdfModule');
 const mocks=`

@@ -39,7 +39,7 @@ assert(prints===0 && downloads===0,'no saved order cannot export');
 localStorage.setItem(ORDER_STORAGE,JSON.stringify({order_id:'test',access_token:'token',downloaded:true}));
 await triggerPrintPdf();await handleDownloadOmnibus();
 assert(prints===0 && downloads===0,'pending order cannot export');
-currentStatus='paid';await checkOrder();
+currentStatus='paid';await checkOrder(true);
 assert(PAID_EXPORT_BUTTONS.every(id=>!document.getElementById(id).disabled),'paid exports unlocked');
 assert(attributes.get('data-paid-document-access')==='true','native print enabled after verification');
 await triggerPrintPdf();await handleDownloadOmnibus();await handleDownloadSingleState();await handleDownloadAll50StatesBundle();await document.getElementById('saveServiceConfigBtn').click();

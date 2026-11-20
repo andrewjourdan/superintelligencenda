@@ -43,6 +43,6 @@ api.deactivate();assert.equal(document.getElementById('internationalContract').h
 await document.getElementById('intlDownloadBtn').handlers.click();assert.equal(downloads,0,'unpaid export denied');
 paid=true;await document.getElementById('intlDownloadBtn').handlers.click();assert.equal(downloads,1,'verified export allowed');
 paid=false;await document.getElementById('intlDownloadBtn').handlers.click();assert.equal(downloads,1,'revoked export denied');
-assert.match(html,/PAID_EXPORT_BUTTONS = \["intlDownloadBtn"/);
+assert.ok(JSON.parse(html.match(/const PAID_EXPORT_BUTTONS = (\[[^;]+\])/)[1]).includes("intlDownloadBtn"));
 assert.match(html,/SNDAModeC\.text\(\)/,'new order snapshots include the standalone document');
 console.log('PASS: Mode C isolation, 18 articles/regimes, non-U.S. forum validation, per-user text safety, exact SHA-256, training consent, filtering, mode switching and fresh paid/revoked export checks');

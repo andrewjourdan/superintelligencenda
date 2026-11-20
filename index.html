@@ -89,9 +89,16 @@
         }
 
         [data-paid-export][disabled] {
-            opacity: 0.45;
+            background: #1e293b !important;
+            background-image: none !important;
+            color: #cbd5e1 !important;
+            border: 1px solid #475569 !important;
+            box-shadow: none !important;
+            opacity: 1;
             cursor: not-allowed;
         }
+        .paid-lock-label { font-size: 0.75rem; font-weight: 700; }
+        [data-paid-export]:not([disabled]) .paid-lock-label { display: none; }
         /* Unpaid printing shows a notice, including the browser's Print command. */
         @media print {
             html:not([data-paid-document-access="true"]) body > * { display: none !important; }
@@ -186,17 +193,17 @@
                 <button id="navCopyHashBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 text-xs font-medium flex items-center gap-2 transition" title="Copy Live SHA-256 Document Hash">
                     <i id="navCopyHashBtnLockIcon" class="fa-solid fa-lock" aria-hidden="true"></i>
                     <span class="hidden md:inline">Copy SHA-256</span>
-                </button>
+                 <span class="paid-lock-label">Locked</span></button>
 
-                <button id="navDownloadAll50Btn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3 py-2 rounded-lg bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/40 text-xs font-semibold flex items-center gap-2 transition" title="Download Complete 50-State + Omnibus Bundle (.TXT)">
+                <button id="navDownloadAll50Btn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3 py-2 rounded-lg bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/40 text-xs font-semibold flex items-center gap-2 transition" title="Download Complete 50-State + Omnibus Bundle (.TXT)"><i id="navDownloadAll50BtnLockIcon" class="fa-solid fa-lock" aria-hidden="true"></i>
                     <i class="fa-solid fa-layer-group"></i>
                     <span class="hidden sm:inline">All 50 States Packet (.TXT)</span>
-                </button>
+                 <span class="paid-lock-label">Locked</span></button>
 
-                <button id="navPrintBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3.5 py-2 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-amber-500/10 transition">
+                <button id="navPrintBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3.5 py-2 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-amber-500/10 transition"><i id="navPrintBtnLockIcon" class="fa-solid fa-lock" aria-hidden="true"></i>
                     <i class="fa-solid fa-file-pdf"></i>
                     <span>Print / Save PDF</span>
-                </button>
+                 <span class="paid-lock-label">Locked</span></button>
             </div>
         </div>
         <p class="text-center text-xs text-amber-300 px-4 pb-2">Payment verification is required to unlock printing and document downloads.</p>
@@ -271,18 +278,18 @@
 
                 <!-- Quick Multi-Contract Export Bar -->
                 <div class="flex flex-wrap items-center gap-2">
-                    <button id="exportMasterOmnibusBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3.5 py-2 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 text-xs font-semibold flex items-center gap-2 transition">
+                    <button id="exportMasterOmnibusBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3.5 py-2 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 text-xs font-semibold flex items-center gap-2 transition"><i id="exportMasterOmnibusBtnLockIcon" class="fa-solid fa-lock" aria-hidden="true"></i>
                         <i class="fa-solid fa-scroll"></i>
                         <span>Download Master Omnibus (.TXT)</span>
-                    </button>
-                    <button id="exportCurrentStateBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 text-xs font-semibold flex items-center gap-2 transition">
+                     <span class="paid-lock-label">Locked</span></button>
+                    <button id="exportCurrentStateBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 text-xs font-semibold flex items-center gap-2 transition"><i id="exportCurrentStateBtnLockIcon" class="fa-solid fa-lock" aria-hidden="true"></i>
                         <i class="fa-solid fa-file-contract text-emerald-400"></i>
                         <span id="exportCurrentStateBtnLabel">Download Florida (FL) Contract (.TXT)</span>
-                    </button>
-                    <button id="exportAll50BundleBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs flex items-center gap-2 shadow-lg shadow-emerald-600/20 transition">
+                     <span class="paid-lock-label">Locked</span></button>
+                    <button id="exportAll50BundleBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs flex items-center gap-2 shadow-lg shadow-emerald-600/20 transition"><i id="exportAll50BundleBtnLockIcon" class="fa-solid fa-lock" aria-hidden="true"></i>
                         <i class="fa-solid fa-boxes-packing"></i>
                         <span>Download All 50 Individual State Contracts Bundle (.TXT)</span>
-                    </button>
+                     <span class="paid-lock-label">Locked</span></button>
                 </div>
             </div>
 
@@ -707,7 +714,7 @@
                         <div class="border border-slate-300 rounded-lg p-3 mb-5 no-print">
                             <p class="font-mono text-xs font-bold mb-1">SHA-256 OF THIS EXACT INTERNATIONAL DOCUMENT TEXT</p>
                             <p id="intlDigest" class="font-mono text-xs break-all" aria-live="polite">Computing…</p>
-                            <button id="intlDownloadBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="mt-3 px-4 py-2 rounded-lg bg-sky-950 text-white text-sm"><i id="intlDownloadBtnLockIcon" class="fa-solid fa-lock"></i> Download Mode C (.TXT)</button>
+                            <button id="intlDownloadBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="mt-3 px-4 py-2 rounded-lg bg-sky-950 text-white text-sm"><i id="intlDownloadBtnLockIcon" class="fa-solid fa-lock"></i> Download Mode C (.TXT) <span class="paid-lock-label">Locked</span></button>
                         </div>
                         <pre id="intlContractText"></pre>
                         <div class="mt-8 border-t-2 border-slate-800 pt-5 no-print">
@@ -860,9 +867,9 @@
                         <p id="deliveryStatusText" class="text-sm text-slate-300"></p>
                         <div class="flex flex-wrap gap-2">
                             <button id="checkPaymentBtn" type="button" class="px-3 py-2 rounded-lg bg-slate-700 text-white text-xs">Check payment</button>
-                            <button id="paidBundleBtn" disabled type="button" class="px-3 py-2 rounded-lg bg-emerald-600 text-white text-xs disabled:opacity-40">Download TXT</button>
-                            <button id="paidPdfBundleBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3 py-2 rounded-lg bg-emerald-600 text-white text-xs disabled:opacity-40">Download PDF</button>
-                            <button id="saveServiceConfigBtn" disabled type="button" class="px-3 py-2 rounded-lg bg-amber-500 text-slate-950 text-xs disabled:opacity-40">Save private API configuration</button>
+                            <button id="paidBundleBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3 py-2 rounded-lg bg-emerald-600 text-white text-xs disabled:opacity-40"><i id="paidBundleBtnLockIcon" class="fa-solid fa-lock" aria-hidden="true"></i> Download TXT <span class="paid-lock-label">Locked</span></button>
+                            <button id="paidPdfBundleBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3 py-2 rounded-lg bg-emerald-600 text-white text-xs disabled:opacity-40"><i id="paidPdfBundleBtnLockIcon" class="fa-solid fa-lock" aria-hidden="true"></i> Download PDF <span class="paid-lock-label">Locked</span></button>
+                            <button id="saveServiceConfigBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="px-3 py-2 rounded-lg bg-amber-500 text-slate-950 text-xs disabled:opacity-40"><i id="saveServiceConfigBtnLockIcon" class="fa-solid fa-lock" aria-hidden="true"></i> Save private API configuration <span class="paid-lock-label">Locked</span></button>
                         </div>
                         <p class="text-xs text-slate-400">Keep this browser's order access and save your private API configuration for future downloads. PDF and TXT delivery are available here after payment verification.</p>
                     </section>
@@ -893,11 +900,11 @@
                             <button id="copyApiKeyBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="py-2 px-2.5 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 text-[11px] font-semibold flex items-center justify-center gap-1.5 transition">
                                 <i id="copyApiKeyBtnLockIcon" class="fa-solid fa-lock" aria-hidden="true"></i>
                                 <span>Copy API Key</span>
-                            </button>
+                             <span class="paid-lock-label">Locked</span></button>
                             <button id="copyPluginJsonBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="py-2 px-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-emerald-300 border border-slate-700 text-[11px] font-semibold flex items-center justify-center gap-1.5 transition">
                                 <i id="copyPluginJsonBtnLockIcon" class="fa-solid fa-lock" aria-hidden="true"></i>
                                 <span>Copy Account JSON</span>
-                            </button>
+                             <span class="paid-lock-label">Locked</span></button>
                         </div>
                     </div>
 
@@ -906,22 +913,22 @@
                         <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-1">
                             Direct Plain-Text (.TXT) &amp; PDF Contract Downloads:
                         </div>
-                        <button id="downloadOmnibusTxtBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="w-full py-2 px-3 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 text-xs font-semibold flex items-center justify-between transition">
+                        <button id="downloadOmnibusTxtBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="w-full py-2 px-3 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 text-xs font-semibold flex items-center justify-between transition"><i id="downloadOmnibusTxtBtnLockIcon" class="fa-solid fa-lock" aria-hidden="true"></i>
                             <span><i class="fa-solid fa-scroll mr-1.5"></i> 1. Master 50-State Omnibus NDA (.TXT)</span>
                             <i class="fa-solid fa-download"></i>
-                        </button>
-                        <button id="downloadSingleStateTxtBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="w-full py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-emerald-300 border border-slate-700 text-xs font-semibold flex items-center justify-between transition">
+                         <span class="paid-lock-label">Locked</span></button>
+                        <button id="downloadSingleStateTxtBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="w-full py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-emerald-300 border border-slate-700 text-xs font-semibold flex items-center justify-between transition"><i id="downloadSingleStateTxtBtnLockIcon" class="fa-solid fa-lock" aria-hidden="true"></i>
                             <span id="downloadSingleStateBtnText"><i class="fa-solid fa-file-contract mr-1.5"></i> 2. Individual Florida (FL) Contract (.TXT)</span>
                             <i class="fa-solid fa-download"></i>
-                        </button>
-                        <button id="downloadAll50StatesTxtBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="w-full py-2.5 px-3 rounded-xl bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/40 text-xs font-bold flex items-center justify-between transition">
+                         <span class="paid-lock-label">Locked</span></button>
+                        <button id="downloadAll50StatesTxtBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="w-full py-2.5 px-3 rounded-xl bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/40 text-xs font-bold flex items-center justify-between transition"><i id="downloadAll50StatesTxtBtnLockIcon" class="fa-solid fa-lock" aria-hidden="true"></i>
                             <span><i class="fa-solid fa-boxes-packing mr-1.5"></i> 3. All 50 Individual State Contracts Bundle (.TXT)</span>
                             <i class="fa-solid fa-download"></i>
-                        </button>
-                        <button id="printExecutedContractBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="w-full py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 text-xs font-semibold flex items-center justify-between transition">
+                         <span class="paid-lock-label">Locked</span></button>
+                        <button id="printExecutedContractBtn" disabled aria-disabled="true" data-paid-export="true" type="button" class="w-full py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 text-xs font-semibold flex items-center justify-between transition"><i id="printExecutedContractBtnLockIcon" class="fa-solid fa-lock" aria-hidden="true"></i>
                             <span><i class="fa-solid fa-print mr-1.5"></i> 4. Print / Save Active Contract View as PDF</span>
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </button>
+                         <span class="paid-lock-label">Locked</span></button>
                     </div>
                 </div>
 
@@ -2151,9 +2158,10 @@
         let verifiedServiceKey = '';
         let deliveryPolling = false;
 
-        const PAID_EXPORT_BUTTONS = ["intlDownloadBtn","copyApiKeyBtn","copyPluginJsonBtn","navCopyHashBtn","paidPdfBundleBtn","navDownloadAll50Btn","navPrintBtn","exportMasterOmnibusBtn","exportCurrentStateBtn","exportAll50BundleBtn","downloadOmnibusTxtBtn","downloadSingleStateTxtBtn","downloadAll50StatesTxtBtn","printExecutedContractBtn"];
+        const PAID_EXPORT_BUTTONS = ["paidBundleBtn","saveServiceConfigBtn","intlDownloadBtn","copyApiKeyBtn","copyPluginJsonBtn","navCopyHashBtn","paidPdfBundleBtn","navDownloadAll50Btn","navPrintBtn","exportMasterOmnibusBtn","exportCurrentStateBtn","exportAll50BundleBtn","downloadOmnibusTxtBtn","downloadSingleStateTxtBtn","downloadAll50StatesTxtBtn","printExecutedContractBtn"];
         function setDocumentAccess(allowed) {
             document.documentElement.setAttribute('data-paid-document-access', allowed ? 'true' : 'false');
+            if (!allowed) verifiedServiceKey = '';
             PAID_EXPORT_BUTTONS.forEach(id => {
                 const button = document.getElementById(id);
                 button.disabled = !allowed;
@@ -2244,6 +2252,10 @@
                 return status.status;
             }
             const credentials = await (await orderRequest('/credentials')).json();
+            if (!credentials.api_key) {
+                setDocumentAccess(false);
+                throw new Error('Payment verification did not return valid document credentials.');
+            }
             verifiedServiceKey = credentials.api_key;
             setDocumentAccess(true);
             document.getElementById('universalPluginApiKeyDisplay').textContent = verifiedServiceKey;
@@ -2320,7 +2332,8 @@
                 note:'For SuperintelligenceNDA only. Keep this credential private.'
             };
         }
-        document.getElementById('saveServiceConfigBtn').addEventListener('click', () => {
+        document.getElementById('saveServiceConfigBtn').addEventListener('click', async () => {
+            if (!await requirePaidDocumentAccess()) return;
             if (!verifiedServiceKey) return;
             triggerTextDownload('SuperintelligenceNDA-Private-API-Configuration.json', JSON.stringify(serviceConfig(),null,2));
         });

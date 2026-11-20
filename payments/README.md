@@ -5,6 +5,8 @@ Website: https://www.superintelligencenda.com
 
 ## Purchase flow
 1. Start checkout on the website. The browser submits the current master document and all 50 state document templates as one saved text bundle.
+
+Mode C review proposal: new snapshots prepend the standalone international agreement (52 templates total). Its own export rechecks the same paid credentials endpoint. The backend, product, price, webhook validation and existing saved snapshots are unchanged. Localhost previews cannot start checkout. This proposal has not been deployed.
 2. The API stores an order and returns an unpredictable access token. The browser saves it locally before opening the live Stripe Payment Link with client_reference_id.
 3. A signed live Stripe webhook verifies payment for the configured bundle link. Unpaid, wrong-link, forged and stale events do not unlock documents.
 4. Stripe redirects to the website. The browser polls the order and automatically downloads the saved bundle as a PDF after payment verification. Separate Download PDF and Download TXT buttons remain available. The page also exposes manual download and private API-configuration controls.

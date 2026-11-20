@@ -40,6 +40,6 @@ try {
  const path=join(temp,'checks.mjs');await writeFile(path,mocks+handler+checks);
  if(!(await import(pathToFileURL(path).href)).passed)throw new Error('Format tests did not finish');
  if(!html.includes('id="paidPdfBundleBtn" disabled') || !html.includes("downloadPaidBundle(true, 'pdf')"))throw new Error('PDF default/lock missing');
- if(!html.includes('>Download TXT</button>'))throw new Error('TXT option missing');
+ if(!/<button id="paidBundleBtn"[^>]*>[\s\S]*?Download TXT[\s\S]*?<\/button>/.test(html))throw new Error('TXT option missing');
  console.log('PASS: PDF and TXT require verified access; both use the saved bundle; PDF auto-download configured');
 } finally {await rm(temp,{recursive:true,force:true});}

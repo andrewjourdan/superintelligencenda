@@ -46,6 +46,10 @@ Node's built-in sqlite is used for the backend integration tests:
 Tests cover payment signatures, stale events, pending access denial, paid fulfillment, duplicate delivery, credential scope, refunds and out-of-order success events. The live health endpoint and unpaid-access denial were checked without charging a card. A real paid transaction was not performed.
 
 ## Print and export controls
+
+All navigation, contract TXT, paid PDF/TXT, Mode C, copy and private-configuration controls now share one default-locked state with padlocks, explicit Locked labels and neutral disabled styling. Verified paid credentials unlock them; failed verification relocks every control and clears the cached service credential. Saving the API configuration also rechecks paid access immediately before downloading. Restored-state pages recheck access instead of trusting a return URL.
+
+The public homepage has a narrowly scoped Super Bot Fight Mode exception for GET `/` and `/index.html` on the apex and www hosts to prevent repeated browser challenges. WAF managed rules, rate limits, the separate API exception, application authentication and signed-webhook verification remain in place. Other paths and methods are not included in the homepage exception.
 All nine print/text-download controls are disabled by default. Verified paid orders unlock them. Each button action rechecks paid access with the delivery API; a verification failure relocks them. Unpaid browser printing renders a payment-required notice. The export-lock tests exercise pending, paid and revoked access against the actual frontend code.
 
 This is an export-control gate, not a private-content paywall. The current HTML preview, generators and repository history still contain document text. A visitor can copy publicly delivered text or inspect source. Protecting the template content itself requires serving the complete documents only after server-side payment verification and showing a limited public preview.

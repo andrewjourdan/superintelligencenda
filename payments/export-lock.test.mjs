@@ -34,7 +34,7 @@ const fetch=async(url,opts={})=>{
 `;
 const checks=`
 assert(PAID_EXPORT_BUTTONS.every(id=>document.getElementById(id).disabled),'all exports locked initially');
-await triggerPrintPdf();await handleDownloadOmnibus();await handleDownloadSingleState();await handleDownloadAll50StatesBundle();
+await triggerPrintPdf();await handleDownloadOmnibus();await handleDownloadSingleState();await handleDownloadAll50StatesBundle();await document.getElementById('saveServiceConfigBtn').click();
 assert(prints===0 && downloads===0,'no saved order cannot export');
 localStorage.setItem(ORDER_STORAGE,JSON.stringify({order_id:'test',access_token:'token',downloaded:true}));
 await triggerPrintPdf();await handleDownloadOmnibus();
@@ -42,11 +42,13 @@ assert(prints===0 && downloads===0,'pending order cannot export');
 currentStatus='paid';await checkOrder();
 assert(PAID_EXPORT_BUTTONS.every(id=>!document.getElementById(id).disabled),'paid exports unlocked');
 assert(attributes.get('data-paid-document-access')==='true','native print enabled after verification');
-await triggerPrintPdf();await handleDownloadOmnibus();await handleDownloadSingleState();await handleDownloadAll50StatesBundle();
-assert(prints===1 && downloads===3,'paid exports work');
+await triggerPrintPdf();await handleDownloadOmnibus();await handleDownloadSingleState();await handleDownloadAll50StatesBundle();await document.getElementById('saveServiceConfigBtn').click();
+assert(prints===1 && downloads===4,'paid exports work');
 currentStatus='revoked';
 await triggerPrintPdf();await handleDownloadOmnibus();
-assert(prints===1 && downloads===3,'fresh server check blocks revoked order');
+assert(prints===1 && downloads===4,'fresh server check blocks revoked order');
+await document.getElementById('saveServiceConfigBtn').click();
+assert(downloads===4 && verifiedServiceKey==='', 'revoked configuration cannot export cached credentials');
 assert(PAID_EXPORT_BUTTONS.every(id=>document.getElementById(id).disabled),'revocation relocks controls');
 assert(attributes.get('data-paid-document-access')==='false','revocation relocks native print');
 export const passed=true;
@@ -60,3 +62,9 @@ try {
  if(!html.includes('html:not([data-paid-document-access="true"]) body > *'))throw new Error('Unpaid print CSS missing');
  console.log('PASS: default locks, unpaid denial, verified exports, fresh revocation checks, native print CSS');
 } finally {await rm(temp,{recursive:true,force:true});}
+
+for (const id of ['navCopyHashBtn','navDownloadAll50Btn','navPrintBtn','downloadOmnibusTxtBtn','downloadSingleStateTxtBtn','downloadAll50StatesTxtBtn','printExecutedContractBtn','intlDownloadBtn','paidBundleBtn','paidPdfBundleBtn','saveServiceConfigBtn']) {
+ const button=html.match(new RegExp('<button id="'+id+'"[^>]*>[\\s\\S]*?</button>'))?.[0];
+ if(!button?.includes('disabled')||!button.includes('id="'+id+'LockIcon"')||!button.includes('class="paid-lock-label">Locked</span>'))throw new Error(id+' must start disabled with a padlock and Locked label');
+}
+console.log('PASS: navigation and checkout download controls all show default payment locks');

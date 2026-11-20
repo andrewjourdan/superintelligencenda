@@ -15,7 +15,7 @@ const document={
  createElement(){return {value:'',select(){}};},execCommand(){copies++;},
  getElementById(id){if(!elements.has(id))elements.set(id,{disabled:false,setAttribute(){},addEventListener(name,fn){this[name]=fn;}});return elements.get(id);}
 };
-const savedOrder=()=>hasOrder?{}:null;
+const savedOrder=()=>hasOrder?{order_id:'test'}:null;
 const showStatusMessage=()=>{};
 const copyToClipboardHelper=()=>{copies++;};
 const serviceConfig=()=>({api_key:verifiedServiceKey});
@@ -31,7 +31,7 @@ for(const id of ids)await document.getElementById(id).click();
 assert(copies===0,'no order cannot copy');
 hasOrder=true;for(const id of ids)await document.getElementById(id).click();
 assert(copies===0,'pending order cannot copy');
-currentStatus='paid';
+currentStatus='paid';activePaidOrderId='test';
 for(const id of ids)await document.getElementById(id).click();
 assert(copies===3,'verified payment unlocks all three copy actions');
 assert(verifiedServiceKey==='snda_live_server_verified','fresh server key is used');

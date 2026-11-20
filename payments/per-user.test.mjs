@@ -72,6 +72,7 @@ const checkoutContext = vm.createContext({
     intelligenceEntities:[{checked:true}], US_STATES_LEGAL_DB:[],
     updateLiveCryptographicHash:async()=>{},
     generateOmnibusContractText:()=>'TEST NDA',
+    setDocumentAccess(){},
     DELIVERY_API:'https://example.test', ORDER_STORAGE:'test-order',
     fetch:async()=>{requestCount++;return {ok:true,json:async()=>({order_id:'test',access_token:'test',checkout_url:'https://example.test/checkout'})};},
     window:{location:{assign(){redirected=true;}}}

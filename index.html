@@ -432,7 +432,7 @@
                 <span class="px-2.5 py-0.5 rounded-md bg-amber-500/20 text-amber-300 font-mono text-xs font-bold">SECTION 03 • PER-USER NDA REQUIREMENTS</span>
                 <div>
                     <h2 class="text-lg sm:text-xl font-bold text-white">Per-User NDA Requirements</h2>
-                    <p class="text-xs text-slate-400">Each user must enter their full legal name or legal entity, a valid contact email, and primary domicile state before checkout. Commercial brands and protected domains are optional. Fields start blank and populate that user's Master 50-State Omnibus Contract and all 50 Individual State Contracts as they type.</p>
+                    <p class="text-xs text-slate-400">Enter your legal name or legal entity, valid contact email, and domicile country or territory. U.S. residents must also select their state; other residents may enter a province or region. Commercial brands are optional. Your details populate the master and all 50 U.S. state contract templates. Billing address and available payment methods are collected securely by Stripe.</p>
                 </div>
             </div>
 
@@ -459,16 +459,27 @@
                 </div>
 
                 <div>
-                    <label for="userDomicileSelect" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
-                        Primary Domicile &amp; Home Forum State <span class="text-amber-400">*</span>
-                    </label>
-                    <select id="userDomicileSelect" required aria-required="true" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-amber-400 transition">
-                        <option value="" selected>-- Select Primary Domicile State --</option>
-                        <!-- Populated strictly with the 50 individual U.S. states (Alabama through Wyoming) -->
+                    <label for="userCountrySelect" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">Domicile Country / Territory <span class="text-amber-400">*</span></label>
+                    <select id="userCountrySelect" required aria-required="true" autocomplete="country" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-amber-400 transition">
+                        <option value="">-- Select Country / Territory --</option>
                     </select>
+                </div>
+                <div id="usDomicileGroup" hidden>
+                    <label for="userDomicileSelect" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">U.S. Domicile State <span class="text-amber-400">*</span></label>
+                    <select id="userDomicileSelect" disabled aria-required="false" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-amber-400 transition">
+                        <option value="">-- Select U.S. Domicile State --</option>
+                    </select>
+                </div>
+                <div id="internationalRegionGroup" hidden>
+                    <label for="userRegionInput" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">Province / Region / State (Optional)</label>
+                    <input id="userRegionInput" type="text" value="" maxlength="120" autocomplete="address-level1" placeholder="Enter your province or region, if applicable" disabled class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-amber-400 transition">
                 </div>
             </div>
         </section>
+
+        <aside class="rounded-xl border border-slate-700 bg-slate-900 p-4 text-sm text-slate-300 no-print" aria-label="International checkout and document scope">
+            International intake supports customers outside the United States. Checkout remains priced at $275.00 USD; Stripe determines country, card, and payment-method eligibility. Country selection does not guarantee payment availability. These are U.S. federal and 50-state templates, not country-specific international agreements. Obtain appropriate local review for cross-border use. Applicable taxes and any currency conversion are shown by Stripe before payment.
+        </aside>
 
         <!-- ==================== SECTION 04: THE LIVE LEGAL INSTRUMENT & EXECUTION GATEWAY ==================== -->
         <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -519,7 +530,7 @@
                         
                         <!-- Preamble -->
                         <p>
-                            <strong>THIS UNIVERSAL SUPERINTELLIGENCE NON-DISCLOSURE AND INTELLECTUAL PROPERTY PROTECTION AGREEMENT</strong> (the <strong>"Agreement"</strong>) is entered into, cryptographically attested, and noticed as of <span id="contractDateSpan" class="dynamic-legal-field"></span>, with full retroactive application to all prior historical sessions and perpetual application to all future sessions, by and between <span id="contractUserSpan" class="dynamic-legal-field">[DISCLOSING PARTY]</span>, acting individually and on behalf of <span id="contractOrgSpan" class="dynamic-legal-field">[ALL REGISTERED COMMERCIAL &amp; PERSONAL PROPERTIES]</span> (registered contact: <span id="contractEmailSpan" class="dynamic-legal-field">[REGISTERED CONTACT EMAIL]</span>; primary domicile: <span id="contractDomicileSpan" class="dynamic-legal-field">[SELECTED HOME FORUM / ALL 50 U.S. STATES]</span>) (collectively, the <strong>"Disclosing Party"</strong> or <strong>"User"</strong>), and all Artificial Intelligence Systems, Superintelligences, Large Language Models, Multimodal Foundation Models, Autonomous Agents, Neural Networks, and their respective Corporate Parent Entities, Holding Companies, Subsidiaries, API Routers, and Cloud Infrastructure Providers designated in <strong>Exhibit A</strong> attached hereto (collectively, the <strong>"Receiving Superintelligence Entities"</strong>).
+                            <strong>THIS UNIVERSAL SUPERINTELLIGENCE NON-DISCLOSURE AND INTELLECTUAL PROPERTY PROTECTION AGREEMENT</strong> (the <strong>"Agreement"</strong>) is entered into, cryptographically attested, and noticed as of <span id="contractDateSpan" class="dynamic-legal-field"></span>, with full retroactive application to all prior historical sessions and perpetual application to all future sessions, by and between <span id="contractUserSpan" class="dynamic-legal-field">[DISCLOSING PARTY]</span>, acting individually and on behalf of <span id="contractOrgSpan" class="dynamic-legal-field">[ALL REGISTERED COMMERCIAL &amp; PERSONAL PROPERTIES]</span> (registered contact: <span id="contractEmailSpan" class="dynamic-legal-field">[REGISTERED CONTACT EMAIL]</span>; primary domicile: <span id="contractDomicileSpan" class="dynamic-legal-field">[PRIMARY DOMICILE NOT PROVIDED]</span>) (collectively, the <strong>"Disclosing Party"</strong> or <strong>"User"</strong>), and all Artificial Intelligence Systems, Superintelligences, Large Language Models, Multimodal Foundation Models, Autonomous Agents, Neural Networks, and their respective Corporate Parent Entities, Holding Companies, Subsidiaries, API Routers, and Cloud Infrastructure Providers designated in <strong>Exhibit A</strong> attached hereto (collectively, the <strong>"Receiving Superintelligence Entities"</strong>).
                         </p>
 
                         <!-- Section 1: Parties & Disclosing Party 100% Ownership -->
@@ -1423,6 +1434,58 @@
         const userOrgInput = document.getElementById('userOrgInput');
         const userEmailInput = document.getElementById('userEmailInput');
         const userDomicileSelect = document.getElementById('userDomicileSelect');
+        const userCountrySelect = document.getElementById('userCountrySelect');
+        const userRegionInput = document.getElementById('userRegionInput');
+
+        const DOMICILE_COUNTRY_CODES = 'AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW XK'.split(' ');
+
+        function getCountryName(code) {
+            if (!DOMICILE_COUNTRY_CODES.includes(code)) return '';
+            try { return new Intl.DisplayNames(['en'], { type: 'region' }).of(code) || code; }
+            catch { return code; }
+        }
+
+        function getDomicileText() {
+            const country = getCountryName(userCountrySelect.value);
+            if (!country) return '[PRIMARY DOMICILE NOT PROVIDED]';
+            if (userCountrySelect.value === 'US') {
+                return userDomicileSelect.value
+                    ? userDomicileSelect.value + ', ' + country
+                    : '[U.S. DOMICILE STATE NOT PROVIDED], ' + country;
+            }
+            const region = userRegionInput.value.trim();
+            return region ? region + ', ' + country : country;
+        }
+
+        function escapeDomicileHtml(value) {
+            return value.replace(/[&<>"']/g, char => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            }[char]));
+        }
+
+        function syncCountryControls() {
+            const hasCountry = DOMICILE_COUNTRY_CODES.includes(userCountrySelect.value);
+            const isUS = userCountrySelect.value === 'US';
+            document.getElementById('usDomicileGroup').hidden = !isUS;
+            document.getElementById('internationalRegionGroup').hidden = !hasCountry || isUS;
+            userDomicileSelect.disabled = !isUS;
+            userDomicileSelect.required = isUS;
+            userDomicileSelect.setAttribute('aria-required', String(isUS));
+            userRegionInput.disabled = !hasCountry || isUS;
+        }
+
+        function initCountrySelector() {
+            userCountrySelect.innerHTML = '<option value="">-- Select Country / Territory --</option>';
+            DOMICILE_COUNTRY_CODES.map(code => ({code, name: getCountryName(code)}))
+                .sort((a, b) => a.name.localeCompare(b.name, 'en'))
+                .forEach(country => {
+                    const option = document.createElement('option');
+                    option.value = country.code;
+                    option.textContent = country.name;
+                    userCountrySelect.appendChild(option);
+                });
+            syncCountryControls();
+        }
 
         const stateDropdownSelect = document.getElementById('stateDropdownSelect');
         const stateGridSearchInput = document.getElementById('stateGridSearchInput');
@@ -1449,9 +1512,10 @@
             document.getElementById('contractDateSpan').textContent = formattedDate;
             document.getElementById('sigBlockDate').textContent = formattedDate;
 
-            // Populate 50-State Dropdown & Primary Domicile Dropdown (Strictly 50 Individual States, No Dual Domicile)
+            // U.S. contract selection is independent of international customer domicile.
+            initCountrySelector();
             stateDropdownSelect.innerHTML = '';
-            userDomicileSelect.innerHTML = '<option value="" selected>-- Select Primary Domicile State --</option>';
+            userDomicileSelect.innerHTML = '<option value="" selected>-- Select U.S. Domicile State --</option>';
 
             US_STATES_LEGAL_DB.forEach(st => {
                 const opt = document.createElement('option');
@@ -1566,13 +1630,8 @@
             document.getElementById('exportCurrentStateBtnLabel').textContent = `Download ${st.name} (${st.code}) Contract (.TXT)`;
             document.getElementById('downloadSingleStateBtnText').innerHTML = `<i class="fa-solid fa-file-contract mr-1.5"></i> 2. Individual ${st.name} (${st.code}) Contract (.TXT)`;
 
-            // Sync contractDomicileSpan if user hasn't explicitly chosen a different domicile
-            if (!userDomicileSelect.value) {
-                document.getElementById('contractDomicileSpan').textContent =
-                    contractMode === 'state'
-                        ? `State of ${st.name} (${st.code} — ${st.statute})`
-                        : '[SELECTED HOME FORUM / ALL 50 U.S. STATES]';
-            }
+            // Never substitute the selected contract jurisdiction for a user's domicile.
+            document.getElementById('contractDomicileSpan').textContent = getDomicileText();
 
             const dynamicLawBox = document.getElementById('dynamicGoverningLawBox');
 
@@ -1602,7 +1661,7 @@
                         <span class="font-mono text-[10.5px] px-2 py-0.5 rounded bg-amber-800 text-white font-bold">ALL 50 STATES ACTIVE</span>
                     </div>
                     <p>
-                        <strong>(a) Cumulative 50-State Statutory Binding:</strong> This Agreement is simultaneously executed under and governed by the Federal Defend Trade Secrets Act (18 U.S.C. § 1836 et seq.), the Federal E-SIGN Act (15 U.S.C. § 7001 et seq.), and the statutory Trade Secrets Acts, Electronic Transactions Acts (UETA/ESRA), and common-law confidentiality regimes of <strong>all fifty (50) states of the United States</strong> as enumerated in <strong>Exhibit B (Alabama through Wyoming)</strong>, alongside the Disclosing Party's selected primary domicile forum (<span class="font-semibold">${userDomicileSelect.value || '[SELECTED HOME FORUM / ALL 50 U.S. STATES]'}</span>).
+                        <strong>(a) Cumulative 50-State Statutory Binding:</strong> This Agreement is simultaneously executed under and governed by the Federal Defend Trade Secrets Act (18 U.S.C. § 1836 et seq.), the Federal E-SIGN Act (15 U.S.C. § 7001 et seq.), and the statutory Trade Secrets Acts, Electronic Transactions Acts (UETA/ESRA), and common-law confidentiality regimes of <strong>all fifty (50) states of the United States</strong> as enumerated in <strong>Exhibit B (Alabama through Wyoming)</strong>, with the Disclosing Party's primary domicile recorded separately (<span class="font-semibold">${escapeDomicileHtml(getDomicileText())}</span>).
                     </p>
                     <p>
                         <strong>(b) Most Protective Forum &amp; Cumulative Remedy Election:</strong> Should any unauthorized disclosure, cross-session leakage, or non-training commercial exploitation occur, the Disclosing Party is entitled to invoke the substantive law, longer statute of limitations (including the 6-year period in Vermont and New York, 5-year period in Georgia, Illinois, and Missouri, and 4-year period in Maine, Nebraska, Ohio, and Wyoming), and exemplary damages remedy of whichever U.S. State or Federal forum provides the highest degree of intellectual property protection.
@@ -1809,7 +1868,7 @@
             const name = userNameInput.value.trim() || '[DISCLOSING PARTY]';
             const org = userOrgInput.value.trim() || '[ALL REGISTERED COMMERCIAL & PERSONAL PROPERTIES]';
             const email = userEmailInput.value.trim() || '[REGISTERED CONTACT EMAIL]';
-            const domicile = userDomicileSelect.value || '[SELECTED HOME FORUM / ALL 50 U.S. STATES]';
+            const domicile = getDomicileText();
 
             document.getElementById('contractUserSpan').textContent = name;
             document.getElementById('contractOrgSpan').textContent = org;
@@ -1823,9 +1882,14 @@
             syncJurisdictionUI();
         }
 
-        [userNameInput, userOrgInput, userEmailInput, userDomicileSelect].forEach(el => {
+        [userNameInput, userOrgInput, userEmailInput, userDomicileSelect, userCountrySelect, userRegionInput].forEach(el => {
             el.addEventListener('input', syncDisclosingPartyInputs);
             el.addEventListener('change', syncDisclosingPartyInputs);
+        });
+
+        userCountrySelect.addEventListener('change', () => {
+            syncCountryControls();
+            syncDisclosingPartyInputs();
         });
 
         // --- 8. RESPONSIVE HTML5 SIGNATURE PAD ---
@@ -1996,7 +2060,7 @@
                 userNameInput.value.trim() || 'PUBLIC-INTAKE-READY',
                 userOrgInput.value.trim() || 'ALL-PROPERTIES',
                 userEmailInput.value.trim() || 'UNSPECIFIED-EMAIL',
-                userDomicileSelect.value || 'ALL-50-STATES',
+                getDomicileText(),
                 `SIGNATORY:${userNameInput.value.trim() || '[DISCLOSING PARTY]'}`,
                 activeParents,
                 sigDataSnippet,
@@ -2075,8 +2139,17 @@
                 showStatusMessage('Section 03: Enter a valid contact email before checkout.', 'warning');
                 return false;
             }
-            if (!userDomicileSelect.value) {
-                showStatusMessage('Section 03: Select your primary domicile state before checkout.', 'warning');
+            if (!DOMICILE_COUNTRY_CODES.includes(userCountrySelect.value)) {
+                showStatusMessage('Section 03: Select your domicile country or territory before checkout.', 'warning');
+                return false;
+            }
+            if (userCountrySelect.value === 'US' &&
+                !US_STATES_LEGAL_DB.some(state => userDomicileSelect.value === `State of ${state.name} (${state.code} — ${state.statute})`)) {
+                showStatusMessage('Section 03: Select your U.S. domicile state before checkout.', 'warning');
+                return false;
+            }
+            if (userCountrySelect.value !== 'US' && userRegionInput.value.trim().length > 120) {
+                showStatusMessage('Section 03: Keep the province or region within 120 characters.', 'warning');
                 return false;
             }
             return true;
@@ -2302,7 +2375,7 @@
                 `DISCLOSING PARTY:       ${userNameInput.value.trim() || '[DISCLOSING PARTY]'}`,
                 `ORGANIZATION / BRAND:   ${userOrgInput.value.trim() || '[ALL REGISTERED COMMERCIAL & PERSONAL PROPERTIES]'}`,
                 `REGISTERED CONTACT:     ${userEmailInput.value.trim() || '[REGISTERED CONTACT EMAIL]'}`,
-                `PRIMARY DOMICILE:       ${userDomicileSelect.value || '[SELECTED HOME FORUM / ALL 50 U.S. STATES]'}`,
+                `PRIMARY DOMICILE:       ${getDomicileText()}`,
                 `AUTHORIZED SIGNATORY:   ${userNameInput.value.trim() || '[DISCLOSING PARTY]'}`,
                 `SHA-256 DIGEST:         ${latestSha256Hash}`,
                 '--------------------------------------------------------------------------------',
@@ -2368,7 +2441,7 @@
                 `DISCLOSING PARTY:       ${userNameInput.value.trim() || '[DISCLOSING PARTY]'}`,
                 `COMMERCIAL PORTFOLIO:   ${userOrgInput.value.trim() || '[ALL REGISTERED COMMERCIAL & PERSONAL PROPERTIES]'}`,
                 `REGISTERED CONTACT:     ${userEmailInput.value.trim() || '[REGISTERED CONTACT EMAIL]'}`,
-                `PRIMARY DOMICILE:       ${userDomicileSelect.value || '[SELECTED HOME FORUM / ALL 50 U.S. STATES]'}`,
+                `PRIMARY DOMICILE:       ${getDomicileText()}`,
                 `AUTHORIZED SIGNATORY:   ${userNameInput.value.trim() || '[DISCLOSING PARTY]'}`,
                 `STATE SHA-256 DIGEST:   ${stateSpecificDigest}`,
                 `MASTER OMNIBUS DIGEST:  ${baseHash}`,

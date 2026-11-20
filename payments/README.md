@@ -40,6 +40,9 @@ Node's built-in sqlite is used for the backend integration tests:
     node payments/frontend.test.mjs
     node payments/export-lock.test.mjs
     node payments/document-format.test.mjs
+    node payments/copy-lock.test.mjs
+    node payments/per-user.test.mjs
+    node payments/international.test.mjs
 
 Tests cover payment signatures, stale events, pending access denial, paid fulfillment, duplicate delivery, credential scope, refunds and out-of-order success events. The live health endpoint and unpaid-access denial were checked without charging a card. A real paid transaction was not performed.
 
@@ -57,3 +60,9 @@ A generated 51-document sample was checked as a valid multi-page PDF, with reada
 The matrix now has 62 separately selectable providers and research organizations. The earlier grouped rows were split, and Salesforce, Databricks/Mosaic AI, Snowflake, Samsung, NAVER, LG AI Research, Reka and Character.AI were added. Pika, Ideogram and the research collaborations previously named only inside model descriptions have individual entries. The count represents entries, not 62 independent corporate parents.
 
 Each new entry retains past/present/future scope. Existing paid snapshots remain unchanged; new orders capture the updated selection. The all-selected 51-document test bundle was approximately 1.18 MB and produced a 293-page PDF. The API now permits document text up to 1,500,000 UTF-8 bytes and request bodies up to 1,800,000 bytes, below D1's 2,000,000-byte row limit. Oversized documents are rejected. Local payment/access and capacity checks passed. A production capacity request encountered a Cloudflare browser challenge, so production order creation was not confirmed in that check; no security settings were relaxed and no card was charged.
+
+## International customer domicile
+
+The frontend accepts a domicile country or territory and an optional region outside the United States; U.S. customers must select a valid U.S. state. It records domicile independently of the selected U.S. contract view. The purchased snapshot still contains the original 51 U.S. templates, not a separate international legal agreement. Country selection is not an authorization to transact in that country.
+
+The update leaves the Stripe link, $275 USD base price, payment/webhook verification, paid-download checks, and existing stored snapshots intact. International card/local-currency eligibility and tax obligations must be verified separately before changing payment configuration. Tests exercise international data in every generated template and verify that the all-selected bundle stays below the existing 1,500,000-byte API document limit.

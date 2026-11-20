@@ -19,11 +19,14 @@ const document = { getElementById(id) {
 const context = vm.createContext({
     document, userNameInput:{value:''}, userOrgInput:{value:''},
     userEmailInput:{value:''}, userDomicileSelect:{value:''},
+    userCountrySelect:{value:''}, userRegionInput:{value:''},
     intelligenceEntities:[], executionTransactionId:'', executionTimestampUTC:'',
     latestSha256Hash:'test-hash', syncJurisdictionUI(){},
     showStatusMessage(){}, canvas:{getBoundingClientRect(){throw new Error('Blank Auto-Sign must not draw');}}
 });
-vm.runInContext(states + '\n' + [
+const countryCodes = script.match(/const DOMICILE_COUNTRY_CODES = .*;/)[0];
+vm.runInContext(states + '\n' + countryCodes + '\n' + [
+    'getCountryName', 'getDomicileText',
     'syncDisclosingPartyInputs', 'generateOmnibusContractText',
     'generateSingleStateContractText', 'renderScriptSignatureOnCanvas'
 ].map(extract).join('\n'), context);
@@ -36,6 +39,7 @@ for (const person of [
     {name:'User Alpha', org:'Alpha Brand', email:'alpha@example.test', domicile:'State of New York'},
     {name:'User Beta', org:'Beta Brand', email:'beta@example.test', domicile:'State of California'}
 ]) {
+    context.userCountrySelect.value='US';
     Object.assign(context.userNameInput, {value:person.name});
     Object.assign(context.userOrgInput, {value:person.org});
     Object.assign(context.userEmailInput, {value:person.email});
@@ -50,28 +54,31 @@ for (const person of [
         if (person.name === 'User Beta') assert.ok(!contract.includes('User Alpha'));
     }
 }
-for (const input of ['userNameInput','userOrgInput','userEmailInput','userDomicileSelect']) context[input].value = '';
+for (const input of ['userNameInput','userOrgInput','userEmailInput','userDomicileSelect','userCountrySelect','userRegionInput']) context[input].value = '';
 vm.runInContext('syncDisclosingPartyInputs()', context);
 assert.equal(elements.get('sigBlockUserName').textContent, '[DISCLOSING PARTY]');
 assert.ok(!html.includes('PRE-SIGNED:'));
 assert.ok(html.includes('SECTION 03 • PER-USER NDA REQUIREMENTS'));
 console.log('Passed: blank intake, explicit Auto-Sign, two independent users, all 51 contracts, cleared identity, JavaScript syntax.');
 
+const stateFixtures = vm.runInContext('US_STATES_LEGAL_DB', context);
+const countryFixtures = vm.runInContext('DOMICILE_COUNTRY_CODES', context);
 const checkoutElements = new Map();
 let requestCount = 0, redirected = false, warning = '';
 const checkoutContext = vm.createContext({
     userNameInput:{value:''},
     userEmailInput:{value:'', checkValidity(){return this.value === 'test@example.test';}},
-    userDomicileSelect:{value:''},
+    userDomicileSelect:{value:''}, userCountrySelect:{value:''}, userRegionInput:{value:''},
+    DOMICILE_COUNTRY_CODES:countryFixtures,
     document:{getElementById(id){
         if (!checkoutElements.has(id)) checkoutElements.set(id,{disabled:false,addEventListener(event,handler){this[event]=handler;}});
         return checkoutElements.get(id);
     }},
     showStatusMessage(message){warning=message;},
     localStorage:{setItem(){},removeItem(){}},
-    intelligenceEntities:[{checked:true}], US_STATES_LEGAL_DB:[],
+    intelligenceEntities:[{checked:true}], US_STATES_LEGAL_DB:stateFixtures,
     updateLiveCryptographicHash:async()=>{},
-    generateOmnibusContractText:()=>'TEST NDA',
+    generateOmnibusContractText:()=>'TEST NDA', generateSingleStateContractText:()=>'TEST STATE NDA',
     DELIVERY_API:'https://example.test', ORDER_STORAGE:'test-order',
     fetch:async()=>{requestCount++;return {ok:true,json:async()=>({order_id:'test',access_token:'test',checkout_url:'https://example.test/checkout'})};},
     window:{location:{assign(){redirected=true;}}}
@@ -91,15 +98,24 @@ assert.match(warning,/valid contact email/);
 assert.equal(requestCount,0);
 checkoutContext.userEmailInput.value='test@example.test';
 await clickCheckout();
+assert.match(warning,/country/);
+assert.equal(requestCount,0);
+checkoutContext.userCountrySelect.value='US';
+await clickCheckout();
 assert.match(warning,/domicile state/);
 assert.equal(requestCount,0);
-checkoutContext.userDomicileSelect.value='State of Florida';
+const fl = stateFixtures.find(state=>state.code==='FL');
+checkoutContext.userDomicileSelect.value=`State of ${fl.name} (${fl.code} — ${fl.statute})`;
 await clickCheckout();
 assert.equal(requestCount,1);
 assert.equal(redirected,true);
-for (const id of ['userNameInput','userEmailInput','userDomicileSelect']) {
+checkoutContext.userCountrySelect.value='CA';
+checkoutContext.userDomicileSelect.value='';
+await clickCheckout();
+assert.equal(requestCount,2,'International checkout needs no U.S. state');
+for (const id of ['userNameInput','userEmailInput','userCountrySelect']) {
     assert.match(html,new RegExp('<(?:input|select) id="'+id+'"[^>]*required'));
 }
 assert.match(html,/<input id="userEmailInput" type="email"/);
 assert.ok(!/<input id="userOrgInput"[^>]*required/.test(html));
-console.log('Passed: Section 03 blocks checkout for missing name, invalid email, and missing domicile; valid details proceed with optional brand blank.');
+console.log('Passed: Section 03 blocks checkout for missing name, invalid email, missing country, and missing U.S. state; U.S. and international details proceed with optional brand blank.');

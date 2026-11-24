@@ -2,7 +2,7 @@
 
 ## Mode C review proposal
 
-The local review adds a standalone International Worldwide Superintelligence Non-Disclosure & Cross-Border Intellectual Property Protection Agreement, with 18 articles and an 18-entry Exhibit C. Open `/?mode=international` for its preview. `mode-c.js` owns its particulars, text, regime schedule and independent SHA-256 digest. U.S. contract generators and payment backend remain separate.
+The local review adds a standalone International Worldwide Superintelligence Non-Disclosure & Cross-Border Intellectual Property Protection Agreement, with 18 articles and an 18-entry Exhibit C. Open `/ mode=international` for its preview. `mode-c.js` owns its particulars, text, regime schedule and independent SHA-256 digest. U.S. contract generators and payment backend remain separate.
 
 Mode C requires international particulars instead of a U.S. domicile state. It uses an agreed non-U.S. governing law and seat, preserves mandatory-law exceptions and requires both parties' actual assent. Exhibit C is a reference schedule, not simultaneous adoption of 18 governing laws. Neither payment, a selected provider, a hash nor a service credential executes this agreement. Obtain transaction-specific legal review before use.
 
